@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/NormalPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/NormalPiecePrefab.prefab" afterDir="false" />
-    </list>
+    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +25,9 @@
     &quot;accountId&quot;: &quot;3f9ff7c7-0f5a-4430-bbb6-c5b5a24766d6&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://E:/Unity/Projects/Match3PuzzleFruit/Assets/Resources/Match3/NormalPiecePrefab.prefab" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -107,8 +107,17 @@
       <workItem from="1753886952415" duration="2000" />
       <workItem from="1753886961735" duration="2000" />
       <workItem from="1753887087132" duration="9000" />
-      <workItem from="1753887119402" duration="1999000" />
+      <workItem from="1753887119402" duration="2729000" />
     </task>
+    <task id="LOCAL-00001" summary="fix: null reff in NormalPiecePrefab.prefab">
+      <option name="closed" value="true" />
+      <created>1753889772045</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1753889772045</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,5 +144,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="fix: null reff in NormalPiecePrefab.prefab" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: null reff in NormalPiecePrefab.prefab" />
   </component>
 </project>
