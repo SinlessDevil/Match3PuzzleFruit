@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="edit: configs, and start edits hud">
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TextView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TextView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" afterDir="false" />
-    </list>
+    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="edits: add base view" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +28,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://E:/Unity/Projects/Match3PuzzleFruit/Assets/Code/Services/Finish/FinishService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelTypeConfigs/LevelTypeConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/Match3PuzzleFruit/Assets/Code/UI/Game/GameHud.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -123,7 +113,7 @@
       <workItem from="1753960209929" duration="2753000" />
       <workItem from="1754486723923" duration="2528000" />
       <workItem from="1754489291345" duration="2699000" />
-      <workItem from="1754492709175" duration="4261000" />
+      <workItem from="1754492709175" duration="4578000" />
     </task>
     <task id="LOCAL-00001" summary="fix: null reff in NormalPiecePrefab.prefab">
       <option name="closed" value="true" />
@@ -149,7 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754496904382</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="edits: add base view">
+      <option name="closed" value="true" />
+      <created>1754498221741</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1754498221741</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +177,7 @@
     <MESSAGE value="fix: null reff in NormalPiecePrefab.prefab" />
     <MESSAGE value="fix: animation" />
     <MESSAGE value="edit: configs, and start edits hud" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit: configs, and start edits hud" />
+    <MESSAGE value="edits: add base view" />
+    <option name="LAST_COMMIT_MESSAGE" value="edits: add base view" />
   </component>
 </project>
