@@ -4,30 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelTypeId.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelTypeId.cs.meta" afterDir="false" />
+    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="edit: configs, and start edits hud">
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TextView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TextView.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Hud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Hud.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/LevelMoves.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/LevelMoves.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/LevelObstacles.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/LevelObstacles.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/LevelTimer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/LevelTimer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/LevelType.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/LevelType.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/Finish/FinishService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/Finish/FinishService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelScoreStaticData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelScoreStaticData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelStaticData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Huds/GameHud.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Huds/GameHud.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/GameUICanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/GameUICanvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tests/EditMode/LevelServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/LevelServiceTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tests/EditMode/Tests.EditMode.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/Tests.EditMode.asmdef" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +37,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://E:/Unity/Projects/Match3PuzzleFruit/Assets/Code/Services/Finish/FinishService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelTypeConfigs/LevelTypeConfig.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -135,7 +123,7 @@
       <workItem from="1753960209929" duration="2753000" />
       <workItem from="1754486723923" duration="2528000" />
       <workItem from="1754489291345" duration="2699000" />
-      <workItem from="1754492709175" duration="2302000" />
+      <workItem from="1754492709175" duration="4261000" />
     </task>
     <task id="LOCAL-00001" summary="fix: null reff in NormalPiecePrefab.prefab">
       <option name="closed" value="true" />
@@ -153,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753960242809</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="edit: configs, and start edits hud">
+      <option name="closed" value="true" />
+      <created>1754496904382</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1754496904382</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +178,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="fix: null reff in NormalPiecePrefab.prefab" />
     <MESSAGE value="fix: animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: animation" />
+    <MESSAGE value="edit: configs, and start edits hud" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit: configs, and start edits hud" />
   </component>
 </project>

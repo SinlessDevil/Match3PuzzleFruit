@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Code.Services.StaticData;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using Zenject;
 
 namespace Code.UI.Game
@@ -12,6 +11,10 @@ namespace Code.UI.Game
         [Space(10)] [Header("Other")]
         [SerializeField] private InputZona _inputZona;
         [SerializeField] private List<GameObject> _debugObjects;
+        [Space(10)] [Header("Views")]
+        [SerializeField] private RemainingView _remainingView;
+        [SerializeField] private TargetView _targetView;
+        [SerializeField] private ScoreView _scoreView;
         
         private IStaticDataService _staticDataService; 
         
@@ -25,11 +28,11 @@ namespace Code.UI.Game
         
         public void Initialize()
         {
-            InitDebugObjects();
             
+            InitDebugObjects();
             TrySetUpEventSystem();
         }
-
+        
         private void InitDebugObjects()
         {
             if (!_staticDataService.GameConfig.DebugMode)
@@ -41,7 +44,7 @@ namespace Code.UI.Game
             }
         }
 
-        private static void TrySetUpEventSystem()
+        private void TrySetUpEventSystem()
         {
             EventSystem eventSystem = FindObjectOfType<EventSystem>();
             if (eventSystem != null) 
@@ -50,16 +53,6 @@ namespace Code.UI.Game
             GameObject gameObjectEventSystem = new GameObject("EventSystem");
             gameObjectEventSystem.AddComponent<EventSystem>();
             gameObjectEventSystem.AddComponent<StandaloneInputModule>();
-        }
-    }
-    
-    public class TextView : MonoBehaviour
-    {
-        [SerializeField] private Text _text;
-        
-        public void SetValue(int value)
-        {
-            _text.text = value.ToString();
         }
     }
 }
