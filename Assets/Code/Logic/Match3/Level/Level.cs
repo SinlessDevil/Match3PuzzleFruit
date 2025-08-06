@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Code.StaticData.Levels;
 using UnityEngine;
 
 namespace Match3
@@ -12,7 +13,7 @@ namespace Match3
         public int score2Star;
         public int score3Star;    
 
-        protected LevelType type;
+        protected LevelTypeId type;
 
         protected int currentScore;
 
@@ -23,7 +24,7 @@ namespace Match3
             hud.SetScore(currentScore);
         }
 
-        public LevelType Type => type;
+        public LevelTypeId Type => type;
 
         protected virtual void GameWin()
         {

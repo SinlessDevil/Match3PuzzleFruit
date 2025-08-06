@@ -34,16 +34,17 @@ namespace Tests.EditMode
                 LevelsComleted = new List<LevelContainer>()
             };
 
-            var playerData = new PlayerData { PlayerLevelData = _playerLevelData };
+            PlayerData playerData = new PlayerData { PlayerLevelData = _playerLevelData };
             _progress.PlayerData.Returns(playerData);
 
-            var chapter = ScriptableObject.CreateInstance<ChapterStaticData>();
+            ChapterStaticData chapter = ScriptableObject.CreateInstance(typeof(ChapterStaticData)) as ChapterStaticData;
             chapter.Levels = new List<LevelStaticData>
             {
-                ScriptableObject.CreateInstance<LevelStaticData>(),
-                ScriptableObject.CreateInstance<LevelStaticData>(),
-                ScriptableObject.CreateInstance<LevelStaticData>(),
+                ScriptableObject.CreateInstance(typeof(LevelStaticData)) as LevelStaticData,
+                ScriptableObject.CreateInstance(typeof(LevelStaticData)) as LevelStaticData,
+                ScriptableObject.CreateInstance(typeof(LevelStaticData)) as LevelStaticData,
             };
+
             _staticData.ForChapter(Arg.Any<int>()).Returns(chapter);
 
             _timer.GetElapsedTime().Returns(123f);

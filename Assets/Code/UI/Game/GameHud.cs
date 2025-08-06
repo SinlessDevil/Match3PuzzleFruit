@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Code.Services.StaticData;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Code.UI.Game
@@ -31,24 +32,34 @@ namespace Code.UI.Game
 
         private void InitDebugObjects()
         {
-            if (_staticDataService.GameConfig.DebugMode)
+            if (!_staticDataService.GameConfig.DebugMode)
+                return;
+            
+            foreach (var debugObject in _debugObjects)
             {
-                foreach (var debugObject in _debugObjects)
-                {
-                    debugObject.SetActive(true);
-                }
+                debugObject.SetActive(true);
             }
         }
 
         private static void TrySetUpEventSystem()
         {
-            var eventSystem = FindObjectOfType<EventSystem>();
-            if (eventSystem == null)
-            {
-                var gameObjectEventSystem = new GameObject("EventSystem");
-                gameObjectEventSystem.AddComponent<EventSystem>();
-                gameObjectEventSystem.AddComponent<StandaloneInputModule>();
-            }
+            EventSystem eventSystem = FindObjectOfType<EventSystem>();
+            if (eventSystem != null) 
+                return;
+            
+            GameObject gameObjectEventSystem = new GameObject("EventSystem");
+            gameObjectEventSystem.AddComponent<EventSystem>();
+            gameObjectEventSystem.AddComponent<StandaloneInputModule>();
+        }
+    }
+    
+    public class TextView : MonoBehaviour
+    {
+        [SerializeField] private Text _text;
+        
+        public void SetValue(int value)
+        {
+            _text.text = value.ToString();
         }
     }
 }

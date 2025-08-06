@@ -1,4 +1,6 @@
-﻿namespace Match3
+﻿using Code.StaticData.Levels;
+
+namespace Match3
 {
     public class LevelMoves : Level
     {
@@ -10,7 +12,7 @@
 
         private void Start()
         {
-            type = LevelType.Moves;
+            type = LevelTypeId.Moves;
 
             hud.SetLevelType(type);
             hud.SetScore(currentScore);

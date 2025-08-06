@@ -25,11 +25,11 @@ namespace Code.Services.Finish
         {
             switch (_levelService.GetCurrentLevelStaticData().LevelTypeId)
             {
-                case LevelTypeId.Regular:
+                case LevelTypeId.Moves:
                     _winService.Win();
                     break;
-                case LevelTypeId.Special:
-                case LevelTypeId.Bonus:
+                case LevelTypeId.Timer:
+                case LevelTypeId.Obstacle:
                     _winService.BonusWin();
                     break;
             }

@@ -4,7 +4,8 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "Game"
+        "Game",
+        ""
     ],
     "includePlatforms": [
         "Editor"
@@ -24,7 +25,8 @@
         "Microsoft.CodeAnalysis.dll",
         "System.Collections.Immutable.dll",
         "System.Reflection.Metadata.dll",
-        "System.Text.Encoding.CodePages.dll"
+        "System.Text.Encoding.CodePages.dll",
+        "Sirenix.Serialization.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [

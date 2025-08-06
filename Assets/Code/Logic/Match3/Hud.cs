@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Code.StaticData.Levels;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -59,19 +60,19 @@ namespace Match3
 
         public void SetRemaining(string remaining) => remainingText.text = remaining;
 
-        public void SetLevelType(LevelType type)
+        public void SetLevelType(LevelTypeId type)
         {
             switch (type)
             {
-                case LevelType.Moves:
+                case LevelTypeId.Moves:
                     remainingSubText.text = "moves remaining";
                     targetSubtext.text = "target score";
                     break;
-                case LevelType.Obstacle:
+                case LevelTypeId.Obstacle:
                     remainingSubText.text = "moves remaining";
                     targetSubtext.text = "bubbles remaining";
                     break;
-                case LevelType.Timer:
+                case LevelTypeId.Timer:
                     remainingSubText.text = "time remaining";
                     targetSubtext.text = "target score";
                     break;

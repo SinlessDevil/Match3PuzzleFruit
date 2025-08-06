@@ -1,4 +1,6 @@
-﻿namespace Match3
+﻿using Code.StaticData.Levels;
+
+namespace Match3
 {
     public class LevelObstacles : Level
     {
@@ -13,7 +15,7 @@
 
         private void Start ()
         {
-            type = LevelType.Obstacle;
+            type = LevelTypeId.Obstacle;
 
             for (int i = 0; i < obstacleTypes.Length; i++)
             {

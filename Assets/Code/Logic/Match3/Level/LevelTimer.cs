@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Code.StaticData.Levels;
+using UnityEngine;
 
 namespace Match3
 {
@@ -12,7 +13,7 @@ namespace Match3
 
         private void Start ()
         {
-            type = LevelType.Timer;
+            type = LevelTypeId.Timer;
 
             hud.SetLevelType(type);
             hud.SetScore(currentScore);
