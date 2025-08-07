@@ -9,7 +9,6 @@ namespace Match3
 {
     public class Hud : MonoBehaviour
     {
-        [FormerlySerializedAs("level")] public LevelConductor levelConductor;
         public GameOver gameOver;
 
         public Text remainingText;
@@ -31,29 +30,29 @@ namespace Match3
 
         public void SetScore(int score)
         {
-            scoreText.text = score.ToString();
-
-            int visibleStar = 0;
-
-            if (score >= levelConductor.score1Star && score < levelConductor.score2Star)
-            {
-                visibleStar = 1;
-            }
-            else if  (score >= levelConductor.score2Star && score < levelConductor.score3Star)
-            {
-                visibleStar = 2;
-            }
-            else if (score >= levelConductor.score3Star)
-            {
-                visibleStar = 3;
-            }
-
-            for (int i = 0; i < stars.Length; i++)
-            {
-                stars[i].enabled = (i == visibleStar);
-            }
-
-            _starIndex = visibleStar;
+            // scoreText.text = score.ToString();
+            //
+            // int visibleStar = 0;
+            //
+            // if (score >= levelConductor.score1Star && score < levelConductor.score2Star)
+            // {
+            //     visibleStar = 1;
+            // }
+            // else if  (score >= levelConductor.score2Star && score < levelConductor.score3Star)
+            // {
+            //     visibleStar = 2;
+            // }
+            // else if (score >= levelConductor.score3Star)
+            // {
+            //     visibleStar = 3;
+            // }
+            //
+            // for (int i = 0; i < stars.Length; i++)
+            // {
+            //     stars[i].enabled = (i == visibleStar);
+            // }
+            //
+            // _starIndex = visibleStar;
         }
 
         public void SetTarget(int target) => targetText.text = target.ToString();

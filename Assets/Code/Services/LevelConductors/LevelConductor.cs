@@ -1,48 +1,57 @@
-﻿using System.Collections;
-using Code.StaticData.Levels;
+﻿using System;
+using Code.Services.Levels;
+using Code.StaticData.Levels.LevelTypeConfigs;
 using Match3;
 using UnityEngine;
 
 namespace Code.Services.LevelConductors
 {
-    public class LevelConductor : MonoBehaviour
+    public abstract class LevelConductor : ILevelConductor
     {
-        public GameGrid gameGrid;
-        public Hud hud;
-
-        public int score1Star;
-        public int score2Star;
-        public int score3Star;    
-
-        protected LevelTypeId type;
-
-        protected int currentScore;
-
+        protected int _currentScore;
         private bool _didWin;
 
-        private void Start()
+        private readonly ILevelService _levelService;
+
+        protected LevelConductor(ILevelService levelService)
         {
-            hud.SetScore(currentScore);
+            _levelService = levelService;
         }
-
-        public LevelTypeId Type => type;
-
-        public virtual void OnMove() { }
+        
+        public event Action<int> ChangedCurrentScoreEvent;
+        public event Action<string> ChangedRemainingEvent;
+        public event Action<string> ChangedTargetEvent;
+        
+        public abstract void OnMove();
 
         public virtual void OnPieceCleared(GamePiece piece)
         {
-            currentScore += piece.score;
-            hud.SetScore(currentScore);
+            _currentScore += piece.score;
+            InvokeChangedCurrentScoreEvent();
+        }
+
+        public virtual void Dispose()
+        {
+            _currentScore = 0;
+            _didWin = false;
         }
         
+        protected LevelTypeConfig LevelTypeConfigs => _levelService.GetCurrentLevelStaticData().LevelTypeConfigs;
+        
+        protected void InvokeChangedCurrentScoreEvent() => ChangedCurrentScoreEvent?.Invoke(_currentScore);
+
+        protected void InvokeChangedRemainingEvent(string remaining) => ChangedRemainingEvent?.Invoke(remaining);
+
+        protected void InvokeChangedTargetEvent(string target) => ChangedTargetEvent?.Invoke(target);
+
         protected virtual void GameWin()
         {
             Debug.Log("Game Win");
             return;
             
-            gameGrid.GameOver();
+           // gameGrid.GameOver();
             _didWin = true;
-            StartCoroutine(WaitForGridFill());
+           // StartCoroutine(WaitForGridFill());
         }
 
         protected virtual void GameLose()
@@ -50,26 +59,25 @@ namespace Code.Services.LevelConductors
             Debug.Log("Game Lose");
             return;
             
-            gameGrid.GameOver();
-            _didWin = false;
-            StartCoroutine(WaitForGridFill());
+           // gameGrid.GameOver();
+           // StartCoroutine(WaitForGridFill());
         }
 
-        private IEnumerator WaitForGridFill()
-        {
-            while (gameGrid.IsFilling)
-            {
-                yield return null;
-            }
-
-            if (_didWin)
-            {
-                hud.OnGameWin(currentScore);
-            }
-            else
-            {
-                hud.OnGameLose();
-            }
-        }
+        // private IEnumerator WaitForGridFill()
+        // {
+        //     while (gameGrid.IsFilling)
+        //     {
+        //         yield return null;
+        //     }
+        //
+        //     if (_didWin)
+        //     {
+        //         hud.OnGameWin(_currentScore);
+        //     }
+        //     else
+        //     {
+        //         hud.OnGameLose();
+        //     }
+        // }
     }
 }

@@ -1,41 +1,50 @@
-﻿using Code.StaticData.Levels;
+﻿using Code.Services.Levels;
+using Code.StaticData.Levels.LevelTypeConfigs;
 
 namespace Code.Services.LevelConductors
 {
     public class LevelConductorMoves : LevelConductor
     {
-
-        public int numMoves;
-        public int targetScore;
-
         private int _movesUsed = 0;
 
-        private void Start()
+        public LevelConductorMoves(ILevelService levelService) : base(levelService) { }
+
+        public override void Dispose()
         {
-            type = LevelTypeId.Moves;
-
-            hud.SetLevelType(type);
-            hud.SetScore(currentScore);
-            hud.SetTarget(targetScore);
-            hud.SetRemaining(numMoves);
+            base.Dispose();
+            
+            _movesUsed = 0;
         }
-
+        
         public override void OnMove()
         {
             _movesUsed++;
-
-            hud.SetRemaining(numMoves - _movesUsed);
-
-            if (numMoves - _movesUsed != 0) return;
+            
+            InvokeChangedRemainingEvent((NumMoves() - _movesUsed).ToString());
+            
+            if (NumMoves() - _movesUsed != 0)
+                return;
         
-            if (currentScore >= targetScore)
-            {
+            if (_currentScore >= TargetScore())
                 GameWin();
-            }
             else
-            {
                 GameLose();
-            }
+        }
+        
+        private int NumMoves()
+        {
+            if (LevelTypeConfigs is LevelTypeConfigMoves levelTypeConfigMoves)
+                return levelTypeConfigMoves.NumMoves;
+
+            throw new System.Exception("Level type config is not of type LevelTypeConfigMoves");
+        }
+
+        private int TargetScore()
+        {
+            if (LevelTypeConfigs is LevelTypeConfigMoves levelTypeConfigMoves)
+                return levelTypeConfigMoves.TargetScore;
+            
+            throw new System.Exception("Level type config is not of type LevelTypeConfigMoves");
         }
     }
 }

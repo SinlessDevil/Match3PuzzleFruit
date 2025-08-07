@@ -1,46 +1,58 @@
-﻿using Code.StaticData.Levels;
+﻿using Code.Services.Levels;
+using Code.StaticData.Levels.LevelTypeConfigs;
 using UnityEngine;
 
 namespace Code.Services.LevelConductors
 {
     public class LevelConductorTimer : LevelConductor
     {
-
-        public int timeInSeconds;
-        public int targetScore;
-
         private float _timer;
 
-        private void Start ()
-        {
-            type = LevelTypeId.Timer;
+        public LevelConductorTimer(ILevelService levelService) : base(levelService) { }
 
-            hud.SetLevelType(type);
-            hud.SetScore(currentScore);
-            hud.SetTarget(targetScore);
-            hud.SetRemaining($"{timeInSeconds / 60}:{timeInSeconds % 60:00}");
+        public override void OnMove() { }
+        
+        public override void Dispose()
+        {
+            base.Dispose();
+            _timer = 0f;
+        }
+        
+        public void InitTimer()
+        {
+            InvokeChangedRemainingEvent($"{TimeInSeconds() / 60}:{TimeInSeconds() % 60:00}");
         }
 
-        private void Update()
+        public void Update()
         {
             _timer += Time.deltaTime;
             
-            hud.SetRemaining(
-                $"{(int) Mathf.Max((timeInSeconds - _timer) / 60, 0)}:" +
-                $"{(int) Mathf.Max((timeInSeconds - _timer) % 60, 0):00}");
+            InvokeChangedRemainingEvent($"{(int) Mathf.Max((TimeInSeconds() - _timer) / 60, 0)}:" +
+                                        $"{(int) Mathf.Max((TimeInSeconds() - _timer) % 60, 0):00}");
 
-            if (timeInSeconds - _timer <= 0)
-            {
-                if (currentScore >= targetScore)
-                {
-                    GameWin();
-                }
-                else
-                {
-                    GameLose();
-                }
-            }
+            if (!(TimeInSeconds() - _timer <= 0)) 
+                return;
+            
+            if (_currentScore >= TargetScore())
+                GameWin();
+            else
+                GameLose();
         }
-	
+        
+        private int TimeInSeconds()
+        {
+            if (LevelTypeConfigs is LevelTypeConfigTimer levelTypeConfigMoves)
+                return levelTypeConfigMoves.TimeInSeconds;
+
+            throw new System.Exception("Level type config is not of type LevelTypeConfigMoves");
+        }
+        
+        private int TargetScore()
+        {
+            if (LevelTypeConfigs is LevelTypeConfigTimer levelTypeConfigMoves)
+                return levelTypeConfigMoves.TargetScore;
+
+            throw new System.Exception("Level type config is not of type LevelTypeConfigMoves");
+        }
     }
 }

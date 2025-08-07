@@ -1,62 +1,81 @@
-﻿using Code.StaticData.Levels;
+﻿using Code.Services.Levels;
+using Code.StaticData.Levels.LevelTypeConfigs;
 using Match3;
 
 namespace Code.Services.LevelConductors
 {
     public class LevelConductorObstacles : LevelConductor
     {
-
-        public int numMoves;
-        public PieceType[] obstacleTypes;
-
         private const int ScorePerPieceCleared = 1000;
     
         private int _movesUsed = 0;
-        private int _numObstaclesLeft;
+        private int _numObstaclesLeft = 0;
 
-        private void Start ()
+        public LevelConductorObstacles(ILevelService levelService) : base(levelService) { }
+
+        public void InitNumObstaclesLeft()
         {
-            type = LevelTypeId.Obstacle;
+            // for (int i = 0; i < obstacleTypes.Length; i++)
+            // {
+            //     _numObstaclesLeft += gameGrid.GetPiecesOfType(obstacleTypes[i]).Count;
+            // }
 
-            for (int i = 0; i < obstacleTypes.Length; i++)
-            {
-                _numObstaclesLeft += gameGrid.GetPiecesOfType(obstacleTypes[i]).Count;
-            }
-
-            hud.SetLevelType(type);
-            hud.SetScore(currentScore);
-            hud.SetTarget(_numObstaclesLeft);
-            hud.SetRemaining(numMoves);
+            InvokeChangedTargetEvent(_numObstaclesLeft.ToString());
         }
-
+        
         public override void OnMove()
         {
             _movesUsed++;
 
-            hud.SetRemaining(numMoves - _movesUsed);
-
-            if (numMoves - _movesUsed == 0 && _numObstaclesLeft > 0)
-            {
+            InvokeChangedRemainingEvent((NumMoves() - _movesUsed).ToString());
+            
+            if (NumMoves() - _movesUsed == 0 && _numObstaclesLeft > 0)
                 GameLose();
-            }
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            _movesUsed = 0;
+            _numObstaclesLeft = 0;
         }
 
         public override void OnPieceCleared(GamePiece piece)
         {
             base.OnPieceCleared(piece);
 
-            for (int i = 0; i < obstacleTypes.Length; i++)
+            foreach (var obstacle in PieceTypes())
             {
-                if (obstacleTypes[i] != piece.Type) continue;
+                if (obstacle != piece.Type) 
+                    continue;
             
                 _numObstaclesLeft--;
-                hud.SetTarget(_numObstaclesLeft);
-                if (_numObstaclesLeft != 0) continue;
+                InvokeChangedTargetEvent(_numObstaclesLeft.ToString());
+                
+                if (_numObstaclesLeft != 0) 
+                    continue;
             
-                currentScore += ScorePerPieceCleared * (numMoves - _movesUsed);
-                hud.SetScore(currentScore);
+                _currentScore += ScorePerPieceCleared * (NumMoves() - _movesUsed);
+                InvokeChangedCurrentScoreEvent();
+                
                 GameWin();
             }
+        }
+        
+        private int NumMoves()
+        {
+            if (LevelTypeConfigs is LevelTypeConfigObstacles levelTypeConfigMoves)
+                return levelTypeConfigMoves.NumMoves;
+
+            throw new System.Exception("Level type config is not of type LevelTypeConfigMoves");
+        }
+        
+        private PieceType[] PieceTypes()
+        {
+            if (LevelTypeConfigs is LevelTypeConfigObstacles levelTypeConfigMoves)
+                return levelTypeConfigMoves.ObstacleTypes;
+
+            throw new System.Exception("Level type config is not of type LevelTypeConfigMoves");
         }
     }
 }

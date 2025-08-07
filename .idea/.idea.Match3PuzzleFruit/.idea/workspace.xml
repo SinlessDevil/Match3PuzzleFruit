@@ -4,41 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreInfoView.cs" afterDir="false" />
+    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="edit: RemainingInfoView , TargetInfoView, ScoreInfoView . Start create LevelConductor">
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/ILevelConductor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/ILevelConductor.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/LoadLevelState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/LoadLevelState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearablePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearablePiece.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GameGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GameGrid.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Hud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Hud.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/Level.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/Level.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/LevelMoves.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/LevelMoves.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/LevelObstacles.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/LevelObstacles.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/LevelTimer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/LevelTimer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/StaticData/StaticDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/StaticData/StaticDataService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/StaticData/BalanceStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/StaticData/BalanceStaticData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelStaticData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorMoves.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorMoves.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorObstacles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorObstacles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorTimer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingInfoView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingInfoView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreInfoView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetInfoView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetInfoView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/TextView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTextInfoView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/TextView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTextInfoView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Huds/GameHud.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Huds/GameHud.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,9 +36,8 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://E:/Unity/Projects/Match3PuzzleFruit/Assets/Code/Services/Finish/FinishService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/Match3PuzzleFruit/Assets/Code/Services/LevelConductors/LevelConductorMoves.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelTypeConfigs/LevelTypeConfig.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/Match3PuzzleFruit/Assets/Code/UI/Game/GameHud.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -151,6 +125,7 @@
       <workItem from="1754492709175" duration="4645000" />
       <workItem from="1754553654287" duration="10950000" />
       <workItem from="1754573844674" duration="4000" />
+      <workItem from="1754573864796" duration="7838000" />
     </task>
     <task id="LOCAL-00001" summary="fix: null reff in NormalPiecePrefab.prefab">
       <option name="closed" value="true" />
@@ -192,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754498269431</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="edit: RemainingInfoView , TargetInfoView, ScoreInfoView . Start create LevelConductor">
+      <option name="closed" value="true" />
+      <created>1754574239253</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1754574239253</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,6 +207,7 @@
     <MESSAGE value="edit: configs, and start edits hud" />
     <MESSAGE value="edits: add base view" />
     <MESSAGE value="edit: configs level" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit: configs level" />
+    <MESSAGE value="edit: RemainingInfoView , TargetInfoView, ScoreInfoView . Start create LevelConductor" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit: RemainingInfoView , TargetInfoView, ScoreInfoView . Start create LevelConductor" />
   </component>
 </project>
