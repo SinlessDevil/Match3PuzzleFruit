@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using Code.StaticData.Levels;
+using Match3;
 using UnityEngine;
 
-namespace Match3
+namespace Code.Services.LevelConductors
 {
-    public class Level : MonoBehaviour
+    public class LevelConductor : MonoBehaviour
     {
         public GameGrid gameGrid;
         public Hud hud;
@@ -26,8 +27,19 @@ namespace Match3
 
         public LevelTypeId Type => type;
 
+        public virtual void OnMove() { }
+
+        public virtual void OnPieceCleared(GamePiece piece)
+        {
+            currentScore += piece.score;
+            hud.SetScore(currentScore);
+        }
+        
         protected virtual void GameWin()
         {
+            Debug.Log("Game Win");
+            return;
+            
             gameGrid.GameOver();
             _didWin = true;
             StartCoroutine(WaitForGridFill());
@@ -35,22 +47,15 @@ namespace Match3
 
         protected virtual void GameLose()
         {        
+            Debug.Log("Game Lose");
+            return;
+            
             gameGrid.GameOver();
             _didWin = false;
             StartCoroutine(WaitForGridFill());
         }
-    
-        public virtual void OnMove()
-        {
-        }
 
-        public virtual void OnPieceCleared(GamePiece piece)
-        {
-            currentScore += piece.score;
-            hud.SetScore(currentScore);
-        }
-
-        protected virtual IEnumerator WaitForGridFill()
+        private IEnumerator WaitForGridFill()
         {
             while (gameGrid.IsFilling)
             {

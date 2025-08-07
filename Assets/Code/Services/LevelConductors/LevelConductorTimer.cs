@@ -1,9 +1,9 @@
 ﻿using Code.StaticData.Levels;
 using UnityEngine;
 
-namespace Match3
+namespace Code.Services.LevelConductors
 {
-    public class LevelTimer : Level
+    public class LevelConductorTimer : LevelConductor
     {
 
         public int timeInSeconds;
@@ -24,8 +24,10 @@ namespace Match3
         private void Update()
         {
             _timer += Time.deltaTime;
+            
             hud.SetRemaining(
-                $"{(int) Mathf.Max((timeInSeconds - _timer) / 60, 0)}:{(int) Mathf.Max((timeInSeconds - _timer) % 60, 0):00}");
+                $"{(int) Mathf.Max((timeInSeconds - _timer) / 60, 0)}:" +
+                $"{(int) Mathf.Max((timeInSeconds - _timer) % 60, 0):00}");
 
             if (timeInSeconds - _timer <= 0)
             {

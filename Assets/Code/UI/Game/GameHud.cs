@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Code.Logic.Level;
+using Code.Logic.Level.PM;
 using Code.Services.StaticData;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,9 +14,9 @@ namespace Code.UI.Game
         [SerializeField] private InputZona _inputZona;
         [SerializeField] private List<GameObject> _debugObjects;
         [Space(10)] [Header("Views")]
-        [SerializeField] private RemainingView _remainingView;
-        [SerializeField] private TargetView _targetView;
-        [SerializeField] private ScoreView _scoreView;
+        [SerializeField] private RemainingInfoView remainingInfoView;
+        [SerializeField] private TargetInfoView targetInfoView;
+        [SerializeField] private ScoreInfoView scoreInfoView;
         
         private IStaticDataService _staticDataService; 
         
@@ -26,11 +28,21 @@ namespace Code.UI.Game
         
         public InputZona InputZona => _inputZona;
         
-        public void Initialize()
+        public void Initialize(ILevelInfoPM levelInfoPm)
         {
+            remainingInfoView.Initialize(levelInfoPm);
+            targetInfoView.Initialize(levelInfoPm);
+            scoreInfoView.Initialize(levelInfoPm);
             
             InitDebugObjects();
             TrySetUpEventSystem();
+        }
+        
+        public void Dispose()
+        {
+            remainingInfoView.Dispose();
+            targetInfoView.Dispose();
+            scoreInfoView.Dispose();
         }
         
         private void InitDebugObjects()

@@ -4,7 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="edits: add base view" />
+    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreInfoView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/LoadLevelState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/LoadLevelState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearablePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearablePiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GameGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GameGrid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Hud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Hud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/Level.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/Level.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/LevelMoves.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/LevelMoves.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/LevelObstacles.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/LevelObstacles.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/LevelTimer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Level/LevelTimer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/StaticData/StaticDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/StaticData/StaticDataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/StaticData/BalanceStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/StaticData/BalanceStaticData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelStaticData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingInfoView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingInfoView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreInfoView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetInfoView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetInfoView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/TextView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTextInfoView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/TextView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTextInfoView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Huds/GameHud.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Huds/GameHud.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,7 +148,9 @@
       <workItem from="1753960209929" duration="2753000" />
       <workItem from="1754486723923" duration="2528000" />
       <workItem from="1754489291345" duration="2699000" />
-      <workItem from="1754492709175" duration="4578000" />
+      <workItem from="1754492709175" duration="4645000" />
+      <workItem from="1754553654287" duration="10950000" />
+      <workItem from="1754573844674" duration="4000" />
     </task>
     <task id="LOCAL-00001" summary="fix: null reff in NormalPiecePrefab.prefab">
       <option name="closed" value="true" />
@@ -147,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754498221741</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="edit: configs level">
+      <option name="closed" value="true" />
+      <created>1754498269431</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1754498269431</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,6 +223,7 @@
     <MESSAGE value="fix: animation" />
     <MESSAGE value="edit: configs, and start edits hud" />
     <MESSAGE value="edits: add base view" />
-    <option name="LAST_COMMIT_MESSAGE" value="edits: add base view" />
+    <MESSAGE value="edit: configs level" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit: configs level" />
   </component>
 </project>

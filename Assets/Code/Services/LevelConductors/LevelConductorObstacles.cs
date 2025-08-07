@@ -1,8 +1,9 @@
 ﻿using Code.StaticData.Levels;
+using Match3;
 
-namespace Match3
+namespace Code.Services.LevelConductors
 {
-    public class LevelObstacles : Level
+    public class LevelConductorObstacles : LevelConductor
     {
 
         public int numMoves;

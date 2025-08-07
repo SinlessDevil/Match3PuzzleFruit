@@ -1683,13 +1683,13 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushIndentLevel(System.Int32)">
             <summary>
-            Pushes the indent level to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopIndentLevel"/>.
+            Pushes the indent levelConductor to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopIndentLevel"/>.
             </summary>
-            <param name="indentLevel">The indent level to push.</param>
+            <param name="indentLevel">The indent levelConductor to push.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopIndentLevel">
             <summary>
-            Pops the indent level pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushIndentLevel(System.Int32)"/>.
+            Pops the indent levelConductor pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushIndentLevel(System.Int32)"/>.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushContentColor(UnityEngine.Color,System.Boolean)">
@@ -2302,7 +2302,7 @@
         </member>
         <member name="F:Sirenix.Utilities.Editor.GUITable.RespectIndentLevel">
             <summary>
-            Whether to respect the current GUI indent level.
+            Whether to respect the current GUI indent levelConductor.
             </summary>
         </member>
         <member name="P:Sirenix.Utilities.Editor.GUITable.Item(System.Int32,System.Int32)">

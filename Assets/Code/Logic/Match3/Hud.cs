@@ -1,13 +1,15 @@
-﻿using Code.StaticData.Levels;
+﻿using Code.Services.LevelConductors;
+using Code.StaticData.Levels;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Match3
 {
     public class Hud : MonoBehaviour
     {
-        public Level level;
+        [FormerlySerializedAs("level")] public LevelConductor levelConductor;
         public GameOver gameOver;
 
         public Text remainingText;
@@ -33,15 +35,15 @@ namespace Match3
 
             int visibleStar = 0;
 
-            if (score >= level.score1Star && score < level.score2Star)
+            if (score >= levelConductor.score1Star && score < levelConductor.score2Star)
             {
                 visibleStar = 1;
             }
-            else if  (score >= level.score2Star && score < level.score3Star)
+            else if  (score >= levelConductor.score2Star && score < levelConductor.score3Star)
             {
                 visibleStar = 2;
             }
-            else if (score >= level.score3Star)
+            else if (score >= levelConductor.score3Star)
             {
                 visibleStar = 3;
             }

@@ -1131,7 +1131,7 @@
         <member name="P:Sirenix.OdinInspector.Editor.InspectorProperty.RecursiveDrawDepth">
             <summary>
             <para>The current recursive draw depth, incremented for each time that the property has caused itself to be drawn recursively.</para>
-            <para>Note that this is the <i>current</i> recursion level, not the total amount of recursions so far this frame.</para>
+            <para>Note that this is the <i>current</i> recursion levelConductor, not the total amount of recursions so far this frame.</para>
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.InspectorProperty.DrawCount">
@@ -1176,7 +1176,7 @@
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.InspectorProperty.Parent">
             <summary>
-            The parent of the property. If null, this property is a root-level property in the <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree"/>.
+            The parent of the property. If null, this property is a root-levelConductor property in the <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree"/>.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.InspectorProperty.Info">
@@ -7346,7 +7346,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.DrawerPriority.GetPriorityLevel">
             <summary>
-            Gets the priority level.
+            Gets the priority levelConductor.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.DrawerPriority.ToString">
@@ -8696,11 +8696,11 @@
             <summary>
             Draws this menu item followed by all of its child menu items
             </summary>
-            <param name="indentLevel">The indent level.</param>
+            <param name="indentLevel">The indent levelConductor.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.OdinMenuItem.DrawMenuItem(System.Int32)">
             <summary>
-            Draws the menu item with the specified indent level.
+            Draws the menu item with the specified indent levelConductor.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.OdinMenuItem.OnDrawMenuItem(UnityEngine.Rect,UnityEngine.Rect)">
@@ -8758,7 +8758,7 @@
         </member>
         <member name="F:Sirenix.OdinInspector.Editor.OdinMenuStyle.IndentAmount">
             <summary>
-            The number of pixels to indent per level indent level.
+            The number of pixels to indent per levelConductor indent levelConductor.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.Editor.OdinMenuStyle.IconSize">
@@ -8799,7 +8799,7 @@
         <member name="F:Sirenix.OdinInspector.Editor.OdinMenuStyle.AlignTriangleLeft">
             <summary>
             Whether or not to align the triangle left or right of the content.
-            If right, then the icon is pushed all the way to the right at a fixed position ignoring the indent level.
+            If right, then the icon is pushed all the way to the right at a fixed position ignoring the indent levelConductor.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.Editor.OdinMenuStyle.Borders">
@@ -8859,7 +8859,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.OdinMenuStyle.SetIndentAmount(System.Single)">
             <summary>
-            Sets the number of pixels to indent per level indent level.
+            Sets the number of pixels to indent per levelConductor indent levelConductor.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.OdinMenuStyle.SetIconSize(System.Single)">
@@ -8900,7 +8900,7 @@
         <member name="M:Sirenix.OdinInspector.Editor.OdinMenuStyle.SetAlignTriangleLeft(System.Boolean)">
             <summary>
             Sets whether or not to align the triangle left or right of the content.
-            If right, then the icon is pushed all the way to the right at a fixed position ignoring the indent level.
+            If right, then the icon is pushed all the way to the right at a fixed position ignoring the indent levelConductor.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.OdinMenuStyle.SetBorders(System.Boolean)">

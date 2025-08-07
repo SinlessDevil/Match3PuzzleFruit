@@ -8499,7 +8499,7 @@
         </member>
         <member name="M:Sirenix.Serialization.Utilities.Editor.AssemblyImportSettingsUtilities.GetCurrentApiCompatibilityLevel">
             <summary>
-            Gets the current API compatibility level from the Unity Editor. This method is Unity version independent.
+            Gets the current API compatibility levelConductor from the Unity Editor. This method is Unity version independent.
             </summary>
             <returns></returns>
         </member>
@@ -8519,10 +8519,10 @@
         </member>
         <member name="M:Sirenix.Serialization.Utilities.Editor.AssemblyImportSettingsUtilities.ApiCompatibilityLevelSupportsJIT(UnityEditor.ApiCompatibilityLevel)">
             <summary>
-            Gets a value that indicates if the specified api level supports JIT.
+            Gets a value that indicates if the specified api levelConductor supports JIT.
             </summary>
-            <param name="apiLevel">The api level to test.</param>
-            <returns><c>true</c> if the api level supports JIT; otherwise <c>false</c>.</returns>
+            <param name="apiLevel">The api levelConductor to test.</param>
+            <returns><c>true</c> if the api levelConductor supports JIT; otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Serialization.Utilities.Editor.AssemblyImportSettingsUtilities.IsJITSupported(UnityEditor.BuildTarget,UnityEditor.ScriptingImplementation,UnityEditor.ApiCompatibilityLevel)">
             <summary>
@@ -8530,7 +8530,7 @@
             </summary>
             <param name="platform">The platform build setting.</param>
             <param name="backend">The scripting backend build settting.</param>
-            <param name="apiLevel">The api level build setting.</param>
+            <param name="apiLevel">The api levelConductor build setting.</param>
             <returns><c>true</c> if the build settings supports JIT; otherwise <c>false</c>.</returns>
         </member>
         <member name="T:Sirenix.Serialization.Utilities.Cache`1">

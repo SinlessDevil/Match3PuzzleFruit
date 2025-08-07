@@ -4407,7 +4407,7 @@
         </member>
         <member name="F:Sirenix.OdinInspector.SearchableAttribute.Recursive">
             <summary>
-            Whether to search recursively, or only search the top level properties.
+            Whether to search recursively, or only search the top levelConductor properties.
             Default value: true.
             </summary>
         </member>
@@ -5070,7 +5070,7 @@
         </member>
         <member name="F:Sirenix.OdinInspector.TableMatrixAttribute.RespectIndentLevel">
             <summary>
-            Whether the drawn table should respect the current GUI indent level.
+            Whether the drawn table should respect the current GUI indent levelConductor.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.TableMatrixAttribute.Transpose">

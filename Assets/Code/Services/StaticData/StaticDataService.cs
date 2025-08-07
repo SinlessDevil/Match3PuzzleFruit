@@ -51,7 +51,7 @@ namespace Code.Services.StaticData
                 throw new InvalidOperationException($"Chapter {realChapterIndex + 1} has no levels.");
 
             if (levelId < 1 || levelId > chapter.Levels.Count)
-                throw new ArgumentOutOfRangeException(nameof(levelId), $"Level {levelId} is out of range: 1 - {chapter.Levels.Count}");
+                throw new ArgumentOutOfRangeException(nameof(levelId), $"LevelConductor {levelId} is out of range: 1 - {chapter.Levels.Count}");
 
             var level = chapter.Levels[levelId - 1];
             return level;

@@ -1,5 +1,9 @@
-﻿using Code.Services.Factories.UIFactory;
+﻿using Code.Logic.Level.PM;
+using Code.Services.Factories.UIFactory;
+using Code.Services.Levels;
 using Code.Services.Providers.Widgets;
+using Code.Services.StaticData;
+using Code.UI.Game;
 
 namespace Code.Infrastructure.StateMachine.Game.States
 {
@@ -10,19 +14,25 @@ namespace Code.Infrastructure.StateMachine.Game.States
         private readonly IUIFactory _uiFactory;
         private readonly IStateMachine<IGameState> _gameStateMachine;
         private readonly IWidgetProvider _widgetProvider;
+        private readonly ILevelService _levelService;
+        private readonly IStaticDataService _staticDataService;
 
         public LoadLevelState(
             IStateMachine<IGameState> gameStateMachine, 
             ISceneLoader sceneLoader,
             ILoadingCurtain loadingCurtain, 
             IUIFactory uiFactory,
-            IWidgetProvider widgetProvider)
+            IWidgetProvider widgetProvider,
+            ILevelService levelService,
+            IStaticDataService staticDataService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _loadingCurtain = loadingCurtain;
             _uiFactory = uiFactory;
             _widgetProvider = widgetProvider;
+            _levelService = levelService;
+            _staticDataService = staticDataService;
         }
 
         public void Enter(string payload)
@@ -47,7 +57,9 @@ namespace Code.Infrastructure.StateMachine.Game.States
         {
             _uiFactory.CreateUiRoot();
             
-            InitHud();
+            ILevelInfoPM levelInfoPm = CreateLevelInfoPM();
+            
+            InitHud(levelInfoPm);
             
             InitProviders();
         }
@@ -57,10 +69,15 @@ namespace Code.Infrastructure.StateMachine.Game.States
             _widgetProvider.CreatePoolWidgets();
         }
         
-        private void InitHud()
+        private void InitHud(ILevelInfoPM levelInfoPm)
         {
-            var gameHud = _uiFactory.CreateGameHud();
-            gameHud.Initialize();
+            GameHud gameHud = _uiFactory.CreateGameHud();
+            gameHud.Initialize(levelInfoPm);
+        }
+
+        private ILevelInfoPM CreateLevelInfoPM()
+        {
+            return new LevelInfoPm(_levelService, _staticDataService);
         }
     }
 }

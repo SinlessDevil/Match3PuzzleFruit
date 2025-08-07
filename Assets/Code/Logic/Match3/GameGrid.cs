@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Code.Services.LevelConductors;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Match3
 {
@@ -25,7 +27,7 @@ namespace Match3
         public int yDim;
         public float fillTime;
 
-        public Level level;
+        [FormerlySerializedAs("level")] public LevelConductor levelConductor;
 
         public PiecePrefab[] piecePrefabs;
         public GameObject backgroundPrefab;
@@ -292,7 +294,7 @@ namespace Match3
 
                 StartCoroutine(Fill());
 
-                level.OnMove();
+                levelConductor.OnMove();
             }
             else
             {

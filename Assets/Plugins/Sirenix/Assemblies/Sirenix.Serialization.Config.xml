@@ -180,7 +180,7 @@
         </member>
         <member name="T:Sirenix.Serialization.LoggingPolicy">
             <summary>
-            The policy for which level of logging to do during serialization and deserialization.
+            The policy for which levelConductor of logging to do during serialization and deserialization.
             </summary>
         </member>
         <member name="F:Sirenix.Serialization.LoggingPolicy.LogErrors">
