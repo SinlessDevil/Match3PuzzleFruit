@@ -1,1 +1,1 @@
-Match3 Puzzle Fruit
+Match 3 Puzzle Fruit
