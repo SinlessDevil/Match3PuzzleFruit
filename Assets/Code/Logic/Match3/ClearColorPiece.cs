@@ -8,7 +8,7 @@
         {
             base.Clear();
 
-            piece.GameGridRef.ClearColor(Color);
+            _piece.MatchBoardControllerRef.ClearColor(Color);
         }
     }
 }

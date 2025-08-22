@@ -29,7 +29,7 @@ namespace Match3
 
         private void Awake ()
         {
-            _sprite = transform.Find("piece").GetComponent<SpriteRenderer>();
+            _sprite = transform.Find("_piece").GetComponent<SpriteRenderer>();
 
             // instantiating and populating a Dictionary of all Color Types / Sprites (for fast lookup)
             _colorSpriteDict = new Dictionary<ColorType, Sprite>();

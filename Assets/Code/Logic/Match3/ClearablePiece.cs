@@ -1,24 +1,35 @@
 ﻿using System.Collections;
+using Code.Services.LevelConductors.Locator;
 using UnityEngine;
+using Zenject;
 
 namespace Match3
 {
     public class ClearablePiece : MonoBehaviour
     {
         public AnimationClip clearAnimation;
+        
+        protected GamePiece _piece;
 
-        public bool IsBeingCleared { get; private set; }
-
-        protected GamePiece piece;
-
+        private ILevelServiceLocator _levelServiceLocator;
+        
+        [Inject]
+        private void Constructor(ILevelServiceLocator levelServiceLocator)
+        {
+            _levelServiceLocator = levelServiceLocator;
+        }
+        
         private void Awake()
         {
-            piece = GetComponent<GamePiece>();
+            _piece = GetComponent<GamePiece>();
         }
 
+        public bool IsBeingCleared { get; private set; }
+        
         public virtual void Clear()
         {
-            piece.GameGridRef.levelConductor.OnPieceCleared(piece);
+            _levelServiceLocator.GetForCurrentLevel().OnPieceCleared(_piece);
+            
             IsBeingCleared = true;
             StartCoroutine(ClearCoroutine());
         }

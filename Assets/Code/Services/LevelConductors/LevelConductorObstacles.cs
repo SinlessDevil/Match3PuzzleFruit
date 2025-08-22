@@ -17,7 +17,7 @@ namespace Code.Services.LevelConductors
         {
             // for (int i = 0; i < obstacleTypes.Length; i++)
             // {
-            //     _numObstaclesLeft += gameGrid.GetPiecesOfType(obstacleTypes[i]).Count;
+            //     _numObstaclesLeft += matchBoardController.GetPiecesOfType(obstacleTypes[i]).Count;
             // }
 
             InvokeChangedTargetEvent(_numObstaclesLeft.ToString());

@@ -1,5 +1,6 @@
 ﻿using Code.Logic.Level.PM;
 using Code.Services.Factories.UIFactory;
+using Code.Services.LevelConductors.Locator;
 using Code.Services.Levels;
 using Code.Services.Providers.Widgets;
 using Code.Services.StaticData;
@@ -16,6 +17,7 @@ namespace Code.Infrastructure.StateMachine.Game.States
         private readonly IWidgetProvider _widgetProvider;
         private readonly ILevelService _levelService;
         private readonly IStaticDataService _staticDataService;
+        private readonly ILevelServiceLocator _levelServiceLocator;
 
         public LoadLevelState(
             IStateMachine<IGameState> gameStateMachine, 
@@ -24,7 +26,8 @@ namespace Code.Infrastructure.StateMachine.Game.States
             IUIFactory uiFactory,
             IWidgetProvider widgetProvider,
             ILevelService levelService,
-            IStaticDataService staticDataService)
+            IStaticDataService staticDataService,
+            ILevelServiceLocator levelServiceLocator)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -33,6 +36,7 @@ namespace Code.Infrastructure.StateMachine.Game.States
             _widgetProvider = widgetProvider;
             _levelService = levelService;
             _staticDataService = staticDataService;
+            _levelServiceLocator = levelServiceLocator;
         }
 
         public void Enter(string payload)
@@ -56,6 +60,8 @@ namespace Code.Infrastructure.StateMachine.Game.States
         private void InitGameWorld()
         {
             _uiFactory.CreateUiRoot();
+
+            InitLevelServiceConductor();
             
             ILevelInfoPM levelInfoPm = CreateLevelInfoPM();
             
@@ -63,7 +69,12 @@ namespace Code.Infrastructure.StateMachine.Game.States
             
             InitProviders();
         }
-        
+
+        private void InitLevelServiceConductor()
+        {
+            _levelServiceLocator.GetForCurrentLevel();
+        }
+
         private void InitProviders()
         {
             _widgetProvider.CreatePoolWidgets();

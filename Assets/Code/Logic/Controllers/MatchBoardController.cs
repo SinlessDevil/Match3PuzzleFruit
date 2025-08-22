@@ -1,89 +1,77 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using Code.Services.LevelConductors;
+using Code.Services.LevelConductors.Locator;
+using Code.Services.Levels;
+using Code.StaticData.Levels.BoardConfigs;
+using Cysharp.Threading.Tasks;
+using Match3;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
-namespace Match3
+namespace Code.Logic.Controllers
 {
-    public class GameGrid : MonoBehaviour
+    public class MatchBoardController : IMatchBoardController
     {
-        [System.Serializable]
-        public struct PiecePrefab
-        {
-            public PieceType type;
-            public GameObject prefab;
-        };
-
-        [System.Serializable]
-        public struct PiecePosition
-        {
-            public PieceType type;
-            public int x;
-            public int y;
-        };
-
-        public int xDim;
-        public int yDim;
-        public float fillTime;
-
-        [FormerlySerializedAs("level")] public LevelConductor levelConductor;
-
-        public PiecePrefab[] piecePrefabs;
-        public GameObject backgroundPrefab;
-
-        public PiecePosition[] initialPieces;
-
         private Dictionary<PieceType, GameObject> _piecePrefabDict;
-
         private GamePiece[,] _pieces;
-
-        private bool _inverse;
-
+        
         private GamePiece _pressedPiece;
         private GamePiece _enteredPiece;
 
         private bool _gameOver;
+        private bool _inverse;
 
-        public bool IsFilling { get; private set; }
-
-        private void Awake()
+        private Transform _root;
+        
+        private readonly ILevelServiceLocator _levelServiceLocator;
+        private readonly ILevelService _levelService;
+        
+        public MatchBoardController(
+            ILevelServiceLocator levelServiceLocator, 
+            ILevelService levelService)
         {
-            // populating dictionary with piece prefabs types
+            _levelServiceLocator = levelServiceLocator;
+            _levelService = levelService;
+        }
+        
+        public void StartLevel()
+        {
+            // populating dictionary with _piece prefabs types
             _piecePrefabDict = new Dictionary<PieceType, GameObject>();
-            for (int i = 0; i < piecePrefabs.Length; i++)
+            for (int i = 0; i < BoardConfig.PiecePrefabs.Length; i++)
             {
-                if (!_piecePrefabDict.ContainsKey(piecePrefabs[i].type))
+                if (!_piecePrefabDict.ContainsKey(BoardConfig.PiecePrefabs[i].Type))
                 {
-                    _piecePrefabDict.Add(piecePrefabs[i].type, piecePrefabs[i].prefab);
+                    _piecePrefabDict.Add(BoardConfig.PiecePrefabs[i].Type, BoardConfig.PiecePrefabs[i].Prefab);
                 }
             }
 
             // instantiate backgrounds
-            for (int x = 0; x < xDim; x++)
+            for (int x = 0; x < BoardConfig.XDim; x++)
             {
-                for (int y = 0; y < yDim; y++)
+                for (int y = 0; y < BoardConfig.YDim; y++)
                 {
-                    GameObject background = Instantiate(backgroundPrefab, GetWorldPosition(x, y), Quaternion.identity);
-                    background.transform.parent = transform;
+                    GameObject background = Instantiate(BoardConfig.BackgroundPrefab, GetWorldPosition(x, y), Quaternion.identity);
+                    background.transform.parent = _root;
                 }
             }
 
             // instantiating pieces
-            _pieces = new GamePiece[xDim, yDim];
+            _pieces = new GamePiece[BoardConfig.XDim, BoardConfig.YDim];
 
-            for (int i = 0; i < initialPieces.Length; i++)
+            for (int i = 0; i < BoardConfig.InitialPieces.Length; i++)
             {
-                if (initialPieces[i].x >= 0 && initialPieces[i].y < xDim
-                                            && initialPieces[i].y >=0 && initialPieces[i].y <yDim)
+                if (BoardConfig.InitialPieces[i].X >= 0 && BoardConfig.InitialPieces[i].Y < BoardConfig.XDim
+                                                        && BoardConfig.InitialPieces[i].Y >= 0 
+                                                        && BoardConfig.InitialPieces[i].Y < BoardConfig.YDim)
                 {
-                    SpawnNewPiece(initialPieces[i].x, initialPieces[i].y, initialPieces[i].type);
+                    SpawnNewPiece(BoardConfig.InitialPieces[i].X, BoardConfig.InitialPieces[i].Y, BoardConfig.InitialPieces[i].Type);
                 }
             }
 
-            for (int x = 0; x < xDim; x++)
+            for (int x = 0; x < BoardConfig.XDim; x++)
             {
-                for (int y = 0; y < yDim; y++)
+                for (int y = 0; y < BoardConfig.YDim; y++)
                 {
                     if (_pieces[x, y] == null)
                     {
@@ -92,21 +80,98 @@ namespace Match3
                 }
             }
 
-            StartCoroutine(Fill());
+            FillAsync().Forget();
         }
 
-        private IEnumerator Fill()
+        public void SetRootTransform(Transform rootTransform)
+        {
+            _root = rootTransform;
+        }
+        
+        public bool IsFilling { get; private set; }
+        
+        public Vector2 GetWorldPosition(int x, int y)
+        {
+            return new Vector2(
+                _root.position.x - BoardConfig.XDim / 2.0f + x,
+                _root.position.y + BoardConfig.YDim / 2.0f - y);
+        }
+        
+        public void PressPiece(GamePiece piece) => _pressedPiece = piece;
+
+        public void EnterPiece(GamePiece piece) => _enteredPiece = piece;
+        
+        public void ReleasePiece()
+        {
+            if (IsAdjacent (_pressedPiece, _enteredPiece))
+            {
+                SwapPieces(_pressedPiece, _enteredPiece);
+            }
+        }
+        
+        public void ClearRow(int row)
+        {
+            for (int x = 0; x < BoardConfig.XDim; x++)
+            {
+                ClearPiece(x, row);
+            }
+        }
+
+        public void ClearColumn(int column)
+        {
+            for (int y = 0; y < BoardConfig.YDim; y++)
+            {
+                ClearPiece(column, y);
+            }
+        }
+
+        public void ClearColor(ColorType color)
+        {
+            for (int x = 0; x < BoardConfig.XDim; x++)
+            {
+                for (int y = 0; y < BoardConfig.YDim; y++)
+                {
+                    if ((_pieces[x, y].IsColored() && _pieces[x, y].ColorComponent.Color == color)
+                        || (color == ColorType.Any))
+                    {
+                        ClearPiece(x, y);
+                    }
+                }
+            }
+        }
+
+        public void GameOver() => _gameOver = true;
+
+        public List<GamePiece> GetPiecesOfType(PieceType type)
+        {
+            var piecesOfType = new List<GamePiece>();
+
+            for (int x = 0; x < BoardConfig.XDim; x++)
+            {
+                for (int y = 0; y < BoardConfig.YDim; y++)
+                {
+                    if (_pieces[x, y].Type == type)
+                    {
+                        piecesOfType.Add(_pieces[x, y]);
+                    }
+                }
+            }
+
+            return piecesOfType;
+        }
+        
+        private async UniTaskVoid FillAsync()
         {        
             bool needsRefill = true;
             IsFilling = true;
 
             while (needsRefill)
             {
-                yield return new WaitForSeconds(fillTime);
+                await UniTask.Delay(TimeSpan.FromSeconds(BoardConfig.FillTime));
                 while (FillStep())
                 {
                     _inverse = !_inverse;
-                    yield return new WaitForSeconds(fillTime);
+                    await UniTask.Delay(TimeSpan.FromSeconds(BoardConfig.FillTime));
                 }
 
                 needsRefill = ClearAllValidMatches();
@@ -118,17 +183,17 @@ namespace Match3
         /// <summary>
         /// One pass through all grid cells, moving them down one grid, if possible.
         /// </summary>
-        /// <returns> returns true if at least one piece is moved down</returns>
+        /// <returns> returns true if at least one _piece is moved down</returns>
         private bool FillStep()
         {
             bool movedPiece = false;
             // y = 0 is at the top, we ignore the last row, since it can't be moved down.
-            for (int y = yDim - 2; y >= 0; y--)
+            for (int y = BoardConfig.YDim - 2; y >= 0; y--)
             {
-                for (int loopX = 0; loopX < xDim; loopX++)
+                for (int loopX = 0; loopX < BoardConfig.XDim; loopX++)
                 {
                     int x = loopX;
-                    if (_inverse) { x = xDim - 1 - loopX; }
+                    if (_inverse) { x = BoardConfig.XDim - 1 - loopX; }
                     GamePiece piece = _pieces[x, y];
 
                     if (!piece.IsMovable()) continue;
@@ -137,8 +202,8 @@ namespace Match3
 
                     if (pieceBelow.Type == PieceType.Empty)
                     {
-                        Destroy(pieceBelow.gameObject);
-                        piece.MovableComponent.Move(x, y + 1, fillTime);
+                        pieceBelow.Dispose();
+                        piece.MovableComponent.Move(x, y + 1, BoardConfig.FillTime);
                         _pieces[x, y + 1] = piece;
                         SpawnNewPiece(x, y, PieceType.Empty);
                         movedPiece = true;
@@ -156,7 +221,7 @@ namespace Match3
                                 diagX = x - diag;
                             }
 
-                            if (diagX < 0 || diagX >= xDim) continue;
+                            if (diagX < 0 || diagX >= BoardConfig.XDim) continue;
                         
                             GamePiece diagonalPiece = _pieces[diagX, y + 1];
 
@@ -181,8 +246,8 @@ namespace Match3
 
                             if (hasPieceAbove) continue;
                         
-                            Destroy(diagonalPiece.gameObject);
-                            piece.MovableComponent.Move(diagX, y + 1, fillTime);
+                            diagonalPiece.Dispose();
+                            piece.MovableComponent.Move(diagX, y + 1, BoardConfig.FillTime);
                             _pieces[diagX, y + 1] = piece;
                             SpawnNewPiece(x, y, PieceType.Empty);
                             movedPiece = true;
@@ -193,18 +258,18 @@ namespace Match3
             }
 
             // the highest row (0) is a special case, we must fill it with new pieces if empty
-            for (int x = 0; x < xDim; x++)
+            for (int x = 0; x < BoardConfig.XDim; x++)
             {
                 GamePiece pieceBelow = _pieces[x, 0];
 
                 if (pieceBelow.Type != PieceType.Empty) continue;
             
-                Destroy(pieceBelow.gameObject);
-                GameObject newPiece = Instantiate(_piecePrefabDict[PieceType.Normal], GetWorldPosition(x, -1), Quaternion.identity, this.transform);
+                pieceBelow.Dispose();
+                GameObject newPiece = Instantiate(_piecePrefabDict[PieceType.Normal], GetWorldPosition(x, -1), Quaternion.identity, _root);
 
                 _pieces[x, 0] = newPiece.GetComponent<GamePiece>();
                 _pieces[x, 0].Init(x, -1, this, PieceType.Normal);
-                _pieces[x, 0].MovableComponent.Move(x, 0, fillTime);
+                _pieces[x, 0].MovableComponent.Move(x, 0, BoardConfig.FillTime);
                 _pieces[x, 0].ColorComponent.SetColor((ColorType)Random.Range(0, _pieces[x, 0].ColorComponent.NumColors));
                 movedPiece = true;
             }
@@ -212,16 +277,9 @@ namespace Match3
             return movedPiece;
         }
 
-        public Vector2 GetWorldPosition(int x, int y)
-        {
-            return new Vector2(
-                transform.position.x - xDim / 2.0f + x,
-                transform.position.y + yDim / 2.0f - y);
-        }
-
         private GamePiece SpawnNewPiece(int x, int y, PieceType type)
         {
-            GameObject newPiece = Instantiate(_piecePrefabDict[type], GetWorldPosition(x, y), Quaternion.identity, this.transform);
+            GameObject newPiece = Instantiate(_piecePrefabDict[type], GetWorldPosition(x, y), Quaternion.identity, _root);
             _pieces[x, y] = newPiece.GetComponent<GamePiece>();
             _pieces[x, y].Init(x, y, this, type);
 
@@ -249,8 +307,8 @@ namespace Match3
                 int piece1X = piece1.X;
                 int piece1Y = piece1.Y;
 
-                piece1.MovableComponent.Move(piece2.X, piece2.Y, fillTime);
-                piece2.MovableComponent.Move(piece1X, piece1Y, fillTime);
+                piece1.MovableComponent.Move(piece2.X, piece2.Y, BoardConfig.FillTime);
+                piece2.MovableComponent.Move(piece1X, piece1Y, BoardConfig.FillTime);
 
                 if (piece1.Type == PieceType.Rainbow && piece1.IsClearable() && piece2.IsColored())
                 {
@@ -292,9 +350,9 @@ namespace Match3
                 _pressedPiece = null;
                 _enteredPiece = null;
 
-                StartCoroutine(Fill());
+                FillAsync().Forget();
 
-                levelConductor.OnMove();
+                _levelServiceLocator.GetForCurrentLevel().OnMove();
             }
             else
             {
@@ -303,25 +361,13 @@ namespace Match3
             }
         }
 
-        public void PressPiece(GamePiece piece) => _pressedPiece = piece;
-
-        public void EnterPiece(GamePiece piece) => _enteredPiece = piece;
-
-        public void ReleasePiece()
-        {
-            if (IsAdjacent (_pressedPiece, _enteredPiece))
-            {
-                SwapPieces(_pressedPiece, _enteredPiece);
-            }
-        }
-
         private bool ClearAllValidMatches()
         {
             bool needsRefill = false;
 
-            for (int y = 0; y < yDim; y++)
+            for (int y = 0; y < BoardConfig.YDim; y++)
             {
-                for (int x = 0; x < xDim; x++)
+                for (int x = 0; x < BoardConfig.XDim; x++)
                 {
                     if (!_pieces[x, y].IsClearable()) continue;
                 
@@ -349,7 +395,7 @@ namespace Match3
                         {
                             specialPieceType = PieceType.ColumnClear;
                         }
-                    } // Spawning a rainbow piece
+                    } // Spawning a rainbow _piece
                     else if (match.Count >= 5)
                     {
                         specialPieceType = PieceType.Rainbow;
@@ -369,8 +415,9 @@ namespace Match3
 
                     // Setting their colors
                     if (specialPieceType == PieceType.Count) continue;
-                
-                    Destroy(_pieces[specialPieceX, specialPieceY]);
+                    
+                    _pieces[specialPieceX, specialPieceY].Dispose();
+                    
                     GamePiece newPiece = SpawnNewPiece(specialPieceX, specialPieceY, specialPieceType);
 
                     if ((specialPieceType == PieceType.RowClear || specialPieceType == PieceType.ColumnClear) 
@@ -401,7 +448,7 @@ namespace Match3
 
             for (int dir = 0; dir <= 1; dir++)
             {
-                for (int xOffset = 1; xOffset < xDim; xOffset++)
+                for (int xOffset = 1; xOffset < BoardConfig.XDim; xOffset++)
                 {
                     int x;
 
@@ -415,9 +462,9 @@ namespace Match3
                     }
 
                     // out-of-bounds
-                    if (x < 0 || x >= xDim) { break; }
+                    if (x < 0 || x >= BoardConfig.XDim) { break; }
 
-                    // piece is the same color?
+                    // _piece is the same color?
                     if (_pieces[x, newY].IsColored() && _pieces[x, newY].ColorComponent.Color == color)
                     {
                         horizontalPieces.Add(_pieces[x, newY]);
@@ -441,7 +488,7 @@ namespace Match3
                 {
                     for (int dir = 0; dir <= 1; dir++)
                     {
-                        for (int yOffset = 1; yOffset < yDim; yOffset++)                        
+                        for (int yOffset = 1; yOffset < BoardConfig.YDim; yOffset++)                        
                         {
                             int y;
                             
@@ -454,7 +501,7 @@ namespace Match3
                                 y = newY + yOffset;
                             }
 
-                            if (y < 0 || y >= yDim)
+                            if (y < 0 || y >= BoardConfig.YDim)
                             {
                                 break;
                             }
@@ -496,7 +543,7 @@ namespace Match3
 
             for (int dir = 0; dir <= 1; dir++)
             {
-                for (int yOffset = 1; yOffset < xDim; yOffset++)
+                for (int yOffset = 1; yOffset < BoardConfig.XDim; yOffset++)
                 {
                     int y;
 
@@ -510,9 +557,9 @@ namespace Match3
                     }
 
                     // out-of-bounds
-                    if (y < 0 || y >= yDim) { break; }
+                    if (y < 0 || y >= BoardConfig.YDim) { break; }
 
-                    // piece is the same color?
+                    // _piece is the same color?
                     if (_pieces[newX, y].IsColored() && _pieces[newX, y].ColorComponent.Color == color)
                     {
                         verticalPieces.Add(_pieces[newX, y]);
@@ -536,7 +583,7 @@ namespace Match3
                 {
                     for (int dir = 0; dir <= 1; dir++)
                     {
-                        for (int xOffset = 1; xOffset < yDim; xOffset++)
+                        for (int xOffset = 1; xOffset < BoardConfig.YDim; xOffset++)
                         {
                             int x;
 
@@ -549,7 +596,7 @@ namespace Match3
                                 x = newX + xOffset;
                             }
 
-                            if (x < 0 || x >= xDim)
+                            if (x < 0 || x >= BoardConfig.XDim)
                             {
                                 break;
                             }
@@ -602,7 +649,7 @@ namespace Match3
         {
             for (int adjacentX = x - 1; adjacentX <= x + 1; adjacentX++)
             {
-                if (adjacentX == x || adjacentX < 0 || adjacentX >= xDim) continue;
+                if (adjacentX == x || adjacentX < 0 || adjacentX >= BoardConfig.XDim) continue;
 
                 if (_pieces[adjacentX, y].Type != PieceType.Bubble || !_pieces[adjacentX, y].IsClearable()) continue;
             
@@ -612,7 +659,7 @@ namespace Match3
 
             for (int adjacentY = y - 1; adjacentY <= y + 1; adjacentY++)
             {
-                if (adjacentY == y || adjacentY < 0 || adjacentY >= yDim) continue;
+                if (adjacentY == y || adjacentY < 0 || adjacentY >= BoardConfig.YDim) continue;
 
                 if (_pieces[x, adjacentY].Type != PieceType.Bubble || !_pieces[x, adjacentY].IsClearable()) continue;
             
@@ -620,57 +667,7 @@ namespace Match3
                 SpawnNewPiece(x, adjacentY, PieceType.Empty);
             }
         }
-
-        public void ClearRow(int row)
-        {
-            for (int x = 0; x < xDim; x++)
-            {
-                ClearPiece(x, row);
-            }
-        }
-
-        public void ClearColumn(int column)
-        {
-            for (int y = 0; y < yDim; y++)
-            {
-                ClearPiece(column, y);
-            }
-        }
-
-        public void ClearColor(ColorType color)
-        {
-            for (int x = 0; x < xDim; x++)
-            {
-                for (int y = 0; y < yDim; y++)
-                {
-                    if ((_pieces[x, y].IsColored() && _pieces[x, y].ColorComponent.Color == color)
-                        || (color == ColorType.Any))
-                    {
-                        ClearPiece(x, y);
-                    }
-                }
-            }
-        }
-
-        public void GameOver() => _gameOver = true;
-
-        public List<GamePiece> GetPiecesOfType(PieceType type)
-        {
-            var piecesOfType = new List<GamePiece>();
-
-            for (int x = 0; x < xDim; x++)
-            {
-                for (int y = 0; y < yDim; y++)
-                {
-                    if (_pieces[x, y].Type == type)
-                    {
-                        piecesOfType.Add(_pieces[x, y]);
-                    }
-                }
-            }
-
-            return piecesOfType;
-        }
-
+        
+        private BoardConfig BoardConfig => _levelService.GetCurrentLevelStaticData().boardConfig;
     }
 }

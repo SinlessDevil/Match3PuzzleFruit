@@ -47,37 +47,11 @@ namespace Code.Services.LevelConductors
         protected virtual void GameWin()
         {
             Debug.Log("Game Win");
-            return;
-            
-           // gameGrid.GameOver();
-            _didWin = true;
-           // StartCoroutine(WaitForGridFill());
         }
 
         protected virtual void GameLose()
         {        
             Debug.Log("Game Lose");
-            return;
-            
-           // gameGrid.GameOver();
-           // StartCoroutine(WaitForGridFill());
         }
-
-        // private IEnumerator WaitForGridFill()
-        // {
-        //     while (gameGrid.IsFilling)
-        //     {
-        //         yield return null;
-        //     }
-        //
-        //     if (_didWin)
-        //     {
-        //         hud.OnGameWin(_currentScore);
-        //     }
-        //     else
-        //     {
-        //         hud.OnGameLose();
-        //     }
-        // }
     }
 }

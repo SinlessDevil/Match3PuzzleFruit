@@ -4,16 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="edit: RemainingInfoView , TargetInfoView, ScoreInfoView . Start create LevelConductor">
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/ILevelConductor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/ILevelConductor.cs.meta" afterDir="false" />
+    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="edit: re working match board controller">
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/IMatchBoardController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/IMatchBoardController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Services/Factories/Piece.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/Locator.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/Locator/ILevelServiceLocator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/Locator/ILevelServiceLocator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/Locator/LevelServiceLocator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/Locator/LevelServiceLocator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/BoardConfigs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/BoardConfigs/BoardConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/BoardConfigs/BoardConfig.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Hud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Hud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/GameLoopState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/GameLoopState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/LoadLevelState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/LoadLevelState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearColorPiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearColorPiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearLinePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearLinePiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearablePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearablePiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ColorPiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ColorPiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GameGrid.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GameGrid.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GameOver.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GameOver.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Hud.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/Hud.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/MovablePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/MovablePiece.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorMoves.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorMoves.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorObstacles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorObstacles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorTimer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelStaticData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +60,10 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://E:/Unity/Projects/Match3PuzzleFruit/Assets/Code/Services/LevelConductors/LevelConductorMoves.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/70/ba40a866/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Services/LevelConductors/Locator/LevelServiceLocator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/StaticData/Levels/BoardConfigs/BoardConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelTypeConfigs/LevelTypeConfig.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -125,7 +152,10 @@
       <workItem from="1754492709175" duration="4645000" />
       <workItem from="1754553654287" duration="10950000" />
       <workItem from="1754573844674" duration="4000" />
-      <workItem from="1754573864796" duration="7838000" />
+      <workItem from="1754573864796" duration="7885000" />
+      <workItem from="1755768055656" duration="15454000" />
+      <workItem from="1755856821598" duration="2040000" />
+      <workItem from="1755874009868" duration="1129000" />
     </task>
     <task id="LOCAL-00001" summary="fix: null reff in NormalPiecePrefab.prefab">
       <option name="closed" value="true" />
@@ -175,7 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754574239253</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="edit: end LevelConductor">
+      <option name="closed" value="true" />
+      <created>1754582069515</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1754582069515</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +239,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="fix: null reff in NormalPiecePrefab.prefab" />
     <MESSAGE value="fix: animation" />
@@ -208,6 +247,8 @@
     <MESSAGE value="edits: add base view" />
     <MESSAGE value="edit: configs level" />
     <MESSAGE value="edit: RemainingInfoView , TargetInfoView, ScoreInfoView . Start create LevelConductor" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit: RemainingInfoView , TargetInfoView, ScoreInfoView . Start create LevelConductor" />
+    <MESSAGE value="edit: end LevelConductor" />
+    <MESSAGE value="edit: re working match board controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit: re working match board controller" />
   </component>
 </project>

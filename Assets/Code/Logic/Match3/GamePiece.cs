@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Code.Logic.Controllers;
+using UnityEngine;
+using Zenject;
 
 namespace Match3
 {
@@ -25,9 +27,9 @@ namespace Match3
 
         public PieceType Type => _type;
 
-        private GameGrid _gameGrid;
+        private MatchBoardController _matchBoardController;
 
-        public GameGrid GameGridRef => _gameGrid;
+        public MatchBoardController MatchBoardControllerRef => _matchBoardController;
 
         private MovablePiece _movableComponent;
 
@@ -48,24 +50,29 @@ namespace Match3
             _clearableComponent = GetComponent<ClearablePiece>();
         }
 
-        public void Init(int x, int y, GameGrid gameGrid, PieceType type)
+        public void Init(int x, int y, MatchBoardController matchBoardController, PieceType type)
         {
             _x = x;
             _y = y;
-            _gameGrid = gameGrid;
+            _matchBoardController = matchBoardController;
             _type = type;
         }
 
-        private void OnMouseEnter() => _gameGrid.EnterPiece(this);
+        private void OnMouseEnter() => _matchBoardController.EnterPiece(this);
 
-        private void OnMouseDown() => _gameGrid.PressPiece(this);
+        private void OnMouseDown() => _matchBoardController.PressPiece(this);
 
-        private void OnMouseUp() => _gameGrid.ReleasePiece();
+        private void OnMouseUp() => _matchBoardController.ReleasePiece();
 
         public bool IsMovable() => _movableComponent != null;
 
         public bool IsColored() => _colorComponent != null;
 
         public bool IsClearable() => _clearableComponent != null;
+
+        public void Dispose()
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

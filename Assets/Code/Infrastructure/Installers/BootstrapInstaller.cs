@@ -11,6 +11,7 @@ using Code.Services.Finish;
 using Code.Services.Finish.Lose;
 using Code.Services.Finish.Win;
 using Code.Services.Input;
+using Code.Services.LevelConductors.Locator;
 using Code.Services.Levels;
 using Code.Services.LocalProgress;
 using Code.Services.PersistenceProgress;
@@ -68,6 +69,7 @@ namespace Code.Infrastructure.Installers
             Container.BindInterfacesTo<LevelService>().AsSingle();
             Container.BindInterfacesTo<StorageService>().AsSingle();
             Container.BindInterfacesTo<TimeService>().AsSingle();
+            Container.BindInterfacesTo<LevelServiceLocator>().AsSingle();
 
             BindDataServices();
             BindAudioVibrationService();

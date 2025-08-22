@@ -1,4 +1,6 @@
+using Code.Services.Factories.UIFactory;
 using Code.Services.Input;
+using Code.Services.LevelConductors.Locator;
 using Code.Services.Levels;
 using Code.Services.LocalProgress;
 using Code.Services.Providers.Widgets;
@@ -14,6 +16,8 @@ namespace Code.Infrastructure.StateMachine.Game.States
         private readonly ILevelService _levelService;
         private readonly ILevelLocalProgressService _levelLocalProgressService;
         private readonly ITimeService _timeService;
+        private readonly IUIFactory _uiFactory;
+        private readonly ILevelServiceLocator _levelServiceLocator;
 
         public GameLoopState(
             IStateMachine<IGameState> gameStateMachine, 
@@ -21,7 +25,9 @@ namespace Code.Infrastructure.StateMachine.Game.States
             IWidgetProvider widgetProvider,
             ILevelService levelService,
             ILevelLocalProgressService levelLocalProgressService,
-            ITimeService timeService)
+            ITimeService timeService,
+            IUIFactory uiFactory,
+            ILevelServiceLocator levelServiceLocator)
         {
             _gameStateMachine = gameStateMachine;
             _inputService = inputService;
@@ -29,6 +35,8 @@ namespace Code.Infrastructure.StateMachine.Game.States
             _levelService = levelService;
             _levelLocalProgressService = levelLocalProgressService;
             _timeService = timeService;
+            _uiFactory = uiFactory;
+            _levelServiceLocator = levelServiceLocator;
         }
         
         public void Enter()
@@ -43,6 +51,11 @@ namespace Code.Infrastructure.StateMachine.Game.States
 
         public void Exit()
         {
+            if(_uiFactory.GameHud != null)
+                _uiFactory.GameHud.Dispose();
+            
+            _levelServiceLocator.Clear();
+            
             _inputService.Cleanup();
             _widgetProvider.CleanupPool();
             _levelService.Cleanup();
