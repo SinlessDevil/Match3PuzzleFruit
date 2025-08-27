@@ -27,9 +27,9 @@ namespace Match3
         private SpriteRenderer _sprite;
         private Dictionary<ColorType, Sprite> _colorSpriteDict;
 
-        private void Awake ()
+        private void Awake()
         {
-            _sprite = transform.Find("_piece").GetComponent<SpriteRenderer>();
+            _sprite = transform.Find("piece").GetComponent<SpriteRenderer>();
 
             // instantiating and populating a Dictionary of all Color Types / Sprites (for fast lookup)
             _colorSpriteDict = new Dictionary<ColorType, Sprite>();
