@@ -7,6 +7,7 @@ namespace Code.Logic.Controllers
     public interface IMatchBoardController
     {
         void StartLevel();
+        void Dispose();
         void SetRootTransform(Transform rootTransform);
         bool IsFilling { get; }
         Vector2 GetWorldPosition(int x, int y);

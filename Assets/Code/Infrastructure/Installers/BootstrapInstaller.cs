@@ -6,6 +6,7 @@ using Code.Services.AudioVibrationFX.Sound;
 using Code.Services.AudioVibrationFX.StaticData;
 using Code.Services.AudioVibrationFX.Vibration;
 using Code.Services.Factories.Game;
+using Code.Services.Factories.Pieces;
 using Code.Services.Factories.UIFactory;
 using Code.Services.Finish;
 using Code.Services.Finish.Lose;
@@ -58,14 +59,12 @@ namespace Code.Infrastructure.Installers
         private void BindServices()
         {
             BindStaticDataService();
-            
-            Container.BindInterfacesTo<UIFactory>().AsSingle();
-            Container.BindInterfacesTo<GameFactory>().AsSingle();
+            BindFactories();
+
             Container.BindInterfacesTo<WindowService>().AsSingle();
             Container.BindInterfacesTo<InputService>().AsSingle();
             Container.BindInterfacesTo<RandomService>().AsSingle();
             Container.BindInterfacesTo<UnifiedSaveLoadFacade>().AsSingle();
-            Container.BindInterfacesTo<WidgetProvider>().AsSingle();
             Container.BindInterfacesTo<LevelService>().AsSingle();
             Container.BindInterfacesTo<StorageService>().AsSingle();
             Container.BindInterfacesTo<TimeService>().AsSingle();
@@ -74,6 +73,14 @@ namespace Code.Infrastructure.Installers
             BindDataServices();
             BindAudioVibrationService();
             BindFinishService();
+        }
+
+        private void BindFactories()
+        {
+            Container.BindInterfacesTo<UIFactory>().AsSingle();
+            Container.BindInterfacesTo<GameFactory>().AsSingle();
+            Container.BindInterfacesTo<WidgetProvider>().AsSingle();
+            Container.BindInterfacesTo<PieceFactory>().AsSingle();
         }
 
         private void BindAudioVibrationService()

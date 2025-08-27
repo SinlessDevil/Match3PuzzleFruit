@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4783607866534751435}
   - component: {fileID: 3463750880520477822}
   - component: {fileID: 2573924137479814613}
+  - component: {fileID: 950470111268824501}
   m_Layer: 0
   m_Name: RainbowPiecePrefab
   m_TagString: Untagged
@@ -159,6 +160,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearAnimation: {fileID: 7400000, guid: bd4243f588adbad48b5987ff7a8fe8b7, type: 2}
+--- !u!114 &950470111268824501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052986968358228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b24e44c09129046a2a4e8d5733313b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1855798515578516
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,5 +9,6 @@ namespace Match3
         ColumnClear,
         Rainbow,
         Count,
+        Background
     }
 }

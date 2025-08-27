@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 95282143576963718}
   - component: {fileID: 5373678948098239351}
   - component: {fileID: 6125715749789035073}
+  - component: {fileID: 1098732938532256539}
   m_Layer: 0
   m_Name: BubblePiecePrefab
   m_TagString: Untagged
@@ -169,3 +170,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearAnimation: {fileID: 7400000, guid: 207af7f8dda88074dbeb7287a7370163, type: 2}
+--- !u!114 &1098732938532256539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667288452069994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b24e44c09129046a2a4e8d5733313b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

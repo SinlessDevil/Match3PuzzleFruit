@@ -69,3 +69,4 @@ MonoBehaviour:
   LevelName: Match Fruit
   LevelId: 2
   LevelTypeId: 1
+  boardConfig: {fileID: 11400000, guid: 16ee95519a45edc4da54194232b64903, type: 2}

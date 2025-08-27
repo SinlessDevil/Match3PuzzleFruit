@@ -1,18 +1,13 @@
+using System.Collections.Generic;
 using Match3;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Code.StaticData.Levels.BoardConfigs
 {
     [CreateAssetMenu(fileName = "BoardConfig", menuName = "StaticData/Grid", order = 0)]
-    public class BoardConfig : ScriptableObject
+    public class BoardConfig : SerializedScriptableObject
     {
-        [System.Serializable]
-        public struct PiecePrefab
-        {
-            public PieceType Type;
-            public GameObject Prefab;
-        };
-
         [System.Serializable]
         public struct PiecePosition
         {
@@ -24,10 +19,7 @@ namespace Code.StaticData.Levels.BoardConfigs
         public int XDim;
         public int YDim;
         public float FillTime;
-
-        public PiecePrefab[] PiecePrefabs;
-        public GameObject BackgroundPrefab;
-
+        public Dictionary<PieceType, GameObject> PieceDictionary;
         public PiecePosition[] InitialPieces;
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4939248717328880}
   - component: {fileID: 3919486260958323022}
+  - component: {fileID: 4826264318952021033}
   m_Layer: 0
   m_Name: EmptyPiecePrefab
   m_TagString: Untagged
@@ -45,3 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+--- !u!114 &4826264318952021033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434227050409322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b24e44c09129046a2a4e8d5733313b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

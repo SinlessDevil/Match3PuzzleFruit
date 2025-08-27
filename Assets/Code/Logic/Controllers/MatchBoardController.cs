@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Code.Logic.Match3;
+using Code.Services.Factories.Pieces;
 using Code.Services.LevelConductors.Locator;
 using Code.Services.Levels;
 using Code.StaticData.Levels.BoardConfigs;
@@ -12,7 +14,6 @@ namespace Code.Logic.Controllers
 {
     public class MatchBoardController : IMatchBoardController
     {
-        private Dictionary<PieceType, GameObject> _piecePrefabDict;
         private GamePiece[,] _pieces;
         
         private GamePiece _pressedPiece;
@@ -25,33 +26,27 @@ namespace Code.Logic.Controllers
         
         private readonly ILevelServiceLocator _levelServiceLocator;
         private readonly ILevelService _levelService;
-        
+        private readonly IPieceFactory _pieceFactory;
+
         public MatchBoardController(
             ILevelServiceLocator levelServiceLocator, 
-            ILevelService levelService)
+            ILevelService levelService,
+            IPieceFactory pieceFactory)
         {
             _levelServiceLocator = levelServiceLocator;
             _levelService = levelService;
+            _pieceFactory = pieceFactory;
         }
         
         public void StartLevel()
         {
-            // populating dictionary with _piece prefabs types
-            _piecePrefabDict = new Dictionary<PieceType, GameObject>();
-            for (int i = 0; i < BoardConfig.PiecePrefabs.Length; i++)
-            {
-                if (!_piecePrefabDict.ContainsKey(BoardConfig.PiecePrefabs[i].Type))
-                {
-                    _piecePrefabDict.Add(BoardConfig.PiecePrefabs[i].Type, BoardConfig.PiecePrefabs[i].Prefab);
-                }
-            }
-
             // instantiate backgrounds
             for (int x = 0; x < BoardConfig.XDim; x++)
             {
                 for (int y = 0; y < BoardConfig.YDim; y++)
                 {
-                    GameObject background = Instantiate(BoardConfig.BackgroundPrefab, GetWorldPosition(x, y), Quaternion.identity);
+                    Piece background = _pieceFactory.CreatePieceByCurrentLevel(PieceType.Background, 
+                        GetWorldPosition(x, y), Quaternion.identity, null);
                     background.transform.parent = _root;
                 }
             }
@@ -81,6 +76,18 @@ namespace Code.Logic.Controllers
             }
 
             FillAsync().Forget();
+        }
+
+        public void Dispose()
+        {
+            _pieces = null;
+            _pressedPiece = null;
+            _enteredPiece = null;
+            _root = null;
+            
+            _gameOver = false;
+            IsFilling = false;
+            _inverse = false;
         }
 
         public void SetRootTransform(Transform rootTransform)
@@ -265,7 +272,8 @@ namespace Code.Logic.Controllers
                 if (pieceBelow.Type != PieceType.Empty) continue;
             
                 pieceBelow.Dispose();
-                GameObject newPiece = Instantiate(_piecePrefabDict[PieceType.Normal], GetWorldPosition(x, -1), Quaternion.identity, _root);
+                Piece newPiece =  _pieceFactory.CreatePieceByCurrentLevel(PieceType.Normal, 
+                    GetWorldPosition(x, -1), Quaternion.identity, _root);
 
                 _pieces[x, 0] = newPiece.GetComponent<GamePiece>();
                 _pieces[x, 0].Init(x, -1, this, PieceType.Normal);
@@ -279,7 +287,8 @@ namespace Code.Logic.Controllers
 
         private GamePiece SpawnNewPiece(int x, int y, PieceType type)
         {
-            GameObject newPiece = Instantiate(_piecePrefabDict[type], GetWorldPosition(x, y), Quaternion.identity, _root);
+            Piece newPiece =  _pieceFactory.CreatePieceByCurrentLevel(type, GetWorldPosition(x, y), 
+                Quaternion.identity, _root);
             _pieces[x, y] = newPiece.GetComponent<GamePiece>();
             _pieces[x, y].Init(x, y, this, type);
 
