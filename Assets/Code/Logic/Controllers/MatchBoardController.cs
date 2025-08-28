@@ -24,6 +24,9 @@ namespace Code.Logic.Controllers
 
         private Transform _root;
         
+        // Optional world-space offset applied to the whole board when positioning tiles
+        private Vector2 _boardOffset = new Vector2(-0.5f,0.5f);
+        
         private readonly ILevelServiceLocator _levelServiceLocator;
         private readonly ILevelService _levelService;
         private readonly IPieceFactory _pieceFactory;
@@ -46,8 +49,7 @@ namespace Code.Logic.Controllers
                 for (int y = 0; y < BoardConfig.YDim; y++)
                 {
                     Piece background = _pieceFactory.CreatePieceByCurrentLevel(PieceType.Background, 
-                        GetWorldPosition(x, y), Quaternion.identity, null);
-                    background.transform.parent = _root;
+                        GetWorldPosition(x, y), Quaternion.identity, _root);
                 }
             }
 
@@ -95,13 +97,22 @@ namespace Code.Logic.Controllers
             _root = rootTransform;
         }
         
+        public void SetBoardOffset(Vector2 offset)
+        {
+            _boardOffset = offset;
+        }
+        
         public bool IsFilling { get; private set; }
         
         public Vector2 GetWorldPosition(int x, int y)
         {
-            return new Vector2(
-                _root.position.x - BoardConfig.XDim / 2.0f + x,
-                _root.position.y + BoardConfig.YDim / 2.0f - y);
+            float halfX = (BoardConfig.XDim - 1) / 2f;
+            float halfY = (BoardConfig.YDim - 1) / 2f;
+
+            float worldX = _root.position.x + (x - halfX) + _boardOffset.x;
+            float worldY = _root.position.y + (halfY - y) + _boardOffset.y;
+
+            return new Vector2(worldX, worldY);
         }
         
         public void PressPiece(GamePiece piece) => _pressedPiece = piece;

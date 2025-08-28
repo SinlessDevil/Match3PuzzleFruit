@@ -19,5 +19,6 @@ namespace Code.Logic.Controllers
         void ClearColor(ColorType color);
         void GameOver();
         List<GamePiece> GetPiecesOfType(PieceType type);
+        void SetBoardOffset(Vector2 offset);
     }
 }

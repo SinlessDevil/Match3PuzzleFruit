@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ColorPiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ColorPiece.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/ColumnPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/ColumnPiecePrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/GameUICanvas.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/GameUICanvas.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/RowClearPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/RowClearPiecePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/IMatchBoardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/IMatchBoardController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +33,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/70/ba40a866/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/Logic/Holders/MapaHolder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/Match3PuzzleFruit/Assets/Code/Logic/Controllers/MatchBoardController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Logic/Match3/Piece.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Services/Factories/Piece/IPieceFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Services/LevelConductors/Locator/LevelServiceLocator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -132,6 +131,8 @@
       <workItem from="1755856821598" duration="2040000" />
       <workItem from="1755874009868" duration="2626000" />
       <workItem from="1756280434256" duration="6552000" />
+      <workItem from="1756310329291" duration="1418000" />
+      <workItem from="1756383748187" duration="2838000" />
     </task>
     <task id="LOCAL-00001" summary="fix: null reff in NormalPiecePrefab.prefab">
       <option name="closed" value="true" />
@@ -197,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755876788023</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="edit: fixed null ref in ColorPiece">
+      <option name="closed" value="true" />
+      <created>1756299640228</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1756299640228</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +242,7 @@
     <MESSAGE value="edit: RemainingInfoView , TargetInfoView, ScoreInfoView . Start create LevelConductor" />
     <MESSAGE value="edit: end LevelConductor" />
     <MESSAGE value="edit: re working match board controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit: re working match board controller" />
+    <MESSAGE value="edit: fixed null ref in ColorPiece" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit: fixed null ref in ColorPiece" />
   </component>
 </project>
