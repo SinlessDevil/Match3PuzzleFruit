@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4247587448886864}
   - component: {fileID: 212699044912716988}
+  - component: {fileID: 7562963480211581829}
+  - component: {fileID: 7094609177559183642}
   m_Layer: 0
   m_Name: piece
   m_TagString: Untagged
@@ -54,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 588f4ae35ea1a7d41b5b2dd05f3a6fbc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,6 +88,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7562963480211581829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141851434975824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c057a94bd597774aa3d437a65cf0d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 212699044912716988}
+  _spriteOutlineGlowView: {fileID: 7094609177559183642}
+  _normalColor: {r: 1, g: 1, b: 1, a: 1}
+  _highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _selectedColor: {r: 0, g: 1, b: 1, a: 1}
+  _matchColor: {r: 0, g: 1, b: 0, a: 1}
+  _specialColor: {r: 1, g: 0, b: 1, a: 1}
+  _highlightIntensity: 1.5
+  _selectedIntensity: 2
+  _matchIntensity: 2.5
+  _pulseSpeed: 3
+--- !u!114 &7094609177559183642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141851434975824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abddd74cc0ae7c4bbeeecd5df00a0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 212699044912716988}
+  _outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  _outlineWidth: 1
+  _outlineAlpha: 1
+  _enableOutline: 1
+  _glowColor: {r: 1, g: 0, b: 0, a: 1}
+  _glowIntensity: 1
+  _glowPower: 2
+  _glowAlpha: 0.5
+  _enableGlow: 1
+  _pulseSpeed: 2
+  _pulseIntensity: 0.3
+  _enablePulse: 0
+  _outlinePulse: 0
+  _glowPulse: 0
 --- !u!1 &1744477852393382
 GameObject:
   m_ObjectHideFlags: 0
