@@ -8,6 +8,7 @@ using Code.StaticData.Levels.BoardConfigs;
 using Cysharp.Threading.Tasks;
 using Match3;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace Code.Logic.Controllers
@@ -24,25 +25,28 @@ namespace Code.Logic.Controllers
 
         private Transform _root;
         
-        // Optional world-space offset applied to the whole board when positioning tiles
-        private Vector2 _boardOffset = new Vector2(-0.5f,0.5f);
-        
         private readonly ILevelServiceLocator _levelServiceLocator;
         private readonly ILevelService _levelService;
         private readonly IPieceFactory _pieceFactory;
+        private readonly ICameraAdapterService _cameraAdapterService;
 
         public MatchBoardController(
             ILevelServiceLocator levelServiceLocator, 
             ILevelService levelService,
-            IPieceFactory pieceFactory)
+            IPieceFactory pieceFactory,
+            ICameraAdapterService cameraAdapterService)
         {
             _levelServiceLocator = levelServiceLocator;
             _levelService = levelService;
             _pieceFactory = pieceFactory;
+            _cameraAdapterService = cameraAdapterService;
         }
         
         public void StartLevel()
         {
+            // Find and setup camera adapter
+            SetupCameraAdapter();
+            
             // instantiate backgrounds
             for (int x = 0; x < BoardConfig.XDim; x++)
             {
@@ -97,11 +101,6 @@ namespace Code.Logic.Controllers
             _root = rootTransform;
         }
         
-        public void SetBoardOffset(Vector2 offset)
-        {
-            _boardOffset = offset;
-        }
-        
         public bool IsFilling { get; private set; }
         
         public Vector2 GetWorldPosition(int x, int y)
@@ -109,8 +108,8 @@ namespace Code.Logic.Controllers
             float halfX = (BoardConfig.XDim - 1) / 2f;
             float halfY = (BoardConfig.YDim - 1) / 2f;
 
-            float worldX = _root.position.x + (x - halfX) + _boardOffset.x;
-            float worldY = _root.position.y + (halfY - y) + _boardOffset.y;
+            float worldX = _root.position.x + (x - halfX) + BoardConfig.BoardOffset.x;
+            float worldY = _root.position.y + (halfY - y) + BoardConfig.BoardOffset.y;
 
             return new Vector2(worldX, worldY);
         }
@@ -177,7 +176,7 @@ namespace Code.Logic.Controllers
 
             return piecesOfType;
         }
-        
+
         private async UniTaskVoid FillAsync()
         {        
             bool needsRefill = true;
@@ -686,6 +685,12 @@ namespace Code.Logic.Controllers
                 _pieces[x, adjacentY].ClearableComponent.Clear();
                 SpawnNewPiece(x, adjacentY, PieceType.Empty);
             }
+        }
+        
+        private void SetupCameraAdapter()
+        {
+            _cameraAdapterService.CenterCameraOnBoard();
+            _cameraAdapterService.AdaptCameraToBoard(BoardConfig.XDim, BoardConfig.YDim);
         }
         
         private BoardConfig BoardConfig => _levelService.GetCurrentLevelStaticData().boardConfig;

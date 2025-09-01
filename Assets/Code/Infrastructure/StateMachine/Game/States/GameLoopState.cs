@@ -1,4 +1,3 @@
-using System.Linq;
 using Code.Logic.Controllers;
 using Code.Logic.Holders;
 using Code.Services.Factories.Pieces;
@@ -24,7 +23,8 @@ namespace Code.Infrastructure.StateMachine.Game.States
         private readonly IUIFactory _uiFactory;
         private readonly ILevelServiceLocator _levelServiceLocator;
         private readonly IPieceFactory _pieceFactory;
-
+        private readonly ICameraAdapterService _cameraAdapterService;
+        
         private IMatchBoardController _matchBoardController;
         
         public GameLoopState(
@@ -36,7 +36,8 @@ namespace Code.Infrastructure.StateMachine.Game.States
             ITimeService timeService,
             IUIFactory uiFactory,
             ILevelServiceLocator levelServiceLocator,
-            IPieceFactory pieceFactory)
+            IPieceFactory pieceFactory,
+            ICameraAdapterService cameraAdapterService)
         {
             _gameStateMachine = gameStateMachine;
             _inputService = inputService;
@@ -47,19 +48,28 @@ namespace Code.Infrastructure.StateMachine.Game.States
             _uiFactory = uiFactory;
             _levelServiceLocator = levelServiceLocator;
             _pieceFactory = pieceFactory;
+            _cameraAdapterService = cameraAdapterService;
         }
         
         public void Enter()
         {
+            InitCameraAdapter();
+
             InitMatchBoardController();
+        }
+
+        private void InitCameraAdapter()
+        {
+            _cameraAdapterService.Initialize(GetMapHolder());
         }
 
         private void InitMatchBoardController()
         {
             _matchBoardController = new MatchBoardController(
-                _levelServiceLocator, 
+                _levelServiceLocator,
                 _levelService,
-                _pieceFactory);
+                _pieceFactory,
+                _cameraAdapterService);
             
             _matchBoardController.SetRootTransform(GetMapHolder().transform);
             
@@ -74,6 +84,7 @@ namespace Code.Infrastructure.StateMachine.Game.States
         public void Exit()
         {
             _matchBoardController.Dispose();
+            _cameraAdapterService.Dispose();
             
             if(_uiFactory.GameHud != null)
                 _uiFactory.GameHud.Dispose();

@@ -19,6 +19,7 @@ namespace Code.StaticData.Levels.BoardConfigs
         public int XDim;
         public int YDim;
         public float FillTime;
+        public Vector2 BoardOffset = new(-0.5f,0.5f);
         public Dictionary<PieceType, GameObject> PieceDictionary;
         public PiecePosition[] InitialPieces;
     }

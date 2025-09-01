@@ -1,6 +1,7 @@
 using Code.Infrastructure.StateMachine;
 using Code.Infrastructure.StateMachine.Game;
 using Code.Infrastructure.StateMachine.Game.States;
+using Code.Logic.Controllers;
 using Code.Services.AudioVibrationFX.Music;
 using Code.Services.AudioVibrationFX.Sound;
 using Code.Services.AudioVibrationFX.StaticData;
@@ -69,7 +70,8 @@ namespace Code.Infrastructure.Installers
             Container.BindInterfacesTo<StorageService>().AsSingle();
             Container.BindInterfacesTo<TimeService>().AsSingle();
             Container.BindInterfacesTo<LevelServiceLocator>().AsSingle();
-
+            Container.BindInterfacesTo<CameraAdapterService>().AsSingle();
+            
             BindDataServices();
             BindAudioVibrationService();
             BindFinishService();

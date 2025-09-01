@@ -6,19 +6,18 @@ namespace Code.Logic.Controllers
 {
     public interface IMatchBoardController
     {
-        void StartLevel();
-        void Dispose();
-        void SetRootTransform(Transform rootTransform);
-        bool IsFilling { get; }
-        Vector2 GetWorldPosition(int x, int y);
-        void PressPiece(GamePiece piece);
-        void EnterPiece(GamePiece piece);
-        void ReleasePiece();
-        void ClearRow(int row);
-        void ClearColumn(int column);
-        void ClearColor(ColorType color);
-        void GameOver();
-        List<GamePiece> GetPiecesOfType(PieceType type);
-        void SetBoardOffset(Vector2 offset);
+        public void StartLevel();
+        public void Dispose();
+        public void SetRootTransform(Transform rootTransform);
+        public bool IsFilling { get; }
+        public Vector2 GetWorldPosition(int x, int y);
+        public void PressPiece(GamePiece piece);
+        public void EnterPiece(GamePiece piece);
+        public void ReleasePiece();
+        public void ClearRow(int row);
+        public void ClearColumn(int column);
+        public void ClearColor(ColorType color);
+        public void GameOver();
+        public List<GamePiece> GetPiecesOfType(PieceType type);
     }
 }
