@@ -8,7 +8,10 @@
         {
             base.Clear();
 
-            _piece.MatchBoardControllerRef.ClearColor(Color);
+            if (_pieceView?.Data?.MatchBoardController != null)
+            {
+                _pieceView.Data.MatchBoardController.ClearColor(Color);
+            }
         }
     }
 }

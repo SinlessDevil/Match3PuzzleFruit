@@ -13,10 +13,10 @@ namespace Code.Logic.Controllers
 {
     public class MatchBoardController : IMatchBoardController
     {
-        private GamePiece[,] _pieces;
+        private GamePieceView[,] _pieces;
         
-        private GamePiece _pressedPiece;
-        private GamePiece _enteredPiece;
+        private GamePieceView _pressedPiece;
+        private GamePieceView _enteredPiece;
 
         private bool _gameOver;
         private CancellationTokenSource _fillCancellationTokenSource;
@@ -65,7 +65,7 @@ namespace Code.Logic.Controllers
                 }
             }
 
-            _pieces = new GamePiece[BoardConfig.XDim, BoardConfig.YDim];
+            _pieces = new GamePieceView[BoardConfig.XDim, BoardConfig.YDim];
 
             for (int i = 0; i < BoardConfig.InitialPieces.Length; i++)
             {
@@ -123,13 +123,14 @@ namespace Code.Logic.Controllers
             return new Vector2(worldX, worldY);
         }
         
-        public void PressPiece(GamePiece piece) => _pressedPiece = piece;
+        public void PressPiece(GamePieceView pieceView) => _pressedPiece = pieceView;
 
-        public void EnterPiece(GamePiece piece) => _enteredPiece = piece;
+        public void EnterPiece(GamePieceView pieceView) => _enteredPiece = pieceView;
         
         public void ReleasePiece()
         {
-            if (IsAdjacent(_pressedPiece, _enteredPiece))
+            if (_pressedPiece?.Data != null && _enteredPiece?.Data != null && 
+                IsAdjacent(_pressedPiece.Data, _enteredPiece.Data))
             {
                 SwapPieces(_pressedPiece, _enteredPiece);
             }
@@ -155,15 +156,15 @@ namespace Code.Logic.Controllers
 
         public void GameOver() => _gameOver = true;
 
-        public List<GamePiece> GetPiecesOfType(PieceType type)
+        public List<GamePieceView> GetPiecesOfType(PieceType type)
         {
-            List<GamePiece> piecesOfType = new List<GamePiece>();
+            List<GamePieceView> piecesOfType = new List<GamePieceView>();
 
             for (int x = 0; x < BoardConfig.XDim; x++)
             {
                 for (int y = 0; y < BoardConfig.YDim; y++)
                 {
-                    if (_pieces[x, y].Type == type)
+                    if (_pieces[x, y]?.Data?.Type == type)
                     {
                         piecesOfType.Add(_pieces[x, y]);
                     }
@@ -193,23 +194,32 @@ namespace Code.Logic.Controllers
             _boardFillService.FillAsync(_pieces, config, _fillCancellationTokenSource.Token).Forget();
         }
 
-        private GamePiece SpawnNewPiece(int x, int y, PieceType type)
+        private GamePieceView SpawnNewPiece(int x, int y, PieceType type)
         {
             Piece newPiece = _pieceFactory.CreatePieceByCurrentLevel(type, GetWorldPosition(x, y), 
                 Quaternion.identity, _root);
-            _pieces[x, y] = newPiece.GetComponent<GamePiece>();
-            _pieces[x, y].Init(x, y, this, type);
+            GamePieceView pieceView = newPiece.GetComponent<GamePieceView>();
+            
+            GamePieceData data = new GamePieceData(x, y, type);
+            data.SetMatchBoardController(this);
+            pieceView.Initialize(data);
+            
+            _pieces[x, y] = pieceView;
+            
+            pieceView.OnPiecePressed += PressPiece;
+            pieceView.OnPieceEntered += EnterPiece;
+            pieceView.OnPieceReleased += (view) => ReleasePiece();
 
             return _pieces[x, y];
         }
 
-        private static bool IsAdjacent(GamePiece piece1, GamePiece piece2) =>
-            (piece1.X == piece2.X && Mathf.Abs(piece1.Y - piece2.Y) == 1) ||
-            (piece1.Y == piece2.Y && Mathf.Abs(piece1.X - piece2.X) == 1);
+        private static bool IsAdjacent(GamePieceData data1, GamePieceData data2) =>
+            (data1.X == data2.X && Mathf.Abs(data1.Y - data2.Y) == 1) ||
+            (data1.Y == data2.Y && Mathf.Abs(data1.X - data2.X) == 1);
 
-        private void SwapPieces(GamePiece piece1, GamePiece piece2)
+        private void SwapPieces(GamePieceView piece1, GamePieceView piece2)
         {
-            if (_gameOver) 
+            if (_gameOver || piece1?.Data == null || piece2?.Data == null) 
                 return;
 
             BoardSwapConfig config = new BoardSwapConfig

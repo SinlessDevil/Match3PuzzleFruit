@@ -40,13 +40,16 @@ namespace Code.Services.LevelConductors
             _numObstaclesLeft = 0;
         }
 
-        public override void OnPieceCleared(GamePiece piece)
+        public override void OnPieceCleared(GamePieceView pieceView)
         {
-            base.OnPieceCleared(piece);
+            base.OnPieceCleared(pieceView);
 
-            foreach (var obstacle in PieceTypes())
+            if (pieceView?.Data == null)
+                return;
+
+            foreach (PieceType obstacle in PieceTypes())
             {
-                if (obstacle != piece.Type) 
+                if (obstacle != pieceView.Data.Type) 
                     continue;
             
                 _numObstaclesLeft--;

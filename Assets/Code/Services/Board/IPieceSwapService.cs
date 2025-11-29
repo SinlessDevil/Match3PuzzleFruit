@@ -4,7 +4,7 @@ namespace Code.Services.Board
 {
     public interface IPieceSwapService
     {
-        bool TrySwapPieces(GamePiece[,] pieces, GamePiece piece1, GamePiece piece2, BoardSwapConfig config);
+        bool TrySwapPieces(GamePieceView[,] pieces, GamePieceView piece1, GamePieceView piece2, BoardSwapConfig config);
     }
 }
 

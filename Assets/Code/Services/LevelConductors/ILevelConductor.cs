@@ -9,7 +9,7 @@ namespace Code.Services.LevelConductors
         event Action<string> ChangedRemainingEvent;
         event Action<string> ChangedTargetEvent;
         void OnMove();
-        void OnPieceCleared(GamePiece piece);
+        void OnPieceCleared(GamePieceView pieceView);
         void Dispose();
     }
 }

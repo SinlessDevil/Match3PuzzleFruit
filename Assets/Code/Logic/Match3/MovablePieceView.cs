@@ -1,25 +1,25 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 namespace Code.Logic.Match3
 {
-    public class MovablePiece : MonoBehaviour
+    public class MovablePieceView : MonoBehaviour
     {
-        private GamePiece _piece;
+        private GamePieceView _pieceView;
         private IEnumerator _moveCoroutine;
 
         private void Awake()
         {
-            _piece = GetComponent<GamePiece>();
+            _pieceView = GetComponent<GamePieceView>();
         }
 
         public void Move(int newX, int newY, float time)
         {
             Vector2 endPosition;
             
-            if (_piece.MatchBoardControllerRef != null)
+            if (_pieceView?.Data?.MatchBoardController != null)
             {
-                endPosition = _piece.MatchBoardControllerRef.GetWorldPosition(newX, newY);
+                endPosition = _pieceView.Data.MatchBoardController.GetWorldPosition(newX, newY);
             }
             else
             {
@@ -42,19 +42,22 @@ namespace Code.Logic.Match3
 
         private IEnumerator MoveCoroutine(int newX, int newY, Vector2 endPosition, float time)
         {
-            _piece.X = newX;
-            _piece.Y = newY;
+            if (_pieceView?.Data != null)
+            {
+                _pieceView.Data.SetPosition(newX, newY);
+            }
 
             Vector3 startPos = transform.position;
             Vector3 endPos = endPosition;
 
             for (float t = 0; t <= 1 * time; t += Time.deltaTime)
             {
-                _piece.transform.position = Vector3.Lerp(startPos, endPos, t / time);
+                transform.position = Vector3.Lerp(startPos, endPos, t / time);
                 yield return null;
             }
 
-            _piece.transform.position = endPos;
+            transform.position = endPos;
         }
     }
 }
+

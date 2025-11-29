@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using Code.Logic.Controllers;
 using Code.Logic.Match3;
-using Code.Services.Factories.Pieces;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Code.Services.Board
 {
@@ -16,8 +13,8 @@ namespace Code.Services.Board
             _matchFinderService = matchFinderService;
         }
         
-        public bool ClearAllValidMatches(GamePiece[,] pieces, BoardClearConfig config, 
-            GamePiece pressedPiece = null, GamePiece enteredPiece = null)
+        public bool ClearAllValidMatches(GamePieceView[,] pieces, BoardClearConfig config, 
+            GamePieceView pressedPiece = null, GamePieceView enteredPiece = null)
         {
             bool needsRefill = false;
             BoardMatchConfig matchConfig = new BoardMatchConfig 
@@ -30,26 +27,27 @@ namespace Code.Services.Board
             {
                 for (int x = 0; x < config.XDim; x++)
                 {
-                    if (!pieces[x, y].IsClearable()) 
+                    GamePieceView pieceView = pieces[x, y];
+                    if (pieceView?.Data == null || !pieceView.Data.IsClearable()) 
                         continue;
 
-                    List<GamePiece> match = _matchFinderService.FindMatch(pieces, pieces[x, y], x, y, matchConfig);
+                    List<GamePieceView> match = _matchFinderService.FindMatch(pieces, pieceView, x, y, matchConfig);
 
-                    if (match == null) 
+                    if (match == null || match.Count == 0) 
                         continue;
 
                     PieceType specialPieceType = PieceType.Count;
-                    GamePiece randomPiece = match[UnityEngine.Random.Range(0, match.Count)];
-                    int specialPieceX = randomPiece.X;
-                    int specialPieceY = randomPiece.Y;
+                    GamePieceView randomPiece = match[UnityEngine.Random.Range(0, match.Count)];
+                    int specialPieceX = randomPiece.Data.X;
+                    int specialPieceY = randomPiece.Data.Y;
 
                     if (match.Count == 4)
                     {
-                        if (pressedPiece == null || enteredPiece == null)
+                        if (pressedPiece?.Data == null || enteredPiece?.Data == null)
                         {
                             specialPieceType = (PieceType)UnityEngine.Random.Range((int)PieceType.RowClear, (int)PieceType.ColumnClear);
                         }
-                        else if (pressedPiece.Y == enteredPiece.Y)
+                        else if (pressedPiece.Data.Y == enteredPiece.Data.Y)
                         {
                             specialPieceType = PieceType.RowClear;
                         }
@@ -63,18 +61,18 @@ namespace Code.Services.Board
                         specialPieceType = PieceType.Rainbow;
                     }
 
-                    foreach (GamePiece gamePiece in match)
+                    foreach (GamePieceView gamePieceView in match)
                     {
-                        if (!ClearPiece(pieces, gamePiece.X, gamePiece.Y, config)) 
+                        if (gamePieceView?.Data == null || !ClearPiece(pieces, gamePieceView.Data.X, gamePieceView.Data.Y, config)) 
                             continue;
 
                         needsRefill = true;
 
-                        if (gamePiece != pressedPiece && gamePiece != enteredPiece) 
+                        if (gamePieceView != pressedPiece && gamePieceView != enteredPiece) 
                             continue;
 
-                        specialPieceX = gamePiece.X;
-                        specialPieceY = gamePiece.Y;
+                        specialPieceX = gamePieceView.Data.X;
+                        specialPieceY = gamePieceView.Data.Y;
                     }
 
                     if (specialPieceType == PieceType.Count) 
@@ -82,16 +80,16 @@ namespace Code.Services.Board
 
                     pieces[specialPieceX, specialPieceY].Dispose();
 
-                    GamePiece newPiece = SpawnNewPiece(pieces, specialPieceX, specialPieceY, specialPieceType, config);
+                    GamePieceView newPieceView = SpawnNewPiece(pieces, specialPieceX, specialPieceY, specialPieceType, config);
 
                     if ((specialPieceType == PieceType.RowClear || specialPieceType == PieceType.ColumnClear) 
-                        && newPiece.IsColored() && match[0].IsColored())
+                        && newPieceView.Data.IsColored() && match[0].Data.IsColored())
                     {
-                        newPiece.ColorComponent.SetColor(match[0].ColorComponent.Color);
+                        newPieceView.ColorComponent.SetColor(match[0].ColorComponent.Color);
                     }
-                    else if (specialPieceType == PieceType.Rainbow && newPiece.IsColored())
+                    else if (specialPieceType == PieceType.Rainbow && newPieceView.Data.IsColored())
                     {
-                        newPiece.ColorComponent.SetColor(ColorType.Any);
+                        newPieceView.ColorComponent.SetColor(ColorType.Any);
                     }
                 }
             }
@@ -99,12 +97,13 @@ namespace Code.Services.Board
             return needsRefill;
         }
 
-        public bool ClearPiece(GamePiece[,] pieces, int x, int y, BoardClearConfig config)
+        public bool ClearPiece(GamePieceView[,] pieces, int x, int y, BoardClearConfig config)
         {
-            if (!pieces[x, y].IsClearable() || pieces[x, y].ClearableComponent.IsBeingCleared) 
+            GamePieceView pieceView = pieces[x, y];
+            if (pieceView?.Data == null || !pieceView.Data.IsClearable() || pieceView.ClearableComponent.IsBeingCleared) 
                 return false;
 
-            pieces[x, y].ClearableComponent.Clear();
+            pieceView.ClearableComponent.Clear();
             SpawnNewPiece(pieces, x, y, PieceType.Empty, config);
 
             ClearObstacles(pieces, x, y, config);
@@ -112,7 +111,7 @@ namespace Code.Services.Board
             return true;
         }
 
-        public void ClearRow(GamePiece[,] pieces, int row, BoardClearConfig config)
+        public void ClearRow(GamePieceView[,] pieces, int row, BoardClearConfig config)
         {
             for (int x = 0; x < config.XDim; x++)
             {
@@ -120,7 +119,7 @@ namespace Code.Services.Board
             }
         }
 
-        public void ClearColumn(GamePiece[,] pieces, int column, BoardClearConfig config)
+        public void ClearColumn(GamePieceView[,] pieces, int column, BoardClearConfig config)
         {
             for (int y = 0; y < config.YDim; y++)
             {
@@ -128,13 +127,17 @@ namespace Code.Services.Board
             }
         }
 
-        public void ClearColor(GamePiece[,] pieces, ColorType color, BoardClearConfig config)
+        public void ClearColor(GamePieceView[,] pieces, ColorType color, BoardClearConfig config)
         {
             for (int x = 0; x < config.XDim; x++)
             {
                 for (int y = 0; y < config.YDim; y++)
                 {
-                    if ((pieces[x, y].IsColored() && pieces[x, y].ColorComponent.Color == color)
+                    GamePieceView pieceView = pieces[x, y];
+                    if (pieceView?.Data == null)
+                        continue;
+                        
+                    if ((pieceView.Data.IsColored() && pieceView.ColorComponent.Color == color)
                         || (color == ColorType.Any))
                     {
                         ClearPiece(pieces, x, y, config);
@@ -143,17 +146,18 @@ namespace Code.Services.Board
             }
         }
 
-        private void ClearObstacles(GamePiece[,] pieces, int x, int y, BoardClearConfig config)
+        private void ClearObstacles(GamePieceView[,] pieces, int x, int y, BoardClearConfig config)
         {
             for (int adjacentX = x - 1; adjacentX <= x + 1; adjacentX++)
             {
                 if (adjacentX == x || adjacentX < 0 || adjacentX >= config.XDim) 
                     continue;
 
-                if (pieces[adjacentX, y].Type != PieceType.Bubble || !pieces[adjacentX, y].IsClearable()) 
+                GamePieceView pieceView = pieces[adjacentX, y];
+                if (pieceView?.Data == null || pieceView.Data.Type != PieceType.Bubble || !pieceView.Data.IsClearable()) 
                     continue;
 
-                pieces[adjacentX, y].ClearableComponent.Clear();
+                pieceView.ClearableComponent.Clear();
                 SpawnNewPiece(pieces, adjacentX, y, PieceType.Empty, config);
             }
 
@@ -162,23 +166,28 @@ namespace Code.Services.Board
                 if (adjacentY == y || adjacentY < 0 || adjacentY >= config.YDim) 
                     continue;
 
-                if (pieces[x, adjacentY].Type != PieceType.Bubble || !pieces[x, adjacentY].IsClearable()) 
+                GamePieceView pieceView = pieces[x, adjacentY];
+                if (pieceView?.Data == null || pieceView.Data.Type != PieceType.Bubble || !pieceView.Data.IsClearable()) 
                     continue;
 
-                pieces[x, adjacentY].ClearableComponent.Clear();
+                pieceView.ClearableComponent.Clear();
                 SpawnNewPiece(pieces, x, adjacentY, PieceType.Empty, config);
             }
         }
 
-        private GamePiece SpawnNewPiece(GamePiece[,] pieces, int x, int y, PieceType type, BoardClearConfig config)
+        private GamePieceView SpawnNewPiece(GamePieceView[,] pieces, int x, int y, PieceType type, BoardClearConfig config)
         {
             Piece newPiece = config.PieceFactory.CreatePieceByCurrentLevel(type, 
                 config.GetWorldPosition(x, y), Quaternion.identity, config.Root);
-            pieces[x, y] = newPiece.GetComponent<GamePiece>();
-            pieces[x, y].Init(x, y, config.MatchBoardController, type);
+            GamePieceView pieceView = newPiece.GetComponent<GamePieceView>();
+            
+            GamePieceData data = new GamePieceData(x, y, type);
+            data.SetMatchBoardController(config.MatchBoardController);
+            pieceView.Initialize(data);
+            
+            pieces[x, y] = pieceView;
 
             return pieces[x, y];
         }
     }
 }
-

@@ -5,7 +5,7 @@ namespace Code.Services.Board
 {
     public interface IMatchFinderService
     {
-        List<GamePiece> FindMatch(GamePiece[,] pieces, GamePiece piece, int x, int y, BoardMatchConfig config);
+        List<GamePieceView> FindMatch(GamePieceView[,] pieces, GamePieceView pieceView, int x, int y, BoardMatchConfig config);
     }
 }
 

@@ -8,13 +8,16 @@
         {
             base.Clear();
 
+            if (_pieceView?.Data?.MatchBoardController == null)
+                return;
+
             if (isRow)
             {            
-                _piece.MatchBoardControllerRef.ClearRow(_piece.Y);
+                _pieceView.Data.MatchBoardController.ClearRow(_pieceView.Data.Y);
             }
             else
             {            
-                _piece.MatchBoardControllerRef.ClearColumn(_piece.X);
+                _pieceView.Data.MatchBoardController.ClearColumn(_pieceView.Data.X);
             }
         }
     }

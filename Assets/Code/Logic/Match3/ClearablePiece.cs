@@ -9,7 +9,7 @@ namespace Code.Logic.Match3
     {
         public AnimationClip clearAnimation;
         
-        protected GamePiece _piece;
+        protected GamePieceView _pieceView;
 
         private ILevelServiceLocator _levelServiceLocator;
         
@@ -21,14 +21,17 @@ namespace Code.Logic.Match3
         
         private void Awake()
         {
-            _piece = GetComponent<GamePiece>();
+            _pieceView = GetComponent<GamePieceView>();
         }
 
         public bool IsBeingCleared { get; private set; }
         
         public virtual void Clear()
         {
-            _levelServiceLocator.GetForCurrentLevel().OnPieceCleared(_piece);
+            if (_pieceView?.Data != null)
+            {
+                _levelServiceLocator.GetForCurrentLevel().OnPieceCleared(_pieceView);
+            }
             
             IsBeingCleared = true;
             StartCoroutine(ClearCoroutine());
@@ -36,9 +39,9 @@ namespace Code.Logic.Match3
 
         private IEnumerator ClearCoroutine()
         {
-            var animator = GetComponent<Animator>();
+            Animator animator = GetComponent<Animator>();
 
-            if (animator)
+            if (animator != null)
             {
                 animator.Play(clearAnimation.name);
 

@@ -24,10 +24,13 @@ namespace Code.Services.LevelConductors
         
         public abstract void OnMove();
 
-        public virtual void OnPieceCleared(GamePiece piece)
+        public virtual void OnPieceCleared(GamePieceView pieceView)
         {
-            _currentScore += piece.score;
-            InvokeChangedCurrentScoreEvent();
+            if (pieceView?.Data != null)
+            {
+                _currentScore += pieceView.Data.Score;
+                InvokeChangedCurrentScoreEvent();
+            }
         }
 
         public virtual void Dispose()

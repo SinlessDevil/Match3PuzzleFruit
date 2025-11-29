@@ -4,13 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="edit: name space">
+    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="edit: refactoring MatchBoardController">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/GameLoopState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/GameLoopState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/IMatchBoardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/IMatchBoardController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePiece.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/MovablePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/MovablePiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearColorPiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearColorPiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearLinePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearLinePiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearablePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearablePiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePiece.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePiece.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/MovablePiece.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/MovablePiece.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/Board/BoardClearService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/Board/BoardClearService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/Board/BoardFillService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/Board/BoardFillService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/Board/IBoardClearService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/Board/IBoardClearService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/Board/IBoardFillService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/Board/IBoardFillService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/Board/IMatchFinderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/Board/IMatchFinderService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/Board/IPieceSwapService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/Board/IPieceSwapService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/Board/MatchFinderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/Board/MatchFinderService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/Board/PieceSwapService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/Board/PieceSwapService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/ILevelConductor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/ILevelConductor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorObstacles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorObstacles.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +51,7 @@
     <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Infrastructure/StateMachine/Game/States/GameLoopState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Controllers/MatchBoardController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Controllers/MatchBoardController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/MovablePiece.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/StaticData/Levels/BoardConfigs/BoardConfig.cs" root0="SKIP_HIGHLIGHTING" />
@@ -118,7 +134,7 @@
       <updated>1757057122014</updated>
       <workItem from="1757057123534" duration="7000" />
       <workItem from="1757059130400" duration="10000" />
-      <workItem from="1764411582375" duration="1899000" />
+      <workItem from="1764411582375" duration="2727000" />
     </task>
     <task id="LOCAL-00001" summary="edit: name space">
       <option name="closed" value="true" />
@@ -128,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764412091404</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="edit: refactoring MatchBoardController">
+      <option name="closed" value="true" />
+      <created>1764413743864</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1764413743864</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +178,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <MESSAGE value="edit: name space" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit: name space" />
+    <MESSAGE value="edit: refactoring MatchBoardController" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit: refactoring MatchBoardController" />
   </component>
 </project>

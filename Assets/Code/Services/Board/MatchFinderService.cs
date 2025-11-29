@@ -5,17 +5,17 @@ namespace Code.Services.Board
 {
     public class MatchFinderService : IMatchFinderService
     {
-        public List<GamePiece> FindMatch(GamePiece[,] pieces, GamePiece piece, int newX, int newY, BoardMatchConfig config)
+        public List<GamePieceView> FindMatch(GamePieceView[,] pieces, GamePieceView pieceView, int newX, int newY, BoardMatchConfig config)
         {
-            if (!piece.IsColored()) 
+            if (pieceView?.Data == null || !pieceView.Data.IsColored()) 
                 return null;
                 
-            ColorType color = piece.ColorComponent.Color;
-            List<GamePiece> horizontalPieces = new List<GamePiece>();
-            List<GamePiece> verticalPieces = new List<GamePiece>();
-            List<GamePiece> matchingPieces = new List<GamePiece>();
+            ColorType color = pieceView.ColorComponent.Color;
+            List<GamePieceView> horizontalPieces = new List<GamePieceView>();
+            List<GamePieceView> verticalPieces = new List<GamePieceView>();
+            List<GamePieceView> matchingPieces = new List<GamePieceView>();
 
-            horizontalPieces.Add(piece);
+            horizontalPieces.Add(pieceView);
 
             for (int dir = 0; dir <= 1; dir++)
             {
@@ -26,9 +26,10 @@ namespace Code.Services.Board
                     if (x < 0 || x >= config.XDim) 
                         break;
 
-                    if (pieces[x, newY].IsColored() && pieces[x, newY].ColorComponent.Color == color)
+                    GamePieceView currentPiece = pieces[x, newY];
+                    if (currentPiece?.Data != null && currentPiece.Data.IsColored() && currentPiece.ColorComponent.Color == color)
                     {
-                        horizontalPieces.Add(pieces[x, newY]);
+                        horizontalPieces.Add(currentPiece);
                     }
                     else
                     {
@@ -55,10 +56,11 @@ namespace Code.Services.Board
                             if (y < 0 || y >= config.YDim)
                                 break;
 
-                            if (pieces[horizontalPieces[i].X, y].IsColored() && 
-                                pieces[horizontalPieces[i].X, y].ColorComponent.Color == color)
+                            GamePieceView currentPiece = pieces[horizontalPieces[i].Data.X, y];
+                            if (currentPiece?.Data != null && currentPiece.Data.IsColored() && 
+                                currentPiece.ColorComponent.Color == color)
                             {
-                                verticalPieces.Add(pieces[horizontalPieces[i].X, y]);
+                                verticalPieces.Add(currentPiece);
                             }
                             else
                             {
@@ -86,7 +88,7 @@ namespace Code.Services.Board
 
             horizontalPieces.Clear();
             verticalPieces.Clear();
-            verticalPieces.Add(piece);
+            verticalPieces.Add(pieceView);
 
             for (int dir = 0; dir <= 1; dir++)
             {
@@ -97,9 +99,10 @@ namespace Code.Services.Board
                     if (y < 0 || y >= config.YDim) 
                         break;
 
-                    if (pieces[newX, y].IsColored() && pieces[newX, y].ColorComponent.Color == color)
+                    GamePieceView currentPiece = pieces[newX, y];
+                    if (currentPiece?.Data != null && currentPiece.Data.IsColored() && currentPiece.ColorComponent.Color == color)
                     {
-                        verticalPieces.Add(pieces[newX, y]);
+                        verticalPieces.Add(currentPiece);
                     }
                     else
                     {
@@ -126,10 +129,11 @@ namespace Code.Services.Board
                             if (x < 0 || x >= config.XDim)
                                 break;
 
-                            if (pieces[x, verticalPieces[i].Y].IsColored() && 
-                                pieces[x, verticalPieces[i].Y].ColorComponent.Color == color)
+                            GamePieceView currentPiece = pieces[x, verticalPieces[i].Data.Y];
+                            if (currentPiece?.Data != null && currentPiece.Data.IsColored() && 
+                                currentPiece.ColorComponent.Color == color)
                             {
-                                horizontalPieces.Add(pieces[x, verticalPieces[i].Y]);
+                                horizontalPieces.Add(currentPiece);
                             }
                             else
                             {
@@ -159,4 +163,3 @@ namespace Code.Services.Board
         }
     }
 }
-

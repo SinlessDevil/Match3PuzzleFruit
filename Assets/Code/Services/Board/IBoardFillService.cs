@@ -8,9 +8,9 @@ namespace Code.Services.Board
     {
         bool IsFilling { get; }
         
-        UniTask FillAsync(GamePiece[,] pieces, BoardFillConfig config, CancellationToken cancellationToken = default);
+        UniTask FillAsync(GamePieceView[,] pieces, BoardFillConfig config, CancellationToken cancellationToken = default);
         
-        bool FillStep(GamePiece[,] pieces, BoardFillConfig config, ref bool inverse);
+        bool FillStep(GamePieceView[,] pieces, BoardFillConfig config, ref bool inverse);
     }
 }
 
