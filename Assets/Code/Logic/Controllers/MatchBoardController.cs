@@ -6,7 +6,6 @@ using Code.Services.LevelConductors.Locator;
 using Code.Services.Levels;
 using Code.StaticData.Levels.BoardConfigs;
 using Cysharp.Threading.Tasks;
-using Match3;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;

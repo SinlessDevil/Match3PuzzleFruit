@@ -1,6 +1,6 @@
-﻿using Code.Services.Levels;
+﻿using Code.Logic.Match3;
+using Code.Services.Levels;
 using Code.StaticData.Levels.LevelTypeConfigs;
-using Match3;
 
 namespace Code.Services.LevelConductors
 {

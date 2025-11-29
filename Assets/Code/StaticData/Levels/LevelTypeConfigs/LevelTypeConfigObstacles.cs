@@ -1,4 +1,4 @@
-using Match3;
+using Code.Logic.Match3;
 
 namespace Code.StaticData.Levels.LevelTypeConfigs
 {

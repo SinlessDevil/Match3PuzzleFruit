@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Match3
+namespace Code.Logic.Match3
 {
     public class ColorPiece : MonoBehaviour
     {

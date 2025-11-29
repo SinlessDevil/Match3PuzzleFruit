@@ -4,23 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="add:camera adapter service">
+    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/BubblePiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/BubblePiecePrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/ColumnPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/ColumnPiecePrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/NormalPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/NormalPiecePrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/PieceBG.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/PieceBG.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/RainbowPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/RainbowPiecePrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/RowClearPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/RowClearPiecePrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/SpriteOutlineGlow.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/SpriteOutlineGlow.shader" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DpaMonitoringSettings">
-    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,44 +29,25 @@
     &quot;accountId&quot;: &quot;3f9ff7c7-0f5a-4430-bbb6-c5b5a24766d6&quot;
   }
 }</component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/70/ba40a866/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/Match3PuzzleFruit/Assets/Code/Logic/Controllers/MatchBoardController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/Match3PuzzleFruit/Assets/Code/Logic/Controllers/MatchBoardController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/Match3PuzzleFruit/Assets/Code/Logic/Controllers/MatchBoardController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/Logic/Match3/Piece.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/Logic/Shader/SpriteOutlineGlowController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/Services/Factories/Piece/IPieceFactory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/Services/LevelConductors/Locator/LevelServiceLocator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/StaticData/Levels/BoardConfigs/BoardConfig.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/StaticData/Levels/LevelTypeConfigs/LevelTypeConfig.cs" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="30bCZkyc5cUYmnbzodQpa5ykPsJ" />
+  <component name="ProjectId" id="32GqBUdnQ6kbvx7MUtlJWq9AfV5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.sync",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="E:\Unity\2023.2.1f1\Editor\Unity.exe" />
@@ -105,15 +78,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4140">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="4140" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -124,126 +95,21 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7f890d77-3074-4177-a922-78600e36a62f" name="Changes" comment="" />
-      <created>1753886942684</created>
+      <changelist id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="" />
+      <created>1757057122014</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1753886942684</updated>
-      <workItem from="1753886944008" duration="1000" />
-      <workItem from="1753886952415" duration="2000" />
-      <workItem from="1753886961735" duration="2000" />
-      <workItem from="1753887087132" duration="9000" />
-      <workItem from="1753887119402" duration="2729000" />
-      <workItem from="1753960209929" duration="2753000" />
-      <workItem from="1754486723923" duration="2528000" />
-      <workItem from="1754489291345" duration="2699000" />
-      <workItem from="1754492709175" duration="4645000" />
-      <workItem from="1754553654287" duration="10950000" />
-      <workItem from="1754573844674" duration="4000" />
-      <workItem from="1754573864796" duration="7885000" />
-      <workItem from="1755768055656" duration="15454000" />
-      <workItem from="1755856821598" duration="2040000" />
-      <workItem from="1755874009868" duration="2626000" />
-      <workItem from="1756280434256" duration="6552000" />
-      <workItem from="1756310329291" duration="1418000" />
-      <workItem from="1756383748187" duration="3194000" />
-      <workItem from="1756714452053" duration="11493000" />
+      <updated>1757057122014</updated>
+      <workItem from="1757057123534" duration="7000" />
+      <workItem from="1757059130400" duration="10000" />
+      <workItem from="1764411586767" duration="53000" />
     </task>
-    <task id="LOCAL-00001" summary="fix: null reff in NormalPiecePrefab.prefab">
-      <option name="closed" value="true" />
-      <created>1753889772045</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1753889772045</updated>
-    </task>
-    <task id="LOCAL-00002" summary="fix: animation">
-      <option name="closed" value="true" />
-      <created>1753960242809</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1753960242809</updated>
-    </task>
-    <task id="LOCAL-00003" summary="edit: configs, and start edits hud">
-      <option name="closed" value="true" />
-      <created>1754496904382</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1754496904382</updated>
-    </task>
-    <task id="LOCAL-00004" summary="edits: add base view">
-      <option name="closed" value="true" />
-      <created>1754498221741</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1754498221741</updated>
-    </task>
-    <task id="LOCAL-00005" summary="edit: configs level">
-      <option name="closed" value="true" />
-      <created>1754498269431</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1754498269431</updated>
-    </task>
-    <task id="LOCAL-00006" summary="edit: RemainingInfoView , TargetInfoView, ScoreInfoView . Start create LevelConductor">
-      <option name="closed" value="true" />
-      <created>1754574239253</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1754574239253</updated>
-    </task>
-    <task id="LOCAL-00007" summary="edit: end LevelConductor">
-      <option name="closed" value="true" />
-      <created>1754582069515</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1754582069515</updated>
-    </task>
-    <task id="LOCAL-00008" summary="edit: re working match board controller">
-      <option name="closed" value="true" />
-      <created>1755876788023</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1755876788023</updated>
-    </task>
-    <task id="LOCAL-00009" summary="edit: fixed null ref in ColorPiece">
-      <option name="closed" value="true" />
-      <created>1756299640228</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1756299640228</updated>
-    </task>
-    <task id="LOCAL-00010" summary="fix: position matrix in camera">
-      <option name="closed" value="true" />
-      <created>1756386911403</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1756386911403</updated>
-    </task>
-    <task id="LOCAL-00011" summary="add:camera adapter service">
-      <option name="closed" value="true" />
-      <created>1756728388291</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1756728388291</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />
@@ -263,19 +129,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="fix: null reff in NormalPiecePrefab.prefab" />
-    <MESSAGE value="fix: animation" />
-    <MESSAGE value="edit: configs, and start edits hud" />
-    <MESSAGE value="edits: add base view" />
-    <MESSAGE value="edit: configs level" />
-    <MESSAGE value="edit: RemainingInfoView , TargetInfoView, ScoreInfoView . Start create LevelConductor" />
-    <MESSAGE value="edit: end LevelConductor" />
-    <MESSAGE value="edit: re working match board controller" />
-    <MESSAGE value="edit: fixed null ref in ColorPiece" />
-    <MESSAGE value="fix: position matrix in camera" />
-    <MESSAGE value="add:camera adapter service" />
-    <option name="LAST_COMMIT_MESSAGE" value="add:camera adapter service" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>

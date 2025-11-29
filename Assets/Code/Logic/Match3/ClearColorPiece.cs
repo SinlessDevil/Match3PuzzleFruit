@@ -1,4 +1,4 @@
-﻿namespace Match3
+﻿namespace Code.Logic.Match3
 {
     public class ClearColorPiece : ClearablePiece
     {

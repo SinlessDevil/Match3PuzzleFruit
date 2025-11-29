@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Match3
+namespace Code.Logic.Match3
 {
     public class GamePiece : MonoBehaviour
     {

@@ -185,3 +185,4 @@ Shader "Custom/SpriteOutlineGlow"
         }
     }
 }
+

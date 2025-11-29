@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Match3;
+using Code.Logic.Match3;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

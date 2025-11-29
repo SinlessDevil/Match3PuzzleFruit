@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Match3
+namespace Code.Logic.Match3
 {
     public class LevelSelect : MonoBehaviour
     {

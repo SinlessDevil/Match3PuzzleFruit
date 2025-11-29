@@ -1,7 +1,6 @@
 using Code.Logic.Match3;
 using Code.Services.Levels;
 using Code.StaticData.Levels.BoardConfigs;
-using Match3;
 using UnityEngine;
 using Zenject;
 using Quaternion = UnityEngine.Quaternion;

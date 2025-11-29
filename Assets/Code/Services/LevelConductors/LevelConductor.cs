@@ -1,7 +1,7 @@
 ﻿using System;
+using Code.Logic.Match3;
 using Code.Services.Levels;
 using Code.StaticData.Levels.LevelTypeConfigs;
-using Match3;
 using UnityEngine;
 
 namespace Code.Services.LevelConductors
