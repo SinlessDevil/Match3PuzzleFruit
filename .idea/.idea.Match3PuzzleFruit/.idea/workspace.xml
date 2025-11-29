@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="">
+    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="edit: name space">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/GameLoopState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/GameLoopState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/SpriteOutlineGlow.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/SpriteOutlineGlow.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/MovablePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/MovablePiece.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +32,15 @@
     &quot;accountId&quot;: &quot;3f9ff7c7-0f5a-4430-bbb6-c5b5a24766d6&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Infrastructure/StateMachine/Game/States/GameLoopState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Controllers/MatchBoardController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/MovablePiece.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/StaticData/Levels/BoardConfigs/BoardConfig.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/StaticData/Levels/BoardConfigs/BoardConfig.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -39,15 +51,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="E:\Unity\2023.2.1f1\Editor\Unity.exe" />
@@ -102,8 +118,17 @@
       <updated>1757057122014</updated>
       <workItem from="1757057123534" duration="7000" />
       <workItem from="1757059130400" duration="10000" />
-      <workItem from="1764411586767" duration="53000" />
+      <workItem from="1764411582375" duration="1899000" />
     </task>
+    <task id="LOCAL-00001" summary="edit: name space">
+      <option name="closed" value="true" />
+      <created>1764412091404</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1764412091404</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,6 +154,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="edit: name space" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit: name space" />
   </component>
 </project>

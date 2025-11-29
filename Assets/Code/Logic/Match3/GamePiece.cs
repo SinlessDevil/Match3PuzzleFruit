@@ -57,12 +57,29 @@ namespace Code.Logic.Match3
             _matchBoardController = matchBoardController;
             _type = type;
         }
+        
+        public void SetMatchBoardController(MatchBoardController matchBoardController)
+        {
+            _matchBoardController = matchBoardController;
+        }
 
-        private void OnMouseEnter() => _matchBoardController.EnterPiece(this);
+        private void OnMouseEnter()
+        {
+            if (_matchBoardController != null)
+                _matchBoardController.EnterPiece(this);
+        }
 
-        private void OnMouseDown() => _matchBoardController.PressPiece(this);
+        private void OnMouseDown()
+        {
+            if (_matchBoardController != null)
+                _matchBoardController.PressPiece(this);
+        }
 
-        private void OnMouseUp() => _matchBoardController.ReleasePiece();
+        private void OnMouseUp()
+        {
+            if (_matchBoardController != null)
+                _matchBoardController.ReleasePiece();
+        }
 
         public bool IsMovable() => _movableComponent != null;
 

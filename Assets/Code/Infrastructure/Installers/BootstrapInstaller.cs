@@ -6,6 +6,7 @@ using Code.Services.AudioVibrationFX.Music;
 using Code.Services.AudioVibrationFX.Sound;
 using Code.Services.AudioVibrationFX.StaticData;
 using Code.Services.AudioVibrationFX.Vibration;
+using Code.Services.Board;
 using Code.Services.Factories.Game;
 using Code.Services.Factories.Pieces;
 using Code.Services.Factories.UIFactory;
@@ -61,6 +62,7 @@ namespace Code.Infrastructure.Installers
         {
             BindStaticDataService();
             BindFactories();
+            BindBoardServices();
 
             Container.BindInterfacesTo<WindowService>().AsSingle();
             Container.BindInterfacesTo<InputService>().AsSingle();
@@ -75,6 +77,14 @@ namespace Code.Infrastructure.Installers
             BindDataServices();
             BindAudioVibrationService();
             BindFinishService();
+        }
+
+        private void BindBoardServices()
+        {
+            Container.Bind<IMatchFinderService>().To<MatchFinderService>().AsSingle();
+            Container.Bind<IBoardClearService>().To<BoardClearService>().AsSingle();
+            Container.Bind<IBoardFillService>().To<BoardFillService>().AsSingle();
+            Container.Bind<IPieceSwapService>().To<PieceSwapService>().AsSingle();
         }
 
         private void BindFactories()

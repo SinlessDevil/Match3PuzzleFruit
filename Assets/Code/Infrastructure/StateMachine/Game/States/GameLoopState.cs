@@ -1,5 +1,6 @@
 using Code.Logic.Controllers;
 using Code.Logic.Holders;
+using Code.Services.Board;
 using Code.Services.Factories.Pieces;
 using Code.Services.Factories.UIFactory;
 using Code.Services.Input;
@@ -24,6 +25,10 @@ namespace Code.Infrastructure.StateMachine.Game.States
         private readonly ILevelServiceLocator _levelServiceLocator;
         private readonly IPieceFactory _pieceFactory;
         private readonly ICameraAdapterService _cameraAdapterService;
+        private readonly IBoardFillService _boardFillService;
+        private readonly IMatchFinderService _matchFinderService;
+        private readonly IPieceSwapService _pieceSwapService;
+        private readonly IBoardClearService _boardClearService;
         
         private IMatchBoardController _matchBoardController;
         
@@ -37,7 +42,11 @@ namespace Code.Infrastructure.StateMachine.Game.States
             IUIFactory uiFactory,
             ILevelServiceLocator levelServiceLocator,
             IPieceFactory pieceFactory,
-            ICameraAdapterService cameraAdapterService)
+            ICameraAdapterService cameraAdapterService,
+            IBoardFillService boardFillService,
+            IMatchFinderService matchFinderService,
+            IPieceSwapService pieceSwapService,
+            IBoardClearService boardClearService)
         {
             _gameStateMachine = gameStateMachine;
             _inputService = inputService;
@@ -49,6 +58,10 @@ namespace Code.Infrastructure.StateMachine.Game.States
             _levelServiceLocator = levelServiceLocator;
             _pieceFactory = pieceFactory;
             _cameraAdapterService = cameraAdapterService;
+            _boardFillService = boardFillService;
+            _matchFinderService = matchFinderService;
+            _pieceSwapService = pieceSwapService;
+            _boardClearService = boardClearService;
         }
         
         public void Enter()
@@ -69,7 +82,11 @@ namespace Code.Infrastructure.StateMachine.Game.States
                 _levelServiceLocator,
                 _levelService,
                 _pieceFactory,
-                _cameraAdapterService);
+                _cameraAdapterService,
+                _boardFillService,
+                _matchFinderService,
+                _pieceSwapService,
+                _boardClearService);
             
             _matchBoardController.SetRootTransform(GetMapHolder().transform);
             
