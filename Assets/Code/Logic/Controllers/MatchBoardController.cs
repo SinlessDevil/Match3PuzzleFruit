@@ -123,9 +123,15 @@ namespace Code.Logic.Controllers
             return new Vector2(worldX, worldY);
         }
         
-        public void PressPiece(GamePieceView pieceView) => _pressedPiece = pieceView;
+        public void PressPiece(GamePieceView pieceView)
+        {
+            _pressedPiece = pieceView;
+        }
 
-        public void EnterPiece(GamePieceView pieceView) => _enteredPiece = pieceView;
+        public void EnterPiece(GamePieceView pieceView)
+        {
+            _enteredPiece = pieceView;
+        }
         
         public void ReleasePiece()
         {
@@ -134,6 +140,9 @@ namespace Code.Logic.Controllers
             {
                 SwapPieces(_pressedPiece, _enteredPiece);
             }
+            
+            _pressedPiece = null;
+            _enteredPiece = null;
         }
         
         public void ClearRow(int row)
@@ -205,10 +214,6 @@ namespace Code.Logic.Controllers
             pieceView.Initialize(data);
             
             _pieces[x, y] = pieceView;
-            
-            pieceView.OnPiecePressed += PressPiece;
-            pieceView.OnPieceEntered += EnterPiece;
-            pieceView.OnPieceReleased += (view) => ReleasePiece();
 
             return _pieces[x, y];
         }

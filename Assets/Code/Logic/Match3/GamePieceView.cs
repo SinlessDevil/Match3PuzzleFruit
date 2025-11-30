@@ -1,10 +1,10 @@
 using System;
+using Code.Logic.Controllers;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Code.Logic.Match3
 {
-    public class GamePieceView : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerUpHandler
+    public class GamePieceView : MonoBehaviour
     {
         public event Action<GamePieceView> OnPiecePressed;
         public event Action<GamePieceView> OnPieceEntered;
@@ -48,10 +48,25 @@ namespace Code.Logic.Match3
                 _data.HasMovableComponent = _movableComponent != null;
                 _data.HasColorComponent = _colorComponent != null;
                 _data.HasClearableComponent = _clearableComponent != null;
+                
+                if (_data.MatchBoardController != null)
+                {
+                    SubscribeToController(_data.MatchBoardController);
+                }
             }
         }
         
-        public void OnPointerDown(PointerEventData eventData)
+        public void SubscribeToController(MatchBoardController controller)
+        {
+            if (controller == null)
+                return;
+                
+            OnPiecePressed += controller.PressPiece;
+            OnPieceEntered += controller.EnterPiece;
+            OnPieceReleased += (view) => controller.ReleasePiece();
+        }
+        
+        private void OnMouseDown()
         {
             if (_data?.MatchBoardController != null)
             {
@@ -59,15 +74,15 @@ namespace Code.Logic.Match3
             }
         }
         
-        public void OnPointerEnter(PointerEventData eventData)
+        private void OnMouseEnter()
         {
-            if (_data?.MatchBoardController != null)
+            if (Input.GetMouseButton(0) && _data?.MatchBoardController != null)
             {
                 OnPieceEntered?.Invoke(this);
             }
         }
         
-        public void OnPointerUp(PointerEventData eventData)
+        private void OnMouseUp()
         {
             if (_data?.MatchBoardController != null)
             {
