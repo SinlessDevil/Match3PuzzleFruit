@@ -1,5 +1,7 @@
-﻿using Code.Services.Levels;
+﻿using System.Threading;
+using Code.Services.Levels;
 using Code.StaticData.Levels.LevelTypeConfigs;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Code.Services.LevelConductors
@@ -7,8 +9,13 @@ namespace Code.Services.LevelConductors
     public class LevelConductorTimer : LevelConductor
     {
         private float _timer;
+        private CancellationTokenSource _updateCancellationTokenSource;
+        private bool _isGameFinished;
 
-        public LevelConductorTimer(ILevelService levelService) : base(levelService) { }
+        public LevelConductorTimer(ILevelService levelService) : base(levelService)
+        {
+            InitTimer();
+        }
 
         public override void OnMove() { }
         
@@ -16,43 +23,72 @@ namespace Code.Services.LevelConductors
         {
             base.Dispose();
             _timer = 0f;
+            _isGameFinished = false;
+            _updateCancellationTokenSource?.Cancel();
+            _updateCancellationTokenSource?.Dispose();
+            _updateCancellationTokenSource = null;
         }
         
         public void InitTimer()
         {
-            InvokeChangedRemainingEvent($"{TimeInSeconds() / 60}:{TimeInSeconds() % 60:00}");
+            _timer = 0f;
+            _isGameFinished = false;
+            _updateCancellationTokenSource?.Cancel();
+            _updateCancellationTokenSource?.Dispose();
+            _updateCancellationTokenSource = new CancellationTokenSource();
+            
+            InvokeChangedRemainingEvent(FormatTime(TimeInSeconds()));
+            InvokeChangedTargetEvent(TargetScore().ToString());
+            
+            UpdateTimerAsync(_updateCancellationTokenSource.Token).Forget();
         }
 
-        public void Update()
+        private async UniTaskVoid UpdateTimerAsync(CancellationToken cancellationToken)
         {
-            _timer += Time.deltaTime;
-            
-            InvokeChangedRemainingEvent($"{(int) Mathf.Max((TimeInSeconds() - _timer) / 60, 0)}:" +
-                                        $"{(int) Mathf.Max((TimeInSeconds() - _timer) % 60, 0):00}");
-
-            if (!(TimeInSeconds() - _timer <= 0)) 
-                return;
-            
-            if (_currentScore >= TargetScore())
-                GameWin();
-            else
-                GameLose();
+            while (!cancellationToken.IsCancellationRequested && !_isGameFinished)
+            {
+                await UniTask.Yield(cancellationToken);
+                
+                _timer += Time.deltaTime;
+                
+                float remainingTime = TimeInSeconds() - _timer;
+                
+                if (remainingTime <= 0)
+                {
+                    remainingTime = 0;
+                    _isGameFinished = true;
+                    
+                    if (_currentScore >= TargetScore())
+                        GameWin();
+                    else
+                        GameLose();
+                }
+                
+                InvokeChangedRemainingEvent(FormatTime((int)remainingTime));
+            }
+        }
+        
+        private string FormatTime(int totalSeconds)
+        {
+            int minutes = totalSeconds / 60;
+            int seconds = totalSeconds % 60;
+            return $"{minutes}:{seconds:00}";
         }
         
         private int TimeInSeconds()
         {
-            if (LevelTypeConfigs is LevelTypeConfigTimer levelTypeConfigMoves)
-                return levelTypeConfigMoves.TimeInSeconds;
+            if (LevelTypeConfigs is LevelTypeConfigTimer levelTypeConfigTimer)
+                return levelTypeConfigTimer.TimeInSeconds;
 
-            throw new System.Exception("Level type config is not of type LevelTypeConfigMoves");
+            throw new System.Exception("Level type config is not of type LevelTypeConfigTimer");
         }
         
         private int TargetScore()
         {
-            if (LevelTypeConfigs is LevelTypeConfigTimer levelTypeConfigMoves)
-                return levelTypeConfigMoves.TargetScore;
+            if (LevelTypeConfigs is LevelTypeConfigTimer levelTypeConfigTimer)
+                return levelTypeConfigTimer.TargetScore;
 
-            throw new System.Exception("Level type config is not of type LevelTypeConfigMoves");
+            throw new System.Exception("Level type config is not of type LevelTypeConfigTimer");
         }
     }
 }
