@@ -7,6 +7,10 @@ namespace Code.Logic.Level.PM
         int GetScore();
         string GetTargetText();
         string GetRemainingText();
+        string GetLevelName();
+        int GetLevelNumber();
+        int GetStars();
+        LevelTypeId GetCurrentLevelTypeId();
         string GetConstantLevelText(TextTypeId textTypeId, LevelTypeId levelTypeId);
     }
 }

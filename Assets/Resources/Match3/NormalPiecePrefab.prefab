@@ -257,7 +257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6a8eabb3d21c044b6d2d57839f047b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorSprites:
+  _sprite: {fileID: 21214488}
+  _colorSprites:
   - color: 0
     sprite: {fileID: 21300000, guid: b7a68c654b9c3a44c9d3df16fa71210c, type: 3}
   - color: 1
@@ -282,7 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57d71dec2ae563429943c1ee71d06fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearAnimation: {fileID: 7400000, guid: bd4243f588adbad48b5987ff7a8fe8b7, type: 2}
+  _clearAnimation: {fileID: 7400000, guid: bd4243f588adbad48b5987ff7a8fe8b7, type: 2}
+  _pieceView: {fileID: 6868508522085496162}
+  _animator: {fileID: 95970875753207710}
 --- !u!114 &8111397712725135805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2803b8c52ad9fe46adfb50bebfcb552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pieceView: {fileID: 6868508522085496162}
 --- !u!114 &6868508522085496162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,3 +323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566b53790fac78a42ae8b12da9fb2da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movableComponent: {fileID: 1599620948170550833}
+  _colorComponent: {fileID: 1148803895015159081}
+  _clearableComponent: {fileID: 4774816019596575285}

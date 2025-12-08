@@ -26,13 +26,17 @@ namespace Code.Services.LevelConductors
             }
 
             InvokeChangedTargetEvent(_numObstaclesLeft.ToString());
+            int maxMoves = NumMoves();
+            InvokeChangedRemainingEvent($"{maxMoves} из {maxMoves}");
         }
         
         public override void OnMove()
         {
             _movesUsed++;
 
-            InvokeChangedRemainingEvent((NumMoves() - _movesUsed).ToString());
+            int maxMoves = NumMoves();
+            int remaining = maxMoves - _movesUsed;
+            InvokeChangedRemainingEvent($"{remaining} из {maxMoves}");
             
             if (NumMoves() - _movesUsed == 0 && _numObstaclesLeft > 0)
                 GameLose();

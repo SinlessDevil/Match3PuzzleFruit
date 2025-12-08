@@ -4,8 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="edit: refactoring references">
+    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="fix: level conductor">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/GameLoopState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/GameLoopState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/LoadLevelState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Infrastructure/StateMachine/Game/States/LoadLevelState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorMoves.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorMoves.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorObstacles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorObstacles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/PM/ILevelInfoPM.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/PM/ILevelInfoPM.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/PM/LevelInfoPm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/PM/LevelInfoPm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingInfoView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingInfoView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreInfoView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreInfoView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetInfoView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/TargetInfoView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Huds/GameHud.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Huds/GameHud.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/BubblePiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/BubblePiecePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/ColumnPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/ColumnPiecePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/NormalPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/NormalPiecePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/RainbowPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/RainbowPiecePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/RowClearPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/RowClearPiecePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/REFACTORING_ANALYSIS.md" beforeDir="false" afterPath="$PROJECT_DIR$/REFACTORING_ANALYSIS.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +47,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Infrastructure/StateMachine/Game/States/LoadLevelState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/ClearablePiece.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/ColorPiece.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/GamePieceView.cs" root0="SKIP_HIGHLIGHTING" />
@@ -122,7 +142,7 @@
       <workItem from="1764411582375" duration="2727000" />
       <workItem from="1764934898438" duration="729000" />
       <workItem from="1765200542536" duration="701000" />
-      <workItem from="1765201806040" duration="4311000" />
+      <workItem from="1765201806040" duration="7755000" />
     </task>
     <task id="LOCAL-00001" summary="edit: name space">
       <option name="closed" value="true" />
@@ -156,7 +176,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765205317484</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix: level conductor">
+      <option name="closed" value="true" />
+      <created>1765207573584</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1765207573584</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +215,7 @@
     <MESSAGE value="edit: refactoring MatchBoardController" />
     <MESSAGE value="fix: MovablePiece" />
     <MESSAGE value="edit: refactoring references" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit: refactoring references" />
+    <MESSAGE value="fix: level conductor" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: level conductor" />
   </component>
 </project>

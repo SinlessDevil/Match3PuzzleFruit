@@ -3,6 +3,7 @@ using Code.Logic.Level.PM;
 using Code.Services.StaticData;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.UI.Game
@@ -12,10 +13,13 @@ namespace Code.UI.Game
         [Space(10)] [Header("Other")]
         [SerializeField] private InputZona _inputZona;
         [SerializeField] private List<GameObject> _debugObjects;
+        [FormerlySerializedAs("levelNameView")]
         [Space(10)] [Header("Views")]
-        [SerializeField] private RemainingInfoView remainingInfoView;
-        [SerializeField] private TargetInfoView targetInfoView;
-        [SerializeField] private ScoreInfoView scoreInfoView;
+        [SerializeField] private LevelNameView _levelNameView;
+        [SerializeField] private RemainingInfoView _remainingInfoView;
+        [FormerlySerializedAs("_targetInfoView")]
+        [SerializeField] private LevelTypeView _levelTypeView;
+        [SerializeField] private ScoreInfoView _scoreInfoView;
         
         private IStaticDataService _staticDataService; 
         
@@ -29,9 +33,17 @@ namespace Code.UI.Game
         
         public void Initialize(ILevelInfoPM levelInfoPm)
         {
-            remainingInfoView.Initialize(levelInfoPm);
-            targetInfoView.Initialize(levelInfoPm);
-            scoreInfoView.Initialize(levelInfoPm);
+            if (_levelNameView != null)
+                _levelNameView.Initialize(levelInfoPm);
+            
+            if (_remainingInfoView != null)
+                _remainingInfoView.Initialize(levelInfoPm);
+            
+            if (_levelTypeView != null)
+                _levelTypeView.Initialize(levelInfoPm);
+            
+            if (_scoreInfoView != null)
+                _scoreInfoView.Initialize(levelInfoPm);
             
             InitDebugObjects();
             TrySetUpEventSystem();
@@ -39,9 +51,11 @@ namespace Code.UI.Game
         
         public void Dispose()
         {
-            remainingInfoView.Dispose();
-            targetInfoView.Dispose();
-            scoreInfoView.Dispose();
+            if (_remainingInfoView != null)
+                _remainingInfoView.Dispose();
+            
+            if (_scoreInfoView != null)
+                _scoreInfoView.Dispose();
         }
         
         private void InitDebugObjects()

@@ -7,7 +7,17 @@ namespace Code.Services.LevelConductors
     {
         private int _movesUsed = 0;
 
-        public LevelConductorMoves(ILevelService levelService) : base(levelService) { }
+        public LevelConductorMoves(ILevelService levelService) : base(levelService)
+        {
+            InvokeInitialRemaining();
+        }
+
+        private void InvokeInitialRemaining()
+        {
+            int maxMoves = NumMoves();
+            InvokeChangedRemainingEvent($"{maxMoves} из {maxMoves}");
+            InvokeChangedTargetEvent(TargetScore().ToString());
+        }
 
         public override void Dispose()
         {
@@ -20,9 +30,11 @@ namespace Code.Services.LevelConductors
         {
             _movesUsed++;
             
-            InvokeChangedRemainingEvent((NumMoves() - _movesUsed).ToString());
+            int maxMoves = NumMoves();
+            int remaining = maxMoves - _movesUsed;
+            InvokeChangedRemainingEvent($"{remaining} из {maxMoves}");
             
-            if (NumMoves() - _movesUsed != 0)
+            if (remaining != 0)
                 return;
         
             if (_currentScore >= TargetScore())

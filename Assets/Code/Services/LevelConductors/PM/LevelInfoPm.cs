@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Code.Services.LevelInfo;
 using Code.Services.Levels;
 using Code.Services.StaticData;
 using Code.StaticData;
@@ -9,30 +10,53 @@ namespace Code.Logic.Level.PM
 {
     public class LevelInfoPm : ILevelInfoPM
     {
-        private ILevelService _levelService;
-        private IStaticDataService _staticDataService;
+        private readonly ILevelInfoService _levelInfoService;
+        private readonly ILevelService _levelService;
+        private readonly IStaticDataService _staticDataService;
         
         public LevelInfoPm(
+            ILevelInfoService levelInfoService,
             ILevelService levelService, 
             IStaticDataService staticDataService)
         {
+            _levelInfoService = levelInfoService;
             _levelService = levelService;
             _staticDataService = staticDataService;
         }
 
         public int GetScore()
         {
-            return 0;
+            return _levelInfoService.CurrentScore;
         }
 
         public string GetTargetText()
         {
-            return string.Empty;
+            return _levelInfoService.TargetText;
         }
 
         public string GetRemainingText()
         {
-            return string.Empty;
+            return _levelInfoService.RemainingText;
+        }
+        
+        public string GetLevelName()
+        {
+            return _levelInfoService.LevelName;
+        }
+        
+        public int GetLevelNumber()
+        {
+            return _levelService.GetCurrentLevel();
+        }
+        
+        public int GetStars()
+        {
+            return _levelInfoService.CurrentStars;
+        }
+        
+        public LevelTypeId GetCurrentLevelTypeId()
+        {
+            return _levelInfoService.CurrentLevelTypeId;
         }
         
         public string GetConstantLevelText(TextTypeId textTypeId, LevelTypeId levelTypeId)

@@ -119,7 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6a8eabb3d21c044b6d2d57839f047b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorSprites:
+  _sprite: {fileID: 212962641851238190}
+  _colorSprites:
   - color: 6
     sprite: {fileID: 21300000, guid: 1821a6662eede764c9e9e39ad5fb798a, type: 3}
 --- !u!114 &2573924137479814613
@@ -134,7 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842b23e62e92d034db7dfd2228a56aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearAnimation: {fileID: 7400000, guid: bd4243f588adbad48b5987ff7a8fe8b7, type: 2}
+  _clearAnimation: {fileID: 7400000, guid: bd4243f588adbad48b5987ff7a8fe8b7, type: 2}
+  _pieceView: {fileID: 37316027740377777}
+  _animator: {fileID: 95135782146498954}
 --- !u!114 &950470111268824501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566b53790fac78a42ae8b12da9fb2da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movableComponent: {fileID: 8682265180687865511}
+  _colorComponent: {fileID: 3463750880520477822}
+  _clearableComponent: {fileID: 2573924137479814613}
 --- !u!114 &8682265180687865511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2803b8c52ad9fe46adfb50bebfcb552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pieceView: {fileID: 37316027740377777}
 --- !u!1 &1855798515578516
 GameObject:
   m_ObjectHideFlags: 0

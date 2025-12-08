@@ -208,7 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57d71dec2ae563429943c1ee71d06fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearAnimation: {fileID: 7400000, guid: 207af7f8dda88074dbeb7287a7370163, type: 2}
+  _clearAnimation: {fileID: 7400000, guid: 207af7f8dda88074dbeb7287a7370163, type: 2}
+  _pieceView: {fileID: 3691675686722528280}
+  _animator: {fileID: 95282143576963718}
 --- !u!114 &1098732938532256539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,3 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566b53790fac78a42ae8b12da9fb2da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movableComponent: {fileID: 0}
+  _colorComponent: {fileID: 0}
+  _clearableComponent: {fileID: 6125715749789035073}

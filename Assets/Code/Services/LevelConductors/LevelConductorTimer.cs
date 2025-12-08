@@ -37,7 +37,8 @@ namespace Code.Services.LevelConductors
             _updateCancellationTokenSource?.Dispose();
             _updateCancellationTokenSource = new CancellationTokenSource();
             
-            InvokeChangedRemainingEvent(FormatTime(TimeInSeconds()));
+            int maxTime = TimeInSeconds();
+            InvokeChangedRemainingEvent($"{FormatTime(maxTime)} из {FormatTime(maxTime)}");
             InvokeChangedTargetEvent(TargetScore().ToString());
             
             UpdateTimerAsync(_updateCancellationTokenSource.Token).Forget();
@@ -52,6 +53,7 @@ namespace Code.Services.LevelConductors
                 _timer += Time.deltaTime;
                 
                 float remainingTime = TimeInSeconds() - _timer;
+                int maxTime = TimeInSeconds();
                 
                 if (remainingTime <= 0)
                 {
@@ -64,7 +66,7 @@ namespace Code.Services.LevelConductors
                         GameLose();
                 }
                 
-                InvokeChangedRemainingEvent(FormatTime((int)remainingTime));
+                InvokeChangedRemainingEvent($"{FormatTime((int)remainingTime)} из {FormatTime(maxTime)}");
             }
         }
         

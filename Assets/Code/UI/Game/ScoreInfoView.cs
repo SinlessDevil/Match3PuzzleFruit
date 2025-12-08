@@ -1,23 +1,34 @@
 using Code.Logic.Level.PM;
+using Code.Services.LevelInfo;
 using UnityEngine;
-using UnityEngine.UI;
+using Zenject;
 
 namespace Code.UI.Game
 {
     public class ScoreInfoView : LevelTextInfoView
     {
-        [SerializeField] private Image[] stars;
+        [SerializeField] private GameObject[] _starObjects;
         
         private int _lastStarIndex = 0;
         private ILevelInfoPM _levelInfoPm;
+        private ILevelInfoService _levelInfoService;
         
         public int CurrentStarIndex => _lastStarIndex;
+
+        [Inject]
+        private void Constructor(ILevelInfoService levelInfoService)
+        {
+            _levelInfoService = levelInfoService;
+        }
 
         public override void Initialize(ILevelInfoPM levelInfoPm)
         {
             _levelInfoPm = levelInfoPm;
             
             Subscribe();
+            
+            UpdateScore();
+            UpdateStars();
         }
 
         public override void Dispose()
@@ -27,36 +38,50 @@ namespace Code.UI.Game
 
         protected override void Subscribe()
         {
-            
+            if (_levelInfoService != null)
+            {
+                _levelInfoService.ScoreChangedEvent += OnScoreChanged;
+            }
         }
 
         protected override void Unsubscribe()
         {
-            
+            if (_levelInfoService != null)
+            {
+                _levelInfoService.ScoreChangedEvent -= OnScoreChanged;
+            }
         }
         
-        public void SetScore(int score, int[] thresholds)
+        private void OnScoreChanged(int score)
         {
-            int starIndex = CalculateStars(score, thresholds);
-
-            for (int i = 0; i < stars.Length; i++)
+            UpdateScore();
+            UpdateStars();
+        }
+        
+        private void UpdateScore()
+        {
+            if (_levelInfoPm != null)
             {
-                stars[i].enabled = (i == starIndex);
+                SetText(_levelInfoPm.GetScore().ToString());
+            }
+        }
+        
+        private void UpdateStars()
+        {
+            int stars = _levelInfoPm != null ? _levelInfoPm.GetStars() : 0;
+
+            if (_starObjects != null)
+            {
+                for (int i = 0; i < _starObjects.Length; i++)
+                {
+                    if (_starObjects[i] != null)
+                    {
+                        _starObjects[i].SetActive(i < stars);
+                    }
+                }
             }
 
-            _lastStarIndex = starIndex;
-        }
-
-        private int CalculateStars(int score, int[] thresholds)
-        {
-            if (thresholds == null || thresholds.Length != 3)
-                return 0;
-
-            if (score >= thresholds[2]) return 3;
-            if (score >= thresholds[1]) return 2;
-            if (score >= thresholds[0]) return 1;
-
-            return 0;
+            _lastStarIndex = stars;
         }
     }
 }

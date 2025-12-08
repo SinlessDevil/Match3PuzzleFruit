@@ -6,6 +6,7 @@ using Code.Services.Factories.UIFactory;
 using Code.Services.Input;
 using Code.Services.LevelConductors;
 using Code.Services.LevelConductors.Locator;
+using Code.Services.LevelInfo;
 using Code.Services.Levels;
 using Code.Services.LocalProgress;
 using Code.Services.Providers.Widgets;
@@ -30,6 +31,7 @@ namespace Code.Infrastructure.StateMachine.Game.States
         private readonly IMatchFinderService _matchFinderService;
         private readonly IPieceSwapService _pieceSwapService;
         private readonly IBoardClearService _boardClearService;
+        private readonly ILevelInfoService _levelInfoService;
         
         private IMatchBoardController _matchBoardController;
         
@@ -47,7 +49,8 @@ namespace Code.Infrastructure.StateMachine.Game.States
             IBoardFillService boardFillService,
             IMatchFinderService matchFinderService,
             IPieceSwapService pieceSwapService,
-            IBoardClearService boardClearService)
+            IBoardClearService boardClearService,
+            ILevelInfoService levelInfoService)
         {
             _gameStateMachine = gameStateMachine;
             _inputService = inputService;
@@ -63,6 +66,7 @@ namespace Code.Infrastructure.StateMachine.Game.States
             _matchFinderService = matchFinderService;
             _pieceSwapService = pieceSwapService;
             _boardClearService = boardClearService;
+            _levelInfoService = levelInfoService;
         }
         
         public void Enter()
@@ -119,6 +123,7 @@ namespace Code.Infrastructure.StateMachine.Game.States
             _widgetProvider.CleanupPool();
             _levelService.Cleanup();
             _levelLocalProgressService.Cleanup();
+            _levelInfoService.Cleanup();
             
             _timeService.ResetTimer();
         }

@@ -1,6 +1,9 @@
 ﻿using Code.Logic.Level.PM;
 using Code.Services.Factories.UIFactory;
+using Code.Services.Finish;
+using Code.Services.LevelConductors;
 using Code.Services.LevelConductors.Locator;
+using Code.Services.LevelInfo;
 using Code.Services.Levels;
 using Code.Services.Providers.Widgets;
 using Code.Services.StaticData;
@@ -18,6 +21,8 @@ namespace Code.Infrastructure.StateMachine.Game.States
         private readonly ILevelService _levelService;
         private readonly IStaticDataService _staticDataService;
         private readonly ILevelServiceLocator _levelServiceLocator;
+        private readonly ILevelInfoService _levelInfoService;
+        private readonly IFinishService _finishService;
 
         public LoadLevelState(
             IStateMachine<IGameState> gameStateMachine, 
@@ -27,7 +32,9 @@ namespace Code.Infrastructure.StateMachine.Game.States
             IWidgetProvider widgetProvider,
             ILevelService levelService,
             IStaticDataService staticDataService,
-            ILevelServiceLocator levelServiceLocator)
+            ILevelServiceLocator levelServiceLocator,
+            ILevelInfoService levelInfoService,
+            IFinishService finishService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -37,6 +44,8 @@ namespace Code.Infrastructure.StateMachine.Game.States
             _levelService = levelService;
             _staticDataService = staticDataService;
             _levelServiceLocator = levelServiceLocator;
+            _levelInfoService = levelInfoService;
+            _finishService = finishService;
         }
 
         public void Enter(string payload)
@@ -72,7 +81,11 @@ namespace Code.Infrastructure.StateMachine.Game.States
 
         private void InitLevelServiceConductor()
         {
-            _levelServiceLocator.GetForCurrentLevel();
+            ILevelConductor conductor = _levelServiceLocator.GetForCurrentLevel();
+            if (conductor is LevelConductor levelConductor)
+            {
+                levelConductor.SetFinishService(_finishService);
+            }
         }
 
         private void InitProviders()
@@ -88,7 +101,11 @@ namespace Code.Infrastructure.StateMachine.Game.States
 
         private ILevelInfoPM CreateLevelInfoPM()
         {
-            return new LevelInfoPm(_levelService, _staticDataService);
+            _levelInfoService.Initialize();
+            return new LevelInfoPm(
+                _levelInfoService,
+                _levelService, 
+                _staticDataService);
         }
     }
 }
