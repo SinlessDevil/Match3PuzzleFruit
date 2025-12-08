@@ -4,6 +4,7 @@ using Code.Services.Board;
 using Code.Services.Factories.Pieces;
 using Code.Services.Factories.UIFactory;
 using Code.Services.Input;
+using Code.Services.LevelConductors;
 using Code.Services.LevelConductors.Locator;
 using Code.Services.Levels;
 using Code.Services.LocalProgress;
@@ -91,6 +92,12 @@ namespace Code.Infrastructure.StateMachine.Game.States
             _matchBoardController.SetRootTransform(GetMapHolder().transform);
             
             _matchBoardController.StartLevel();
+            
+            ILevelConductor conductor = _levelServiceLocator.GetForCurrentLevel();
+            if (conductor is LevelConductorObstacles obstaclesConductor)
+            {
+                obstaclesConductor.InitNumObstaclesLeft(_matchBoardController);
+            }
         }
 
         public void Update()

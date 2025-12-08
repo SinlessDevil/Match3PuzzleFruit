@@ -1,4 +1,5 @@
-﻿using Code.Logic.Match3;
+﻿using Code.Logic.Controllers;
+using Code.Logic.Match3;
 using Code.Services.Levels;
 using Code.StaticData.Levels.LevelTypeConfigs;
 
@@ -13,12 +14,16 @@ namespace Code.Services.LevelConductors
 
         public LevelConductorObstacles(ILevelService levelService) : base(levelService) { }
 
-        public void InitNumObstaclesLeft()
+        public void InitNumObstaclesLeft(IMatchBoardController matchBoardController)
         {
-            // for (int i = 0; i < obstacleTypes.Length; i++)
-            // {
-            //     _numObstaclesLeft += matchBoardController.GetPiecesOfType(obstacleTypes[i]).Count;
-            // }
+            _numObstaclesLeft = 0;
+            
+            PieceType[] obstacleTypes = PieceTypes();
+            
+            for (int i = 0; i < obstacleTypes.Length; i++)
+            {
+                _numObstaclesLeft += matchBoardController.GetPiecesOfType(obstacleTypes[i]).Count;
+            }
 
             InvokeChangedTargetEvent(_numObstaclesLeft.ToString());
         }
@@ -67,18 +72,18 @@ namespace Code.Services.LevelConductors
         
         private int NumMoves()
         {
-            if (LevelTypeConfigs is LevelTypeConfigObstacles levelTypeConfigMoves)
-                return levelTypeConfigMoves.NumMoves;
+            if (LevelTypeConfigs is LevelTypeConfigObstacles levelTypeConfigObstacles)
+                return levelTypeConfigObstacles.NumMoves;
 
-            throw new System.Exception("Level type config is not of type LevelTypeConfigMoves");
+            throw new System.Exception("Level type config is not of type LevelTypeConfigObstacles");
         }
         
         private PieceType[] PieceTypes()
         {
-            if (LevelTypeConfigs is LevelTypeConfigObstacles levelTypeConfigMoves)
-                return levelTypeConfigMoves.ObstacleTypes;
+            if (LevelTypeConfigs is LevelTypeConfigObstacles levelTypeConfigObstacles)
+                return levelTypeConfigObstacles.ObstacleTypes;
 
-            throw new System.Exception("Level type config is not of type LevelTypeConfigMoves");
+            throw new System.Exception("Level type config is not of type LevelTypeConfigObstacles");
         }
     }
 }
