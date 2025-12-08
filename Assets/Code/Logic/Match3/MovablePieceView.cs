@@ -1,4 +1,5 @@
-using System.Collections;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Code.Logic.Match3
@@ -6,11 +7,18 @@ namespace Code.Logic.Match3
     public class MovablePieceView : MonoBehaviour
     {
         private GamePieceView _pieceView;
-        private IEnumerator _moveCoroutine;
+        private CancellationTokenSource _moveCancellationTokenSource;
 
         private void Awake()
         {
             _pieceView = GetComponent<GamePieceView>();
+        }
+
+        private void OnDestroy()
+        {
+            _moveCancellationTokenSource?.Cancel();
+            _moveCancellationTokenSource?.Dispose();
+            _moveCancellationTokenSource = null;
         }
 
         public void Move(int newX, int newY, float time)
@@ -31,16 +39,14 @@ namespace Code.Logic.Match3
         
         public void Move(int newX, int newY, Vector2 endPosition, float time)
         {
-            if (_moveCoroutine != null)
-            {
-                StopCoroutine(_moveCoroutine);
-            }
+            _moveCancellationTokenSource?.Cancel();
+            _moveCancellationTokenSource?.Dispose();
+            _moveCancellationTokenSource = new CancellationTokenSource();
 
-            _moveCoroutine = MoveCoroutine(newX, newY, endPosition, time);
-            StartCoroutine(_moveCoroutine);
+            MoveAsync(newX, newY, endPosition, time, _moveCancellationTokenSource.Token).Forget();
         }
 
-        private IEnumerator MoveCoroutine(int newX, int newY, Vector2 endPosition, float time)
+        private async UniTaskVoid MoveAsync(int newX, int newY, Vector2 endPosition, float time, CancellationToken cancellationToken)
         {
             if (_pieceView?.Data != null)
             {
@@ -49,14 +55,20 @@ namespace Code.Logic.Match3
 
             Vector3 startPos = transform.position;
             Vector3 endPos = endPosition;
+            float elapsedTime = 0f;
 
-            for (float t = 0; t <= 1 * time; t += Time.deltaTime)
+            while (elapsedTime < time && !cancellationToken.IsCancellationRequested)
             {
-                transform.position = Vector3.Lerp(startPos, endPos, t / time);
-                yield return null;
+                elapsedTime += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsedTime / time);
+                transform.position = Vector3.Lerp(startPos, endPos, t);
+                await UniTask.Yield(cancellationToken);
             }
 
-            transform.position = endPos;
+            if (!cancellationToken.IsCancellationRequested)
+            {
+                transform.position = endPos;
+            }
         }
     }
 }
