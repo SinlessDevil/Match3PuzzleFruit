@@ -32,13 +32,13 @@ MonoBehaviour:
       Data: 3
     - Name: 
       Entry: 3
-      Data: 15000
+      Data: 500
     - Name: 
       Entry: 3
-      Data: 18000
+      Data: 650
     - Name: 
       Entry: 3
-      Data: 21000
+      Data: 800
     - Name: 
       Entry: 13
       Data: 
@@ -50,7 +50,7 @@ MonoBehaviour:
       Data: 14
     - Name: TargetScore
       Entry: 3
-      Data: 15000
+      Data: 500
     - Name: 
       Entry: 8
       Data: 

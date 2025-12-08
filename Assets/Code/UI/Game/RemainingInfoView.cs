@@ -1,4 +1,3 @@
-using Code.Logic.Level;
 using Code.Logic.Level.PM;
 using Code.Services.LevelInfo;
 using Zenject;
@@ -32,18 +31,12 @@ namespace Code.UI.Game
 
         protected override void Subscribe()
         {
-            if (_levelInfoService != null)
-            {
-                _levelInfoService.RemainingChangedEvent += OnRemainingChanged;
-            }
+            _levelInfoService.RemainingChangedEvent += OnRemainingChanged;
         }
 
         protected override void Unsubscribe()
         {
-            if (_levelInfoService != null)
-            {
-                _levelInfoService.RemainingChangedEvent -= OnRemainingChanged;
-            }
+            _levelInfoService.RemainingChangedEvent -= OnRemainingChanged;
         }
         
         private void OnRemainingChanged(string remaining)

@@ -50,6 +50,12 @@ namespace Code.Services.LevelInfo
             
             // Получаем начальные значения после подписки
             InitializeInitialValues();
+            
+            // Просим кондуктор повторно отправить начальные значения после подписки
+            if (_currentConductor is LevelConductor levelConductor)
+            {
+                levelConductor.InitializeInitialValues();
+            }
         }
         
         private void Subscribe()

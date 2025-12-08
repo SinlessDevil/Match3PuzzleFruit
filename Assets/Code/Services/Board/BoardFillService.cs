@@ -149,6 +149,7 @@ namespace Code.Services.Board
 
                 GamePieceView pieceView = newPiece.GetComponent<GamePieceView>();
                 GamePieceData data = new GamePieceData(x, -1, PieceType.Normal);
+                data.Score = 10; // Базовое значение для нормальных кусочков
                 data.SetMatchBoardController(config.MatchBoardController);
                 pieceView.Initialize(data);
                 
@@ -169,12 +170,25 @@ namespace Code.Services.Board
             GamePieceView pieceView = newPiece.GetComponent<GamePieceView>();
             
             GamePieceData data = new GamePieceData(x, y, type);
+            data.Score = GetScoreForPieceType(type);
             data.SetMatchBoardController(config.MatchBoardController);
             pieceView.Initialize(data);
             
             pieces[x, y] = pieceView;
 
             return pieces[x, y];
+        }
+        
+        private int GetScoreForPieceType(PieceType type)
+        {
+            return type switch
+            {
+                PieceType.Normal => 10,
+                PieceType.RowClear => 50,
+                PieceType.ColumnClear => 50,
+                PieceType.Rainbow => 100,
+                _ => 0
+            };
         }
     }
 }

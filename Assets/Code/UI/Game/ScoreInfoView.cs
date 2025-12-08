@@ -38,18 +38,12 @@ namespace Code.UI.Game
 
         protected override void Subscribe()
         {
-            if (_levelInfoService != null)
-            {
-                _levelInfoService.ScoreChangedEvent += OnScoreChanged;
-            }
+            _levelInfoService.ScoreChangedEvent += OnScoreChanged;
         }
 
         protected override void Unsubscribe()
         {
-            if (_levelInfoService != null)
-            {
-                _levelInfoService.ScoreChangedEvent -= OnScoreChanged;
-            }
+            _levelInfoService.ScoreChangedEvent -= OnScoreChanged;
         }
         
         private void OnScoreChanged(int score)
@@ -62,7 +56,8 @@ namespace Code.UI.Game
         {
             if (_levelInfoPm != null)
             {
-                SetText(_levelInfoPm.GetScore().ToString());
+                int score = _levelInfoPm.GetScore();
+                SetText(score.ToString());
             }
         }
         

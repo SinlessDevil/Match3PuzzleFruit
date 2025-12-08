@@ -13,6 +13,13 @@ namespace Code.Services.LevelConductors
         private int _numObstaclesLeft = 0;
 
         public LevelConductorObstacles(ILevelService levelService) : base(levelService) { }
+        
+        public override void InitializeInitialValues()
+        {
+            int maxMoves = NumMoves();
+            InvokeChangedRemainingEvent($"{maxMoves} из {maxMoves}");
+            // TargetText будет установлен через InitNumObstaclesLeft после инициализации доски
+        }
 
         public void InitNumObstaclesLeft(IMatchBoardController matchBoardController)
         {

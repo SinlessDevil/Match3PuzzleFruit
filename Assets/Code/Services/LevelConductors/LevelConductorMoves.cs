@@ -9,10 +9,9 @@ namespace Code.Services.LevelConductors
 
         public LevelConductorMoves(ILevelService levelService) : base(levelService)
         {
-            InvokeInitialRemaining();
         }
-
-        private void InvokeInitialRemaining()
+        
+        public override void InitializeInitialValues()
         {
             int maxMoves = NumMoves();
             InvokeChangedRemainingEvent($"{maxMoves} из {maxMoves}");

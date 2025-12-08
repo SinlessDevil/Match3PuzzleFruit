@@ -1539,9 +1539,9 @@ MonoBehaviour:
   _inputZona: {fileID: 1845956120257999870}
   _debugObjects:
   - {fileID: 990411711326399318}
-  _levelNameView: {fileID: 425440065082658943}
+  levelView: {fileID: 425440065082658943}
   _remainingInfoView: {fileID: 4588417248140189687}
-  _targetInfoView: {fileID: 4988682943731936157}
+  _levelTypeView: {fileID: 4190820917903025037}
   _scoreInfoView: {fileID: 8119829587142121731}
 --- !u!1 &6309788364938184886
 GameObject:
@@ -1893,7 +1893,7 @@ GameObject:
   - component: {fileID: 4715128030803132587}
   - component: {fileID: 3998897533157777554}
   - component: {fileID: 8963311279834145116}
-  - component: {fileID: 4988682943731936157}
+  - component: {fileID: 4190820917903025037}
   m_Layer: 5
   m_Name: Target_Container
   m_TagString: Untagged
@@ -1959,7 +1959,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4988682943731936157
+--- !u!114 &4190820917903025037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1968,7 +1968,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8304915545773107413}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef86666d4d9447d95625be7119cc291, type: 3}
+  m_Script: {fileID: 11500000, guid: a909ba350e259c84aac1b241fef44e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 2671802828688220527}
@@ -2052,9 +2052,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '15
+  m_Text: 'LeveL 1
 
-    remaining moves'
+'
 --- !u!114 &4165776508278911966
 MonoBehaviour:
   m_ObjectHideFlags: 0

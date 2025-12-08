@@ -13,9 +13,10 @@ namespace Code.UI.Game
         [Space(10)] [Header("Other")]
         [SerializeField] private InputZona _inputZona;
         [SerializeField] private List<GameObject> _debugObjects;
+        [FormerlySerializedAs("_levelNameView")]
         [FormerlySerializedAs("levelNameView")]
         [Space(10)] [Header("Views")]
-        [SerializeField] private LevelNameView _levelNameView;
+        [SerializeField] private LevelView levelView;
         [SerializeField] private RemainingInfoView _remainingInfoView;
         [FormerlySerializedAs("_targetInfoView")]
         [SerializeField] private LevelTypeView _levelTypeView;
@@ -33,8 +34,8 @@ namespace Code.UI.Game
         
         public void Initialize(ILevelInfoPM levelInfoPm)
         {
-            if (_levelNameView != null)
-                _levelNameView.Initialize(levelInfoPm);
+            if (levelView != null)
+                levelView.Initialize(levelInfoPm);
             
             if (_remainingInfoView != null)
                 _remainingInfoView.Initialize(levelInfoPm);

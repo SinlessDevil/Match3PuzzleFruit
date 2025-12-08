@@ -43,6 +43,20 @@ namespace Code.Services.LevelConductors
             
             UpdateTimerAsync(_updateCancellationTokenSource.Token).Forget();
         }
+        
+        public override void InitializeInitialValues()
+        {
+            if (_updateCancellationTokenSource == null)
+            {
+                InitTimer();
+            }
+            else
+            {
+                int maxTime = TimeInSeconds();
+                InvokeChangedRemainingEvent($"{FormatTime(maxTime)} из {FormatTime(maxTime)}");
+                InvokeChangedTargetEvent(TargetScore().ToString());
+            }
+        }
 
         private async UniTaskVoid UpdateTimerAsync(CancellationToken cancellationToken)
         {

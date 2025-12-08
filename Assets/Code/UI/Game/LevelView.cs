@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Code.UI.Game
 {
-    public class LevelNameView : MonoBehaviour
+    public class LevelView : MonoBehaviour
     {
         [SerializeField] private Text _text;
         
@@ -21,9 +21,9 @@ namespace Code.UI.Game
         {
             if (_text != null && _levelInfoPm != null)
             {
-                _text.text = $"Level {_levelInfoPm.GetLevelNumber()}";
+                int levelNumber = _levelInfoPm.GetLevelNumber();
+                _text.text = $"Level {levelNumber}";
             }
         }
     }
 }
-

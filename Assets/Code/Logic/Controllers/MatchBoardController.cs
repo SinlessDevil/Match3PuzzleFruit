@@ -210,12 +210,25 @@ namespace Code.Logic.Controllers
             GamePieceView pieceView = newPiece.GetComponent<GamePieceView>();
             
             GamePieceData data = new GamePieceData(x, y, type);
+            data.Score = GetScoreForPieceType(type);
             data.SetMatchBoardController(this);
             pieceView.Initialize(data);
             
             _pieces[x, y] = pieceView;
 
             return _pieces[x, y];
+        }
+        
+        private int GetScoreForPieceType(PieceType type)
+        {
+            return type switch
+            {
+                PieceType.Normal => 10,
+                PieceType.RowClear => 50,
+                PieceType.ColumnClear => 50,
+                PieceType.Rainbow => 100,
+                _ => 0
+            };
         }
 
         private static bool IsAdjacent(GamePieceData data1, GamePieceData data2) =>

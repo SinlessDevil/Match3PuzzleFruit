@@ -30,6 +30,11 @@ namespace Code.Services.LevelConductors
         public event Action<string> ChangedTargetEvent;
         
         public abstract void OnMove();
+        
+        public virtual void InitializeInitialValues()
+        {
+            // Переопределяется в наследниках для отправки начальных значений после подписки на события
+        }
 
         public virtual void OnPieceCleared(GamePieceView pieceView)
         {
