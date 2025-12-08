@@ -103,7 +103,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &7063499391173149961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +119,6 @@ MonoBehaviour:
   _right: {fileID: 6276509582930694241}
   _left: {fileID: 9210649380886456409}
   _loadingText: {fileID: 2674375570835396536}
-  _animationDuration: 0.5
 --- !u!225 &4943869930359128343
 CanvasGroup:
   m_ObjectHideFlags: 0

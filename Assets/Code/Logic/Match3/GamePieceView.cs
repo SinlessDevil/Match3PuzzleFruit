@@ -6,19 +6,39 @@ namespace Code.Logic.Match3
 {
     public class GamePieceView : MonoBehaviour
     {
-        public event Action<GamePieceView> OnPiecePressed;
-        public event Action<GamePieceView> OnPieceEntered;
-        public event Action<GamePieceView> OnPieceReleased;
-        
+        [SerializeField] private MovablePieceView _movableComponent;
+        [SerializeField] private ColorPiece _colorComponent;
+        [SerializeField] private ClearablePiece _clearableComponent;
+     
         private GamePieceData _data;
-        private MovablePieceView _movableComponent;
-        private ColorPiece _colorComponent;
-        private ClearablePiece _clearableComponent;
+        
+        private void OnValidate()
+        {
+            if (_movableComponent == null)
+            {
+                _movableComponent = GetComponent<MovablePieceView>();
+            }
+
+            if (_colorComponent == null)
+            {
+                _colorComponent = GetComponent<ColorPiece>();
+            }
+
+            if (_clearableComponent == null)
+            {
+                _clearableComponent = GetComponent<ClearablePiece>();
+            }
+        }
         
         public GamePieceData Data => _data;
         public MovablePieceView MovableComponent => _movableComponent;
         public ColorPiece ColorComponent => _colorComponent;
         public ClearablePiece ClearableComponent => _clearableComponent;
+
+        public event Action<GamePieceView> OnPiecePressed;
+        public event Action<GamePieceView> OnPieceEntered;
+        public event Action<GamePieceView> OnPieceReleased;
+
         
         public int score
         {
@@ -30,13 +50,6 @@ namespace Code.Logic.Match3
                     _data.Score = value;
                 }
             }
-        }
-        
-        private void Awake()
-        {
-            _movableComponent = GetComponent<MovablePieceView>();
-            _colorComponent = GetComponent<ColorPiece>();
-            _clearableComponent = GetComponent<ClearablePiece>();
         }
         
         public void Initialize(GamePieceData data)

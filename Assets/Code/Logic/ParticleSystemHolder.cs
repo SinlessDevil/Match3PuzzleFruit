@@ -8,20 +8,18 @@ namespace Code.Logic
         [SerializeField] private List<ParticleSystem> _particleSystems = new();
         [SerializeField] private List<TrailRenderer> _trailRenderers = new();
         [SerializeField] private ParticleSystem _mainParticleSystem;
-
-        public bool IsActive { get; private set; }
-        
-        public ParticleSystem MainParticleSystem => _mainParticleSystem;
         
         private void OnValidate()
         {
             if (_mainParticleSystem == null)
+            {
                 _mainParticleSystem = GetComponent<ParticleSystem>();
-            
+            }
+
             if (_particleSystems.Count == 0)
             {
-                var particleSystemsInChildren = GetComponentsInChildren<ParticleSystem>();
-                foreach (var ps in particleSystemsInChildren)
+                ParticleSystem[] particleSystemsInChildren = GetComponentsInChildren<ParticleSystem>();
+                foreach (ParticleSystem ps in particleSystemsInChildren)
                 {
                     if (ps != _mainParticleSystem)
                     {
@@ -29,10 +27,16 @@ namespace Code.Logic
                     }
                 }
             }
-            
+
             if (_trailRenderers.Count == 0)
+            {
                 _trailRenderers.AddRange(GetComponentsInChildren<TrailRenderer>());
+            }
         }
+        
+        public bool IsActive { get; private set; }
+        
+        public ParticleSystem MainParticleSystem => _mainParticleSystem;
         
         public void Play()
         {

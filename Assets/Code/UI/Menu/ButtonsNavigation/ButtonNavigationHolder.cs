@@ -24,21 +24,21 @@ namespace Code.UI.Menu.ButtonsNavigation
         {
             _soundService = soundService;
         }
-        
-        public event Action<TypeWindow> OpenedWindowEvent;
-        
+
         private void OnValidate()
         {
             if (_animator == null)
             {
                 _animator = GetComponent<Animator>();
             }
-            
-            if(_buttonNavigations.Count == 0)
+
+            if (_buttonNavigations.Count == 0)
             {
                 _buttonNavigations.AddRange(GetComponentsInChildren<ButtonNavigation>());
             }
         }
+        
+        public event Action<TypeWindow> OpenedWindowEvent;
 
         private void OnDestroy()
         {

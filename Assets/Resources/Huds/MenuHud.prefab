@@ -707,6 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _typeWindow: 2
+  _rectTransform: {fileID: 6679990650994533706}
 --- !u!1 &4646933533386638185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,6 +1024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _typeWindow: 0
+  _rectTransform: {fileID: 962009545763853958}
 --- !u!1 &5023313559700149739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,6 +1077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _typeWindow: 1
+  _rectTransform: {fileID: 7611361494354170183}
   _chapterName: {fileID: 1980514538444554451}
   _gridLayoutGroup: {fileID: 6491511065281508615}
   _buttonsSwipeChapter:
@@ -1242,7 +1245,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &8150942736115410412
 MonoBehaviour:
   m_ObjectHideFlags: 0

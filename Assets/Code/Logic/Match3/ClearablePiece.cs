@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using Code.Services.LevelConductors.Locator;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Logic.Match3
 {
     public class ClearablePiece : MonoBehaviour
     {
-        public AnimationClip clearAnimation;
-        
-        protected GamePieceView _pieceView;
+        [FormerlySerializedAs("clearAnimation")] 
+        [SerializeField] public AnimationClip _clearAnimation;
+        [SerializeField] protected GamePieceView _pieceView;
+        [SerializeField] private Animator _animator;
 
         private ILevelServiceLocator _levelServiceLocator;
         
@@ -18,10 +20,18 @@ namespace Code.Logic.Match3
         {
             _levelServiceLocator = levelServiceLocator;
         }
-        
-        private void Awake()
+
+        private void OnValidate()
         {
-            _pieceView = GetComponent<GamePieceView>();
+            if (_pieceView == null)
+            {
+                _pieceView = GetComponent<GamePieceView>();
+            }
+
+            if (_animator == null)
+            {
+                _animator = GetComponent<Animator>();
+            }
         }
 
         public bool IsBeingCleared { get; private set; }
@@ -39,13 +49,11 @@ namespace Code.Logic.Match3
 
         private IEnumerator ClearCoroutine()
         {
-            Animator animator = GetComponent<Animator>();
-
-            if (animator != null)
+            if (_animator != null)
             {
-                animator.Play(clearAnimation.name);
+                _animator.Play(_clearAnimation.name);
 
-                yield return new WaitForSeconds(clearAnimation.length);
+                yield return new WaitForSeconds(_clearAnimation.length);
 
                 Destroy(gameObject);
             }

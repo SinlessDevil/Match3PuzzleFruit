@@ -10,7 +10,7 @@ namespace Code.UI.Menu.ButtonsNavigation
         [SerializeField] private TypeWindow _typeWindow;
 
         public event Action<TypeWindow> OpenedWindowEvent;
-        
+
         private void OnValidate()
         {
             if (_button == null)
@@ -18,7 +18,7 @@ namespace Code.UI.Menu.ButtonsNavigation
                 _button = GetComponent<Button>();
             }
         }
-
+        
         private void OnDestroy()
         {
             UnsubscribeEvents();

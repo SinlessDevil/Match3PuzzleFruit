@@ -4,13 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="fix: level conductor time">
+    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="fix: MovablePiece">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearablePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ClearablePiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ColorPiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/ColorPiece.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePieceView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePieceView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/LevelConductors/LevelConductorTimer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/LevelSelect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/LevelSelect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/MovablePieceView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/MovablePieceView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/ParticleSystemHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/ParticleSystemHolder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Services/Board/PieceSwapService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Services/Board/PieceSwapService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Buttons/FinishButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Buttons/FinishButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Menu/ButtonsNavigation/ButtonNavigation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Menu/ButtonsNavigation/ButtonNavigation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Menu/ButtonsNavigation/ButtonNavigationHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Menu/ButtonsNavigation/ButtonNavigationHolder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Menu/Windows/BaseWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Menu/Windows/BaseWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Menu/Windows/Map/MapWindowState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Menu/Windows/Map/MapWindowState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Menu/Windows/Meta/MetaWindowState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Menu/Windows/Meta/MetaWindowState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Menu/Windows/Shop/ShopWindowState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Menu/Windows/Shop/ShopWindowState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Huds/LoadingCurtain.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Huds/LoadingCurtain.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Huds/MenuHud.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Huds/MenuHud.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/ColumnPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/ColumnPiecePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/UiRoot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/UiRoot.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,14 +46,15 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Infrastructure/StateMachine/Game/States/GameLoopState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Controllers/MatchBoardController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Controllers/MatchBoardController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/MovablePiece.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/StaticData/Levels/BoardConfigs/BoardConfig.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/StaticData/Levels/BoardConfigs/BoardConfig.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/ClearablePiece.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/ColorPiece.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/GamePieceView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/LevelSelect.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Buttons/FinishButton.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Menu/ButtonsNavigation/ButtonNavigation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Menu/ButtonsNavigation/ButtonNavigationHolder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Menu/Windows/BaseWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Menu/Windows/BaseWindow.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectColorInfo">{
@@ -122,7 +136,7 @@
       <workItem from="1764411582375" duration="2727000" />
       <workItem from="1764934898438" duration="729000" />
       <workItem from="1765200542536" duration="701000" />
-      <workItem from="1765201806040" duration="1020000" />
+      <workItem from="1765201806040" duration="2799000" />
     </task>
     <task id="LOCAL-00001" summary="edit: name space">
       <option name="closed" value="true" />
@@ -140,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764413743864</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix: MovablePiece">
+      <option name="closed" value="true" />
+      <created>1765203556050</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765203556050</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +191,7 @@
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <MESSAGE value="edit: name space" />
     <MESSAGE value="edit: refactoring MatchBoardController" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit: refactoring MatchBoardController" />
+    <MESSAGE value="fix: MovablePiece" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: MovablePiece" />
   </component>
 </project>

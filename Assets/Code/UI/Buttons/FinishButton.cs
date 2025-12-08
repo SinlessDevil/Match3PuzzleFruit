@@ -18,7 +18,7 @@ namespace Code.UI.Buttons
         {
             _finishService = finishService;
         }
-        
+
         private void OnValidate()
         {
             if (_button == null)

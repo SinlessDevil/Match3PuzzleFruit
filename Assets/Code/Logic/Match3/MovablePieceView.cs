@@ -6,12 +6,15 @@ namespace Code.Logic.Match3
 {
     public class MovablePieceView : MonoBehaviour
     {
-        private GamePieceView _pieceView;
+        [SerializeField] private GamePieceView _pieceView;
         private CancellationTokenSource _moveCancellationTokenSource;
 
-        private void Awake()
+        private void OnValidate()
         {
-            _pieceView = GetComponent<GamePieceView>();
+            if (_pieceView == null)
+            {
+                _pieceView = GetComponent<GamePieceView>();
+            }
         }
 
         private void OnDestroy()

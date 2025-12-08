@@ -47,7 +47,7 @@ namespace Code.Services.Board
 
                 if (piece1.Data.Type == PieceType.Rainbow && piece1.Data.IsClearable() && piece1.Data.IsColored())
                 {
-                    ClearColorPiece clearColor = piece1.GetComponent<ClearColorPiece>();
+                    ClearColorPiece clearColor = piece1.ClearableComponent as ClearColorPiece;
 
                     if (clearColor != null && piece2.Data.IsColored())
                     {
@@ -60,7 +60,7 @@ namespace Code.Services.Board
 
                 if (piece2.Data.Type == PieceType.Rainbow && piece2.Data.IsClearable() && piece2.Data.IsColored())
                 {
-                    ClearColorPiece clearColor = piece2.GetComponent<ClearColorPiece>();
+                    ClearColorPiece clearColor = piece2.ClearableComponent as ClearColorPiece;
 
                     if (clearColor != null && piece1.Data.IsColored())
                     {

@@ -14,7 +14,7 @@ namespace Code.UI.Menu.Windows.Meta
         public void Constructor(BaseWindow window)
         {
             _window = (MetaWindow)window;
-            _rectTransform = _window.GetComponent<RectTransform>();
+            _rectTransform = _window.RectTransform;
 
             _hiddenPosition = new Vector2(Screen.width, _rectTransform.anchoredPosition.y);
             _visiblePosition = _rectTransform.anchoredPosition;
