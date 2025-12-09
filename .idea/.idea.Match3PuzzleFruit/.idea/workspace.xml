@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="add: ui game hud">
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTextInfoView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTextInfoView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingInfoView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/RemainingInfoView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreInfoView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/ScoreInfoView.cs" afterDir="false" />
+    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="import: text mesh pro">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Editor/GameEditor.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Editor/GameEditor.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,20 +31,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Infrastructure/StateMachine/Game/States/LoadLevelState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/ClearablePiece.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/ColorPiece.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/GamePieceView.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/Match3/LevelSelect.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Logic/ParticleSystemHolder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Services/Board/PieceSwapService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Buttons/FinishButton.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Menu/ButtonsNavigation/ButtonNavigation.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Menu/ButtonsNavigation/ButtonNavigationHolder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Menu/Windows/BaseWindow.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Menu/Windows/BaseWindow.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Menu/Windows/Meta/MetaWindowState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Menu/Windows/Shop/ShopWindowState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/Infrastructure/Installers/BootstrapInstaller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Game/GameHud.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Unity/Projects/SinlessDevil/Match3PuzzleFruit/Assets/Code/UI/Game/LevelView.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectColorInfo">{
@@ -175,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765213236680</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="import: text mesh pro">
+      <option name="closed" value="true" />
+      <created>1765270023344</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1765270023344</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +206,7 @@
     <MESSAGE value="edit: refactoring references" />
     <MESSAGE value="fix: level conductor" />
     <MESSAGE value="add: ui game hud" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: ui game hud" />
+    <MESSAGE value="import: text mesh pro" />
+    <option name="LAST_COMMIT_MESSAGE" value="import: text mesh pro" />
   </component>
 </project>
