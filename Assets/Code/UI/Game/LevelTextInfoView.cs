@@ -1,12 +1,12 @@
 using Code.Logic.Level.PM;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 namespace Code.UI.Game
 {
     public abstract class LevelTextInfoView : MonoBehaviour
     {
-        [SerializeField] private Text _text;
+        [SerializeField] private TMP_Text _text;
         
         private string _textConstant = string.Empty;
 
@@ -17,8 +17,8 @@ namespace Code.UI.Game
         protected abstract void Subscribe();
         
         protected abstract void Unsubscribe();
-        
-        public virtual void SetText(string value)
+
+        protected void SetText(string value)
         {
             if(_textConstant == string.Empty)
             {
@@ -29,7 +29,7 @@ namespace Code.UI.Game
             _text.text = value + _textConstant;
         }
 
-        public virtual void SetConstantText(string value)
+        public void SetConstantText(string value)
         {
             _textConstant = value;
         }

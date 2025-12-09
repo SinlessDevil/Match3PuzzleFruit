@@ -78,11 +78,23 @@ namespace Code.Editor
 
             bool isPrefabAsset = PrefabUtility.IsPartOfPrefabAsset(_prefab);
             GameObject targetObject = _prefab;
+            GameObject prefabInstance = null;
+
+            if (isPrefabAsset)
+            {
+                string prefabPath = AssetDatabase.GetAssetPath(_prefab);
+                prefabInstance = PrefabUtility.LoadPrefabContents(prefabPath);
+                targetObject = prefabInstance;
+            }
 
             Text[] textComponents = targetObject.GetComponentsInChildren<Text>(true);
 
             if (textComponents.Length == 0)
             {
+                if (isPrefabAsset && prefabInstance != null)
+                {
+                    PrefabUtility.UnloadPrefabContents(prefabInstance);
+                }
                 EditorUtility.DisplayDialog("Info", "Не найдено компонентов Text для конвертации", "OK");
                 return;
             }
@@ -109,9 +121,20 @@ namespace Code.Editor
 
                 Undo.RecordObject(gameObject, "Convert Text to TextMeshPro");
 
-                DestroyImmediate(textComponent);
+                if (isPrefabAsset)
+                {
+                    DestroyImmediate(textComponent, true);
+                }
+                else
+                {
+                    DestroyImmediate(textComponent);
+                }
 
                 TextMeshProUGUI tmpComponent = gameObject.AddComponent<TextMeshProUGUI>();
+                
+                if (tmpComponent == null)
+                    continue;
+
                 tmpComponent.text = text;
                 tmpComponent.color = color;
                 tmpComponent.fontSize = fontSize > 0 ? fontSize : tmpComponent.fontSize;
@@ -163,9 +186,11 @@ namespace Code.Editor
                 convertedCount++;
             }
 
-            if (isPrefabAsset)
+            if (isPrefabAsset && prefabInstance != null)
             {
-                PrefabUtility.SavePrefabAsset(targetObject);
+                string prefabPath = AssetDatabase.GetAssetPath(_prefab);
+                PrefabUtility.SaveAsPrefabAsset(prefabInstance, prefabPath);
+                PrefabUtility.UnloadPrefabContents(prefabInstance);
             }
             else
             {

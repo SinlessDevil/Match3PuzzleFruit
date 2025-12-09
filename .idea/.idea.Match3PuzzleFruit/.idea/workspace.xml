@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="import: text mesh pro">
+    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="add: TextToTextMeshProConverterWindow">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Editor/GameEditor.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Editor/GameEditor.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/GameHud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Editor/TextToTextMeshProConverterWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Editor/TextToTextMeshProConverterWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTextInfoView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTextInfoView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTypeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTypeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Huds/GameHud.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Huds/GameHud.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765270023344</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add: TextToTextMeshProConverterWindow">
+      <option name="closed" value="true" />
+      <created>1765274234919</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1765274234919</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +217,7 @@
     <MESSAGE value="fix: level conductor" />
     <MESSAGE value="add: ui game hud" />
     <MESSAGE value="import: text mesh pro" />
-    <option name="LAST_COMMIT_MESSAGE" value="import: text mesh pro" />
+    <MESSAGE value="add: TextToTextMeshProConverterWindow" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: TextToTextMeshProConverterWindow" />
   </component>
 </project>
