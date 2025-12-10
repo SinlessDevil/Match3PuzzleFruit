@@ -102,7 +102,9 @@ namespace Code.Logic.Match3
 
             if (_currentTargetView != null && _currentTargetView != targetView)
             {
-                ResetToOriginalPositionsSync(targetCell);
+                // Возвращаем предыдущую пару (pressed + старый target) на исходные позиции,
+                // затем начнём новое превью с новым target.
+                AnimateToOriginalPositions();
             }
 
             if (!_piecesPositions.ContainsKey(targetView))
@@ -148,10 +150,13 @@ namespace Code.Logic.Match3
             CancelTweens();
             _isAnimating = true;
 
+            // Куда идёт на превью нажатый кусочек: в ячейку target.
             Vector2 pressedTargetPos = _controller.GetWorldPosition(targetCell.X, targetCell.Y);
-            Vector2 targetTargetPos = _controller.GetWorldPosition(targetCell.X, targetCell.Y);
 
+            // Куда идёт таргет: на исходную позицию нажатого кусочка.
             PiecePositionInfo pressedInfo = _piecesPositions[_pressedView];
+            Vector2 targetTargetPos = pressedInfo.OriginalPosition;
+
             PiecePositionInfo targetInfo = _piecesPositions[_currentTargetView];
 
             _pressedTween = _pressedView.transform.DOMove(pressedTargetPos, _animationDuration)
@@ -180,27 +185,6 @@ namespace Code.Logic.Match3
             }
 
             AnimateToOriginalPositions();
-        }
-
-        private void ResetToOriginalPositionsSync(Cell currentTargetCell)
-        {
-            CancelTweens();
-
-            if (_pressedView != null && _piecesPositions.TryGetValue(_pressedView, out PiecePositionInfo pressedInfo))
-            {
-                Vector2 originalPosition = _controller.GetWorldPosition(currentTargetCell.X, currentTargetCell.Y);
-                _pressedView.transform.position = originalPosition;
-                pressedInfo.OriginalPosition = originalPosition;
-                pressedInfo.CurrentPosition = originalPosition;
-                _piecesPositions[_pressedView] = pressedInfo;
-            }
-
-            if (_currentTargetView != null && _piecesPositions.TryGetValue(_currentTargetView, out PiecePositionInfo targetInfo))
-            {
-                targetInfo.CurrentPosition = targetInfo.OriginalPosition;
-                _currentTargetView.transform.position = targetInfo.OriginalPosition;
-                _piecesPositions[_currentTargetView] = targetInfo;
-            }
         }
 
         private void AnimateToOriginalPositions()

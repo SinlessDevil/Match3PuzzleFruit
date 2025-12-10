@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="add: first logic drag animation pre views">
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePieceDragPreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePieceDragPreview.cs" afterDir="false" />
-    </list>
+    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="add: reset animation previews" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -118,7 +116,7 @@
       <workItem from="1764934898438" duration="729000" />
       <workItem from="1765200542536" duration="701000" />
       <workItem from="1765201806040" duration="8153000" />
-      <workItem from="1765361968330" duration="1627000" />
+      <workItem from="1765361968330" duration="2046000" />
     </task>
     <task id="LOCAL-00001" summary="edit: name space">
       <option name="closed" value="true" />
@@ -200,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765363354227</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add: reset animation previews">
+      <option name="closed" value="true" />
+      <created>1765363980076</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1765363980076</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +243,7 @@
     <MESSAGE value="add: TextToTextMeshProConverterWindow" />
     <MESSAGE value="add: cell logic" />
     <MESSAGE value="add: first logic drag animation pre views" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: first logic drag animation pre views" />
+    <MESSAGE value="add: reset animation previews" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: reset animation previews" />
   </component>
 </project>
