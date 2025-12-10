@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="add: reset animation previews" />
+    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="add: swipe drag">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,7 +118,7 @@
       <workItem from="1764934898438" duration="729000" />
       <workItem from="1765200542536" duration="701000" />
       <workItem from="1765201806040" duration="8153000" />
-      <workItem from="1765361968330" duration="2046000" />
+      <workItem from="1765361968330" duration="4498000" />
     </task>
     <task id="LOCAL-00001" summary="edit: name space">
       <option name="closed" value="true" />
@@ -206,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765363980076</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add: swipe drag">
+      <option name="closed" value="true" />
+      <created>1765364349649</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1765364349649</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +254,7 @@
     <MESSAGE value="add: cell logic" />
     <MESSAGE value="add: first logic drag animation pre views" />
     <MESSAGE value="add: reset animation previews" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: reset animation previews" />
+    <MESSAGE value="add: swipe drag" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: swipe drag" />
   </component>
 </project>

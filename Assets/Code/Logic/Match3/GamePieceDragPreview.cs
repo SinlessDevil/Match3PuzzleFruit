@@ -52,14 +52,14 @@ namespace Code.Logic.Match3
 
             if (_pressedView != null && _pressedView != pressedView)
             {
-                AnimateToOriginalPositions();
+                // Полный сброс предыдущего превью, если начали новый драг с другого элемента.
+                CancelTweens();
+                ResetAllToOriginalPositionsImmediate();
+                _piecesPositions.Clear();
             }
-
-            CancelTweens();
 
             _pressedView = pressedView;
             _currentTargetView = null;
-            _piecesPositions.Clear();
 
             Vector2 originalPosition = _controller.GetWorldPosition(pressedCell.X, pressedCell.Y);
             _piecesPositions[_pressedView] = new PiecePositionInfo(_pressedView, originalPosition);
@@ -102,9 +102,9 @@ namespace Code.Logic.Match3
 
             if (_currentTargetView != null && _currentTargetView != targetView)
             {
-                // Возвращаем предыдущую пару (pressed + старый target) на исходные позиции,
-                // затем начнём новое превью с новым target.
-                AnimateToOriginalPositions();
+                // Старый таргет должен доехать назад в свою клетку,
+                // нажатый кусочек продолжаем использовать для нового превью.
+                ResetTargetToOriginalAnimated(_currentTargetView);
             }
 
             if (!_piecesPositions.ContainsKey(targetView))
@@ -147,7 +147,8 @@ namespace Code.Logic.Match3
                 return;
             }
 
-            CancelTweens();
+            // Для нажатого всегда начинаем новую анимацию, старую для него гасим.
+            _pressedTween?.Kill();
             _isAnimating = true;
 
             // Куда идёт на превью нажатый кусочек: в ячейку target.
@@ -277,6 +278,38 @@ namespace Code.Logic.Match3
 
                 view.transform.position = info.OriginalPosition;
             }
+        }
+
+        private void ResetTargetToOriginalAnimated(GamePieceView target)
+        {
+            if (target == null)
+            {
+                return;
+            }
+
+            if (!_piecesPositions.TryGetValue(target, out PiecePositionInfo targetInfo))
+            {
+                return;
+            }
+
+            Vector3 originalPos = targetInfo.OriginalPosition;
+            Vector3 currentPos = target.transform.position;
+
+            if (Vector3.Distance(currentPos, originalPos) <= 0.01f)
+            {
+                targetInfo.CurrentPosition = originalPos;
+                _piecesPositions[target] = targetInfo;
+                return;
+            }
+
+            // Отдельный твин конкретно для этого таргета, не трогаем другие.
+            target.transform.DOMove(originalPos, _animationDuration)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(() =>
+                {
+                    targetInfo.CurrentPosition = originalPos;
+                    _piecesPositions[target] = targetInfo;
+                });
         }
 
         private void CancelTweens()
