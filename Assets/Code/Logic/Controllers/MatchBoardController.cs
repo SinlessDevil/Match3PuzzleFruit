@@ -19,6 +19,8 @@ namespace Code.Logic.Controllers
         private Cell _pressedCell;
         private Cell _enteredCell;
 
+        private GamePieceDragPreview _dragPreview;
+
         private bool _gameOver;
         private CancellationTokenSource _fillCancellationTokenSource;
 
@@ -51,6 +53,7 @@ namespace Code.Logic.Controllers
             _matchFinderService = matchFinderService;
             _pieceSwapService = pieceSwapService;
             _boardClearService = boardClearService;
+            _dragPreview = new GamePieceDragPreview(this, 0.25f);
         }
         
         public void StartLevel()
@@ -111,6 +114,9 @@ namespace Code.Logic.Controllers
             _fillCancellationTokenSource?.Dispose();
             _fillCancellationTokenSource = null;
             
+            _dragPreview?.Dispose();
+            _dragPreview = null;
+            
             _pieces = null;
             _cells = null;
             _pressedCell = null;
@@ -143,6 +149,7 @@ namespace Code.Logic.Controllers
             if (cell != null && cell.HasPieceView)
             {
                 _pressedCell = cell;
+                _dragPreview?.StartPreview(cell);
             }
         }
 
@@ -151,6 +158,7 @@ namespace Code.Logic.Controllers
             if (cell != null && cell.HasPieceView)
             {
                 _enteredCell = cell;
+                _dragPreview?.UpdatePreview(cell);
             }
         }
         
@@ -160,7 +168,12 @@ namespace Code.Logic.Controllers
                 _enteredCell?.CurrentPieceView?.Data != null && 
                 IsAdjacent(_pressedCell.X, _pressedCell.Y, _enteredCell.X, _enteredCell.Y))
             {
+                _dragPreview?.FinishPreview();
                 SwapPieces(_pressedCell.CurrentPieceView, _enteredCell.CurrentPieceView);
+            }
+            else
+            {
+                _dragPreview?.CancelPreview();
             }
             
             _pressedCell = null;
