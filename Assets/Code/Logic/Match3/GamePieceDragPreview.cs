@@ -126,6 +126,7 @@ namespace Code.Logic.Match3
         public void FinishPreview()
         {
             CancelTweens();
+            ResetAllToOriginalPositionsImmediate();
             _pressedView = null;
             _currentTargetView = null;
             _piecesPositions.Clear();
@@ -271,6 +272,26 @@ namespace Code.Logic.Match3
             if (!hasAnimations)
             {
                 _isAnimating = false;
+            }
+        }
+
+        private void ResetAllToOriginalPositionsImmediate()
+        {
+            if (_piecesPositions.Count == 0)
+            {
+                return;
+            }
+
+            foreach (PiecePositionInfo info in _piecesPositions.Values)
+            {
+                GamePieceView view = info.View;
+
+                if (view == null)
+                {
+                    continue;
+                }
+
+                view.transform.position = info.OriginalPosition;
             }
         }
 
