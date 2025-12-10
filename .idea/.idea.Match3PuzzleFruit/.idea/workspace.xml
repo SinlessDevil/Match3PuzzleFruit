@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="add: TextToTextMeshProConverterWindow">
+    <list default="true" id="760f50ae-8a00-4ab6-b00d-690952dbddc0" name="Changes" comment="edit: text to tmp pro">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Match3PuzzleFruit/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Editor/TextToTextMeshProConverterWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Editor/TextToTextMeshProConverterWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTextInfoView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTextInfoView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTypeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelTypeView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Game/LevelView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Huds/GameHud.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Huds/GameHud.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/IMatchBoardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/IMatchBoardController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Controllers/MatchBoardController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePieceView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Logic/Match3/GamePieceView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/BubblePiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/BubblePiecePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/ColumnPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/ColumnPiecePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/NormalPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/NormalPiecePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/PieceBG.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/PieceBG.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/RainbowPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/RainbowPiecePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Match3/RowClearPiecePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Match3/RowClearPiecePrefab.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +123,7 @@
       <workItem from="1764934898438" duration="729000" />
       <workItem from="1765200542536" duration="701000" />
       <workItem from="1765201806040" duration="8153000" />
+      <workItem from="1765361968330" duration="559000" />
     </task>
     <task id="LOCAL-00001" summary="edit: name space">
       <option name="closed" value="true" />

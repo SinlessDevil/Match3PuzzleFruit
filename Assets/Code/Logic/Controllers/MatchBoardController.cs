@@ -14,9 +14,10 @@ namespace Code.Logic.Controllers
     public class MatchBoardController : IMatchBoardController
     {
         private GamePieceView[,] _pieces;
+        private Cell[,] _cells;
         
-        private GamePieceView _pressedPiece;
-        private GamePieceView _enteredPiece;
+        private Cell _pressedCell;
+        private Cell _enteredCell;
 
         private bool _gameOver;
         private CancellationTokenSource _fillCancellationTokenSource;
@@ -56,16 +57,29 @@ namespace Code.Logic.Controllers
         {
             SetupCameraAdapter();
             
+            _cells = new Cell[BoardConfig.XDim, BoardConfig.YDim];
+            _pieces = new GamePieceView[BoardConfig.XDim, BoardConfig.YDim];
+            
             for (int x = 0; x < BoardConfig.XDim; x++)
             {
                 for (int y = 0; y < BoardConfig.YDim; y++)
                 {
-                    Piece background = _pieceFactory.CreatePieceByCurrentLevel(PieceType.Background, 
-                        GetWorldPosition(x, y), Quaternion.identity, _root);
+                    Piece background = _pieceFactory.CreatePieceByCurrentLevel(
+                        PieceType.Background, 
+                        GetWorldPosition(x, y), 
+                        Quaternion.identity, 
+                        _root);
+
+                    Cell cell = background.GetComponent<Cell>();
+                    if (cell == null)
+                    {
+                        cell = background.gameObject.AddComponent<Cell>();
+                    }
+                    
+                    cell.Initialize(x, y, this);
+                    _cells[x, y] = cell;
                 }
             }
-
-            _pieces = new GamePieceView[BoardConfig.XDim, BoardConfig.YDim];
 
             for (int i = 0; i < BoardConfig.InitialPieces.Length; i++)
             {
@@ -98,8 +112,9 @@ namespace Code.Logic.Controllers
             _fillCancellationTokenSource = null;
             
             _pieces = null;
-            _pressedPiece = null;
-            _enteredPiece = null;
+            _cells = null;
+            _pressedCell = null;
+            _enteredCell = null;
             _root = null;
             
             _gameOver = false;
@@ -123,26 +138,41 @@ namespace Code.Logic.Controllers
             return new Vector2(worldX, worldY);
         }
         
-        public void PressPiece(GamePieceView pieceView)
+        public void PressCell(Cell cell)
         {
-            _pressedPiece = pieceView;
+            if (cell != null && cell.HasPieceView)
+            {
+                _pressedCell = cell;
+            }
         }
 
-        public void EnterPiece(GamePieceView pieceView)
+        public void EnterCell(Cell cell)
         {
-            _enteredPiece = pieceView;
+            if (cell != null && cell.HasPieceView)
+            {
+                _enteredCell = cell;
+            }
         }
         
-        public void ReleasePiece()
+        public void ReleaseCell()
         {
-            if (_pressedPiece?.Data != null && _enteredPiece?.Data != null && 
-                IsAdjacent(_pressedPiece.Data, _enteredPiece.Data))
+            if (_pressedCell?.CurrentPieceView?.Data != null && 
+                _enteredCell?.CurrentPieceView?.Data != null && 
+                IsAdjacent(_pressedCell.X, _pressedCell.Y, _enteredCell.X, _enteredCell.Y))
             {
-                SwapPieces(_pressedPiece, _enteredPiece);
+                SwapPieces(_pressedCell.CurrentPieceView, _enteredCell.CurrentPieceView);
             }
             
-            _pressedPiece = null;
-            _enteredPiece = null;
+            _pressedCell = null;
+            _enteredCell = null;
+        }
+        
+        public Cell GetCell(int x, int y)
+        {
+            if (x < 0 || x >= BoardConfig.XDim || y < 0 || y >= BoardConfig.YDim)
+                return null;
+            
+            return _cells[x, y];
         }
         
         public void ClearRow(int row)
@@ -200,7 +230,9 @@ namespace Code.Logic.Controllers
                 GetWorldPosition = GetWorldPosition
             };
             
-            _boardFillService.FillAsync(_pieces, config, _fillCancellationTokenSource.Token).Forget();
+            _boardFillService.FillAsync(_pieces, config, _fillCancellationTokenSource.Token)
+                .ContinueWith(() => SyncCellsWithPieces())
+                .Forget();
         }
 
         private GamePieceView SpawnNewPiece(int x, int y, PieceType type)
@@ -215,6 +247,11 @@ namespace Code.Logic.Controllers
             pieceView.Initialize(data);
             
             _pieces[x, y] = pieceView;
+            
+            if (_cells[x, y] != null)
+            {
+                _cells[x, y].CurrentPieceView = pieceView;
+            }
 
             return _pieces[x, y];
         }
@@ -231,9 +268,9 @@ namespace Code.Logic.Controllers
             };
         }
 
-        private static bool IsAdjacent(GamePieceData data1, GamePieceData data2) =>
-            (data1.X == data2.X && Mathf.Abs(data1.Y - data2.Y) == 1) ||
-            (data1.Y == data2.Y && Mathf.Abs(data1.X - data2.X) == 1);
+        private static bool IsAdjacent(int x1, int y1, int x2, int y2) =>
+            (x1 == x2 && Mathf.Abs(y1 - y2) == 1) ||
+            (y1 == y2 && Mathf.Abs(x1 - x2) == 1);
 
         private void SwapPieces(GamePieceView piece1, GamePieceView piece2)
         {
@@ -253,8 +290,9 @@ namespace Code.Logic.Controllers
 
             if (_pieceSwapService.TrySwapPieces(_pieces, piece1, piece2, config))
             {
-                _pressedPiece = null;
-                _enteredPiece = null;
+                SyncCellsWithPieces();
+                _pressedCell = null;
+                _enteredCell = null;
                 StartFillAsync();
             }
         }
@@ -276,6 +314,23 @@ namespace Code.Logic.Controllers
                 MatchBoardController = this,
                 GetWorldPosition = GetWorldPosition
             };
+        }
+        
+        private void SyncCellsWithPieces()
+        {
+            if (_cells == null || _pieces == null)
+                return;
+            
+            for (int x = 0; x < BoardConfig.XDim; x++)
+            {
+                for (int y = 0; y < BoardConfig.YDim; y++)
+                {
+                    if (_cells[x, y] != null)
+                    {
+                        _cells[x, y].CurrentPieceView = _pieces[x, y];
+                    }
+                }
+            }
         }
         
         private BoardConfig BoardConfig => _levelService.GetCurrentLevelStaticData().boardConfig;
