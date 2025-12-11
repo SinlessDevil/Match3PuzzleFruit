@@ -168,7 +168,6 @@ namespace Code.Logic.Controllers
                 _enteredCell?.CurrentPieceView?.Data != null && 
                 IsAdjacent(_pressedCell.X, _pressedCell.Y, _enteredCell.X, _enteredCell.Y))
             {
-                _dragPreview?.FinishPreview();
                 SwapPieces(_pressedCell.CurrentPieceView, _enteredCell.CurrentPieceView);
             }
             else
@@ -303,10 +302,18 @@ namespace Code.Logic.Controllers
 
             if (_pieceSwapService.TrySwapPieces(_pieces, piece1, piece2, config))
             {
+                // Есть реальный матч — оставляем визуальный свап как есть,
+                // просто останавливаем превью и чистим его состояние.
+                _dragPreview?.CompleteSuccessfulSwap();
                 SyncCellsWithPieces();
                 _pressedCell = null;
                 _enteredCell = null;
                 StartFillAsync();
+            }
+            else
+            {
+                // Матча нет — откатываем превью обратно.
+                _dragPreview?.CancelPreview();
             }
         }
         

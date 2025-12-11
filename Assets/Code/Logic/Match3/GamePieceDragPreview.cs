@@ -7,20 +7,6 @@ namespace Code.Logic.Match3
 {
     public class GamePieceDragPreview
     {
-        private struct PiecePositionInfo
-        {
-            public GamePieceView View;
-            public Vector3 OriginalPosition;
-            public Vector3 CurrentPosition;
-
-            public PiecePositionInfo(GamePieceView view, Vector3 originalPosition)
-            {
-                View = view;
-                OriginalPosition = originalPosition;
-                CurrentPosition = originalPosition;
-            }
-        }
-
         private readonly MatchBoardController _controller;
         private readonly float _animationDuration;
 
@@ -43,7 +29,8 @@ namespace Code.Logic.Match3
 
         public void StartPreview(Cell pressedCell)
         {
-            if (pressedCell == null || pressedCell.CurrentPieceView == null || pressedCell.CurrentPieceView.Data == null)
+            if (pressedCell == null || pressedCell.CurrentPieceView == null ||
+                pressedCell.CurrentPieceView.Data == null)
             {
                 return;
             }
@@ -52,7 +39,6 @@ namespace Code.Logic.Match3
 
             if (_pressedView != null && _pressedView != pressedView)
             {
-                // Полный сброс предыдущего превью, если начали новый драг с другого элемента.
                 CancelTweens();
                 ResetAllToOriginalPositionsImmediate();
                 _piecesPositions.Clear();
@@ -102,8 +88,6 @@ namespace Code.Logic.Match3
 
             if (_currentTargetView != null && _currentTargetView != targetView)
             {
-                // Старый таргет должен доехать назад в свою клетку,
-                // нажатый кусочек продолжаем использовать для нового превью.
                 ResetTargetToOriginalAnimated(_currentTargetView);
             }
 
@@ -125,10 +109,9 @@ namespace Code.Logic.Match3
             _piecesPositions.Clear();
         }
 
-        public void FinishPreview()
+        public void CompleteSuccessfulSwap()
         {
             CancelTweens();
-            ResetAllToOriginalPositionsImmediate();
             _pressedView = null;
             _currentTargetView = null;
             _piecesPositions.Clear();
@@ -147,17 +130,13 @@ namespace Code.Logic.Match3
                 return;
             }
 
-            // Для нажатого всегда начинаем новую анимацию, старую для него гасим.
             _pressedTween?.Kill();
             _isAnimating = true;
 
-            // Куда идёт на превью нажатый кусочек: в ячейку target.
             Vector2 pressedTargetPos = _controller.GetWorldPosition(targetCell.X, targetCell.Y);
-
-            // Куда идёт таргет: на исходную позицию нажатого кусочка.
             PiecePositionInfo pressedInfo = _piecesPositions[_pressedView];
-            Vector2 targetTargetPos = pressedInfo.OriginalPosition;
 
+            Vector2 targetTargetPos = pressedInfo.OriginalPosition;
             PiecePositionInfo targetInfo = _piecesPositions[_currentTargetView];
 
             _pressedTween = _pressedView.transform.DOMove(pressedTargetPos, _animationDuration)
@@ -176,16 +155,6 @@ namespace Code.Logic.Match3
                     targetInfo.CurrentPosition = targetTargetPos;
                     _piecesPositions[_currentTargetView] = targetInfo;
                 });
-        }
-
-        private void ResetToOriginalPositions()
-        {
-            if (_pressedView == null)
-            {
-                return;
-            }
-
-            AnimateToOriginalPositions();
         }
 
         private void AnimateToOriginalPositions()
@@ -227,7 +196,8 @@ namespace Code.Logic.Match3
                 }
             }
 
-            if (previousTarget != null && _piecesPositions.TryGetValue(previousTarget, out PiecePositionInfo targetInfo))
+            if (previousTarget != null &&
+                _piecesPositions.TryGetValue(previousTarget, out PiecePositionInfo targetInfo))
             {
                 Vector3 originalPos = targetInfo.OriginalPosition;
                 Vector3 currentPos = previousTarget.transform.position;
@@ -258,6 +228,16 @@ namespace Code.Logic.Match3
             {
                 _isAnimating = false;
             }
+        }
+        
+        private void ResetToOriginalPositions()
+        {
+            if (_pressedView == null)
+            {
+                return;
+            }
+
+            AnimateToOriginalPositions();
         }
 
         private void ResetAllToOriginalPositionsImmediate()
@@ -302,7 +282,6 @@ namespace Code.Logic.Match3
                 return;
             }
 
-            // Отдельный твин конкретно для этого таргета, не трогаем другие.
             target.transform.DOMove(originalPos, _animationDuration)
                 .SetEase(Ease.OutQuad)
                 .OnComplete(() =>
@@ -311,7 +290,7 @@ namespace Code.Logic.Match3
                     _piecesPositions[target] = targetInfo;
                 });
         }
-
+        
         private void CancelTweens()
         {
             _pressedTween?.Kill();
@@ -341,7 +320,19 @@ namespace Code.Logic.Match3
 
             return dx + dy == 1;
         }
+        
+        private struct PiecePositionInfo
+        {
+            public GamePieceView View;
+            public Vector3 OriginalPosition;
+            public Vector3 CurrentPosition;
+
+            public PiecePositionInfo(GamePieceView view, Vector3 originalPosition)
+            {
+                View = view;
+                OriginalPosition = originalPosition;
+                CurrentPosition = originalPosition;
+            }
+        }
     }
 }
-
-
