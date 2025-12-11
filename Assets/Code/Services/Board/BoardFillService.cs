@@ -10,12 +10,14 @@ namespace Code.Services.Board
     public class BoardFillService : IBoardFillService
     {
         private readonly IBoardClearService _boardClearService;
+        private readonly IBoardRandomService _boardRandomService;
         
         public bool IsFilling { get; private set; }
         
-        public BoardFillService(IBoardClearService boardClearService)
+        public BoardFillService(IBoardClearService boardClearService, IBoardRandomService boardRandomService)
         {
             _boardClearService = boardClearService;
+            _boardRandomService = boardRandomService;
         }
         
         public async UniTask FillAsync(GamePieceView[,] pieces, BoardFillConfig config, 
@@ -144,19 +146,29 @@ namespace Code.Services.Board
                     continue;
 
                 pieceBelow.Dispose();
-                Piece newPiece = config.PieceFactory.CreatePieceByCurrentLevel(PieceType.Normal, 
-                    config.GetWorldPosition(x, -1), Quaternion.identity, config.Root);
+                Piece newPiece = config.PieceFactory.CreatePieceByCurrentLevel(
+                    PieceType.Normal,
+                    config.GetWorldPosition(x, -1),
+                    Quaternion.identity,
+                    config.Root);
 
                 GamePieceView pieceView = newPiece.GetComponent<GamePieceView>();
                 GamePieceData data = new GamePieceData(x, -1, PieceType.Normal);
-                data.Score = 10; // Базовое значение для нормальных кусочков
+                data.Score = 10;
                 data.SetMatchBoardController(config.MatchBoardController);
                 pieceView.Initialize(data);
-                
+
                 pieces[x, 0] = pieceView;
+
+                int numColors = pieceView.ColorComponent != null ? pieceView.ColorComponent.NumColors : 0;
+                ColorType color = _boardRandomService.GetRandomColorForCell(pieces, x, 0, numColors);
+                if (pieceView.ColorComponent != null)
+                {
+                    pieceView.ColorComponent.SetColor(color);
+                }
+
                 Vector2 endPosition = config.GetWorldPosition(x, 0);
                 pieces[x, 0].MovableComponent.Move(x, 0, endPosition, config.FillTime);
-                pieces[x, 0].ColorComponent.SetColor((ColorType)UnityEngine.Random.Range(0, pieces[x, 0].ColorComponent.NumColors));
                 movedPiece = true;
             }
 

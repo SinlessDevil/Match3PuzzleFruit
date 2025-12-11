@@ -85,6 +85,7 @@ namespace Code.Infrastructure.Installers
         {
             Container.Bind<IMatchFinderService>().To<MatchFinderService>().AsSingle();
             Container.Bind<IBoardClearService>().To<BoardClearService>().AsSingle();
+            Container.Bind<IBoardRandomService>().To<BoardRandomService>().AsSingle();
             Container.Bind<IBoardFillService>().To<BoardFillService>().AsSingle();
             Container.Bind<IPieceSwapService>().To<PieceSwapService>().AsSingle();
         }
